@@ -1,4 +1,6 @@
-package be.kdg.mens_erger_je_niet;
+package be.kdg.mens_erger_je_niet.model;
+
+import be.kdg.mens_erger_je_niet.Kleur;
 
 public class Speler {
     Kleur kleur;

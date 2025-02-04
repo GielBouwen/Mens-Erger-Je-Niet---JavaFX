@@ -1,4 +1,4 @@
-package be.kdg.mens_erger_je_niet;
+package be.kdg.mens_erger_je_niet.model;
 
 import java.time.LocalDateTime;
 
