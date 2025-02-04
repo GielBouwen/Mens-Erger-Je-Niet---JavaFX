@@ -1,4 +1,4 @@
 module com.example.mensergerjenietjavafx {
     requires javafx.controls;
-    exports com.example.mensergerjenietjavafx;
+    exports be.kdg.mens_erger_je_niet;
 }

@@ -1,22 +1,32 @@
 package be.kdg.mens_erger_je_niet.view.loadingscreen;
 
 import be.kdg.mens_erger_je_niet.model.LoadingScreen;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 
-public class LoadingscreenView {
-    private LoadingscreenView view;
+public class LoadingscreenView extends BorderPane {
     private LoadingScreen model;
+    private Label titleLabel;
+    private Button startButton;
 
-    public LoadingscreenView(LoadingscreenView view, LoadingScreen model) {
-        this.view = view;
+    public LoadingscreenView(LoadingScreen model) {
         this.model = model;
-        addEventHandlers();
-        updateView();
-    }
-    private void addEventHandlers() {
-
+        initializeNodes();
+        layoutNodes();
     }
 
-    private void updateView() {
+    private void initializeNodes() {
+        titleLabel = new Label("Welkom bij Mens Erger Je Niet!");
+        startButton = new Button("Start het spel");
+    }
 
+    private void layoutNodes() {
+        VBox vbox = new VBox(20, titleLabel, startButton);
+        vbox.setAlignment(Pos.CENTER);
+        this.setCenter(vbox);
     }
 }
+
