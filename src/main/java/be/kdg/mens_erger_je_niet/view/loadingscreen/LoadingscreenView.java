@@ -1,6 +1,5 @@
 package be.kdg.mens_erger_je_niet.view.loadingscreen;
 
-import be.kdg.mens_erger_je_niet.model.LoadingScreen;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,18 +7,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.BorderPane;
 
 public class LoadingscreenView extends BorderPane {
-    private LoadingScreen model;
     private Label titleLabel;
     private Button startButton;
 
-    public LoadingscreenView(LoadingScreen model) {
-        this.model = model;
+    public LoadingscreenView() {
         initializeNodes();
         layoutNodes();
     }
 
     private void initializeNodes() {
-        titleLabel = new Label("Welkom bij Mens Erger Je Niet!");
+        titleLabel = new Label("Mens erger je niet");
         startButton = new Button("Start het spel");
     }
 
@@ -29,4 +26,3 @@ public class LoadingscreenView extends BorderPane {
         this.setCenter(vbox);
     }
 }
-
