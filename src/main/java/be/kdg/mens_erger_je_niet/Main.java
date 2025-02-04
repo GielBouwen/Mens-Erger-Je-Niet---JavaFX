@@ -1,6 +1,7 @@
 package be.kdg.mens_erger_je_niet;
 
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
+import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -12,9 +13,14 @@ public class Main extends Application {
         primaryStage.setWidth(1280);
         primaryStage.setHeight(720);
 
-        LoadingscreenView loadingscreenView = new LoadingscreenView();
-        Scene scene = new Scene(loadingscreenView);
-        primaryStage.setScene(scene);
+        LoadingscreenView loadingscreenView = new LoadingscreenView(primaryStage);
+        Scene loadingscreen = new Scene(loadingscreenView);
+        primaryStage.setScene(loadingscreen);
+
+        MainMenuView mainMenuView = new MainMenuView();
+        Scene mainMenu = new Scene(mainMenuView);
+        primaryStage.setScene(mainMenu);
+
 
         primaryStage.show();
     }

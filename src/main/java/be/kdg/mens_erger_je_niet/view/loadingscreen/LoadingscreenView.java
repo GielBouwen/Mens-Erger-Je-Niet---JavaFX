@@ -1,49 +1,49 @@
 package be.kdg.mens_erger_je_niet.view.loadingscreen;
 
+import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.control.Button;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.paint.Color;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 public class LoadingscreenView extends BorderPane {
-    private Label titleLabel;
+    private ImageView imageView;
     private Button startButton;
 
-    public LoadingscreenView() {
+    public LoadingscreenView(Stage primaryStage) {
         initializeNodes();
-        layoutNodes();
+        layoutNodes(primaryStage);
     }
 
     private void initializeNodes() {
-        titleLabel = new Label("Mens-Erger-Je-Niet");
-        titleLabel.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 50));
-        titleLabel.setTextFill(Color.DARKGOLDENROD);
-
+        Image image = new Image(getClass().getResourceAsStream("/resources/mens_erger_je_niet.png"));
+        imageView = new ImageView(image);
+        imageView.setFitWidth(300);
+        imageView.setPreserveRatio(true);
 
         startButton = new Button("Start het spel");
         startButton.setFont(Font.font("Arial", FontWeight.BOLD, 16));
-        startButton.setTextFill(Color.WHITE); // Stel de tekstkleur in
-        startButton.setBackground(new Background(new BackgroundFill(Color.GOLD, new CornerRadii(5), Insets.EMPTY))); // Stel de achtergrondkleur en hoeken in
-        startButton.setPadding(new Insets(10, 20, 10, 20)); // Stel de padding in
-
+        startButton.setTextFill(Color.WHITE);
+        startButton.setBackground(new Background(new BackgroundFill(Color.DARKBLUE, new CornerRadii(5), Insets.EMPTY)));
+        startButton.setPadding(new Insets(10, 20, 10, 20));
     }
 
-    private void layoutNodes() {
-        VBox vbox = new VBox(20, titleLabel, startButton);
+    private void layoutNodes(Stage primaryStage) {
+        VBox vbox = new VBox(20, imageView, startButton);
         vbox.setAlignment(Pos.CENTER);
         this.setCenter(vbox);
+
+        startButton.setOnAction(event -> {
+            MainMenuView mainMenuView = new MainMenuView();
+            Scene mainMenuScene = new Scene(mainMenuView, 1280, 720);
+            primaryStage.setScene(mainMenuScene);
+        });
     }
 }
