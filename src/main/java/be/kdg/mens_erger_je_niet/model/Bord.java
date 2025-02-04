@@ -1,7 +1,6 @@
 package be.kdg.mens_erger_je_niet.model;
 
-public class Bord {
-    package be.kdg.mens_erger_je_niet;
+
 
     public class Bord {
         Thuisveld[] thuisveldenRood = new Thuisveld[4];
@@ -20,5 +19,3 @@ public class Bord {
         Veld[] eindVeldenGeel = new Veld[4];
         Veld[] eindVeldenGroen = new Veld[4];
     }
-
-}
