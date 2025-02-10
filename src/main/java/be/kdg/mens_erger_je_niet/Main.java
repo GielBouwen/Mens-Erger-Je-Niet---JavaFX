@@ -1,5 +1,6 @@
 package be.kdg.mens_erger_je_niet;
 
+import be.kdg.mens_erger_je_niet.view.about.AboutView;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
@@ -21,6 +22,10 @@ public class Main extends Application {
         MainMenuView mainMenuView = new MainMenuView();
         Scene mainMenu = new Scene(mainMenuView);
         primaryStage.setScene(mainMenu);
+
+        AboutView aboutView = new AboutView();
+        Scene about = new Scene(aboutView);
+        primaryStage.setScene(about);
 
         primaryStage.show();
     }
