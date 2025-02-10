@@ -1,7 +1,10 @@
 package be.kdg.mens_erger_je_niet;
 
+import be.kdg.mens_erger_je_niet.view.about.AboutView;
+import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
+import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -27,12 +30,30 @@ public class Main extends Application {
     }
 
     public void showMainMenu() {
-        MainMenuView mainMenuView = new MainMenuView();
+        MainMenuView mainMenuView = new MainMenuView(this);
         Scene mainMenu = new Scene(mainMenuView);
         primaryStage.setScene(mainMenu);
     }
 
+    public void showNewGame() {
+        NewGameView newGameView = new NewGameView();
+        Scene newGame = new Scene(newGameView);
+        primaryStage.setScene(newGame);
+    }
+
     public static void main(String[] args) {
         Application.launch(args);
+    }
+
+    public void loadGameView() {
+        LoadGameView loadGameView = new LoadGameView();
+        Scene loadGame = new Scene(loadGameView);
+        primaryStage.setScene(loadGame);
+    }
+
+    public void AboutView() {
+        AboutView aboutView = new AboutView();
+        Scene about = new Scene(aboutView);
+        primaryStage.setScene(about);
     }
 }
