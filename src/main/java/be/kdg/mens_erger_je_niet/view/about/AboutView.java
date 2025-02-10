@@ -1,7 +1,6 @@
 package be.kdg.mens_erger_je_niet.view.about;
 
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -29,7 +28,7 @@ public class AboutView extends BorderPane {
     }
 
     private void layoutNodes() {
-        /*AboutText = new Text("Dit is een lange tekst die gaat vertellen wie we zijn en wat we hier doen en ik maak deze tekst zo lang mogelijk om te zien hoe die uitgelijnd zou worden in het tekstvak en of die zou kunnen resizen of niet");
+        AboutText = new Text("Dit is een lange tekst die gaat vertellen wie we zijn en wat we hier doen en ik maak deze tekst zo lang mogelijk om te zien hoe die uitgelijnd zou worden in het tekstvak en of die zou kunnen resizen of niet");
         AboutText.setFont(Font.font("Arial", 30));
 
         TextFlow AboutTextFlow = new TextFlow(AboutText);
