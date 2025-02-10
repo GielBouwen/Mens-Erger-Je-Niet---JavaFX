@@ -51,7 +51,7 @@ public class Main extends Application {
         primaryStage.setScene(loadGame);
     }
 
-    public void AboutView() {
+    public void aboutView() {
         AboutView aboutView = new AboutView();
         Scene about = new Scene(aboutView);
         primaryStage.setScene(about);

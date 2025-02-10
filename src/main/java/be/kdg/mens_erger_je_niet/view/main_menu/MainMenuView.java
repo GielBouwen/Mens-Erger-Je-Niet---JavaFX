@@ -80,6 +80,6 @@ public class MainMenuView extends BorderPane {
     private void setupEventHandlers(Main mainApp) {
         newGame.setOnAction(event -> mainApp.showNewGame());
         loadGame.setOnAction(event -> mainApp.loadGameView());
-        about.setOnAction(event -> mainApp.loadAbout());
+        about.setOnAction(event -> mainApp.aboutView());
     }
 }
