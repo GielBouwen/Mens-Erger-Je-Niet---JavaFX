@@ -63,8 +63,18 @@ public class MainMenuView extends BorderPane {
     }
 
     private void layoutNodes() {
-        VBox vbox = new VBox(20, newGame, loadGame, help, about);
-        vbox.setAlignment(Pos.CENTER);
-        this.setCenter(vbox);
+
+        GridPane mainMenuGrid = new GridPane();
+        mainMenuGrid.setHgap(30); //Stel de witruimte in
+        mainMenuGrid.setVgap(50);
+
+        mainMenuGrid.add(newGame, 0, 0); //Voeg de knoppen toe en zet ze op de juiste positie
+        mainMenuGrid.add(loadGame, 1, 0);
+        mainMenuGrid.add(help, 0, 1);
+        mainMenuGrid.add(about, 1, 1);
+
+        mainMenuGrid.setAlignment(Pos.CENTER); //Positioneer de grid in het midden
+        this.setCenter(mainMenuGrid);
+
     }
 }
