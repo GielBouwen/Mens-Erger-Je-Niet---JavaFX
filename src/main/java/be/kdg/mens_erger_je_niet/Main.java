@@ -7,29 +7,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private Stage primaryStage;
-
     @Override
     public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
         primaryStage.setTitle("Mens-Erger-Je-Niet");
         primaryStage.setWidth(1280);
         primaryStage.setHeight(720);
 
-        showLoadingScreen();
-    }
-
-    private void showLoadingScreen() {
-        LoadingscreenView loadingscreenView = new LoadingscreenView(this);
+        LoadingscreenView loadingscreenView = new LoadingscreenView(primaryStage);
         Scene loadingscreen = new Scene(loadingscreenView);
         primaryStage.setScene(loadingscreen);
-        primaryStage.show();
-    }
 
-    public void showMainMenu() {
         MainMenuView mainMenuView = new MainMenuView();
         Scene mainMenu = new Scene(mainMenuView);
         primaryStage.setScene(mainMenu);
+
+
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

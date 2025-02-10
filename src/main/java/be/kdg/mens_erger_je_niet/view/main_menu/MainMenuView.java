@@ -66,7 +66,7 @@ public class MainMenuView extends BorderPane {
     private void layoutNodes() {
 
         GridPane mainMenuGrid = new GridPane();
-        mainMenuGrid.setHgap(30); //Stel de witruimte in
+        mainMenuGrid.setHgap(50); //Stel de witruimte in
         mainMenuGrid.setVgap(50);
 
         mainMenuGrid.add(newGame, 0, 0); //Voeg de knoppen toe en zet ze op de juiste positie
