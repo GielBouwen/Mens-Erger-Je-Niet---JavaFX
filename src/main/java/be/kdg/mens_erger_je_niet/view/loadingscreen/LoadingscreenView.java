@@ -5,8 +5,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,7 +12,6 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class LoadingscreenView extends BorderPane {
-    private ImageView imageView;
     private Button startButton;
 
     public LoadingscreenView(Stage primaryStage) {
@@ -23,11 +20,6 @@ public class LoadingscreenView extends BorderPane {
     }
 
     private void initializeNodes() {
-        Image image = new Image(getClass().getResourceAsStream("/resources/mens_erger_je_niet.png"));
-        imageView = new ImageView(image);
-        imageView.setFitWidth(300);
-        imageView.setPreserveRatio(true);
-
         startButton = new Button("Start het spel");
         startButton.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         startButton.setTextFill(Color.WHITE);
@@ -36,7 +28,7 @@ public class LoadingscreenView extends BorderPane {
     }
 
     private void layoutNodes(Stage primaryStage) {
-        VBox vbox = new VBox(20, imageView, startButton);
+        VBox vbox = new VBox(20, startButton);
         vbox.setAlignment(Pos.CENTER);
         this.setCenter(vbox);
 
