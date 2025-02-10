@@ -55,5 +55,7 @@ public class Main extends Application {
         AboutView aboutView = new AboutView();
         Scene about = new Scene(aboutView);
         primaryStage.setScene(about);
+
+        //dit is een test
     }
 }
