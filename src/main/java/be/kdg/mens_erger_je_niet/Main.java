@@ -47,7 +47,7 @@ public class Main extends Application {
     }
 
     public void loadGameView() {
-        LoadGameView loadGameView = new LoadGameView();
+        LoadGameView loadGameView = new LoadGameView(this);
         Scene loadGame = new Scene(loadGameView);
         primaryStage.setScene(loadGame);
     }
