@@ -53,7 +53,7 @@ public class Main extends Application {
     }
 
     public void aboutView() {
-        AboutView aboutView = new AboutView();
+        AboutView aboutView = new AboutView(this);
         Scene about = new Scene(aboutView);
         primaryStage.setScene(about);
     }
