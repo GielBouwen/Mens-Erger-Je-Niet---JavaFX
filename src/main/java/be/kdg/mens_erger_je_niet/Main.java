@@ -6,6 +6,7 @@ import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
+import be.kdg.mens_erger_je_niet.view.playboard.PlayboardView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -37,7 +38,7 @@ public class Main extends Application {
     }
 
     public void showNewGame() {
-        NewGameView newGameView = new NewGameView();
+        NewGameView newGameView = new NewGameView(this);
         Scene newGame = new Scene(newGameView);
         primaryStage.setScene(newGame);
     }
@@ -63,5 +64,11 @@ public class Main extends Application {
         HelpView helpView = new HelpView(this);
         Scene help = new Scene(helpView);
         primaryStage.setScene(help);
+    }
+
+    public void playboardView(){
+        PlayboardView playboardView = new PlayboardView();
+        Scene playboard = new Scene(playboardView);
+        primaryStage.setScene(playboard);
     }
 }

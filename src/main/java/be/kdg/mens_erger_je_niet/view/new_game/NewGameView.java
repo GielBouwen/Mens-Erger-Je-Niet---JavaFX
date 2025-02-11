@@ -10,28 +10,28 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.control.CheckBox;
+import be.kdg.mens_erger_je_niet.Main;
 
 public class NewGameView extends BorderPane{
-    private Button Cancel, Create;
+    private Button cancelButton, createButton;
     private CheckBox checkBoxGroen, checkBoxGeel, checkBoxRood, checkBoxBlauw;
     private GridPane layoutGrid, gridGroen, gridGeel, gridRood, gridBlauw;
     private Label naamLabelGroen, naamLabelGeel, naamLabelRood, naamLabelBlauw, newGameTitel;
     private TextField vulNaamGroenIn, vulNaamGeelIn, vulNaamRoodIn, vulNaamBlauwIn;
-    private BorderPane titel;
+    private VBox titel;
 
-    public NewGameView() {
+    public NewGameView(Main mainApp) {
         initializeNodes();
         layoutNodes();
+        setupEventHandlers(mainApp);
     }
 
     private void initializeNodes() {
-        double textSize = 30;
 
         //Titel
-        newGameTitel = new Label("New Game");
+        newGameTitel = new Label("Maak nieuw spel aan");
         newGameTitel.setFont(Font.font("Arial", FontWeight.BOLD, 50));
-        titel = new BorderPane();
-        titel.setTop(newGameTitel);
+        titel = new VBox(10, newGameTitel);
 
         //Inhoud sub-grid Groen
         naamLabelGroen = new Label("Naam: ");
@@ -83,18 +83,20 @@ public class NewGameView extends BorderPane{
         gridBlauw.setBackground(new Background(new BackgroundFill(Color.DARKBLUE, new CornerRadii(0), Insets.EMPTY)));
 
         //Cancel Button
-        Cancel = new Button("CANCEL");
-        Cancel.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
-        Cancel.setTextFill(Color.WHITE);
-        Cancel.setBackground(new Background(new BackgroundFill(Color.GRAY, new CornerRadii(20), Insets.EMPTY)));
-        Cancel.setPadding(new Insets(10));
+        cancelButton = new Button("CANCEL");
+        cancelButton.setFont(Font.font("Arial", FontWeight.BOLD, 30));
+        cancelButton.setTextFill(Color.WHITE);
+        cancelButton.setBackground(new Background(new BackgroundFill(Color.GRAY, new CornerRadii(20), Insets.EMPTY)));
+        cancelButton.setPadding(new Insets(10));
 
         //Create Button
-        Create = new Button("CREATE");
-        Create.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
-        Create.setTextFill(Color.WHITE);
-        Create.setBackground(new Background(new BackgroundFill(Color.GRAY, new CornerRadii(20), Insets.EMPTY)));
-        Create.setPadding(new Insets(10));
+        createButton = new Button("CREATE");
+        createButton.setFont(Font.font("Arial", FontWeight.BOLD, 30));
+        createButton.setTextFill(Color.WHITE);
+        createButton.setBackground(new Background(new BackgroundFill(Color.GRAY, new CornerRadii(20), Insets.EMPTY)));
+        createButton.setPadding(new Insets(10));
+
+
     }
 
     private void layoutNodes() {
@@ -102,7 +104,8 @@ public class NewGameView extends BorderPane{
         layoutGrid.setVgap(50);
         layoutGrid.setAlignment(Pos.CENTER);
 
-        //BorderPane.setAlignment(titel, Pos.TOP_CENTER);
+        titel.setPadding(new Insets(10));
+        titel.setAlignment(Pos.TOP_CENTER);
 
         gridGroen.setVgap(5);
         gridGeel.setVgap(5);
@@ -131,9 +134,16 @@ public class NewGameView extends BorderPane{
         layoutGrid.add(gridGeel, 1, 0);
         layoutGrid.add(gridRood, 0, 1);
         layoutGrid.add(gridBlauw, 1, 1);
-        layoutGrid.add(Cancel, 0, 2);
-        layoutGrid.add(Create, 1, 2);
+        layoutGrid.add(cancelButton, 0, 2);
+        layoutGrid.add(createButton, 1, 2);
 
+        //Zet titel bovenaan en layout-grid in het midden
+        this.setTop(titel);
         this.setCenter(layoutGrid);
+    }
+
+    private void setupEventHandlers(Main mainApp){
+        cancelButton.setOnAction(event -> mainApp.showMainMenu());
+        createButton.setOnAction(event -> mainApp.playboardView());
     }
 }
