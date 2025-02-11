@@ -3,20 +3,21 @@ package be.kdg.mens_erger_je_niet.view.new_game;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.control.CheckBox;
 
 public class NewGameView extends BorderPane{
-    private Button SpelerGroen;
-    private Button SpelerGeel;
-    private Button SpelerRood;
-    private Button SpelerBlauw;
-    private Button Cancel;
-    private Button Create;
+    private Button Cancel, Create;
+    private CheckBox checkBoxGroen, checkBoxGeel, checkBoxRood, checkBoxBlauw;
+    private GridPane layoutGrid, gridGroen, gridGeel, gridRood, gridBlauw;
+    private Label naamLabelGroen, naamLabelGeel, naamLabelRood, naamLabelBlauw, newGameTitel;
+    private TextField vulNaamGroenIn, vulNaamGeelIn, vulNaamRoodIn, vulNaamBlauwIn;
+    private BorderPane titel;
 
     public NewGameView() {
         initializeNodes();
@@ -24,38 +25,71 @@ public class NewGameView extends BorderPane{
     }
 
     private void initializeNodes() {
-        double radius = 125;
         double textSize = 30;
-        SpelerGroen = new Button("Klik om CPU te maken");
-        SpelerGroen.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
-        SpelerGroen.setTextFill(Color.WHITE);
-        SpelerGroen.setBackground(new Background(new BackgroundFill(Color.GREEN, new CornerRadii(radius), Insets.EMPTY)));
-        SpelerGroen.setPadding(new Insets(10));
 
-        SpelerGeel = new Button("Klik om CPU te maken");
-        SpelerGeel.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
-        SpelerGeel.setTextFill(Color.WHITE);
-        SpelerGeel.setBackground(new Background(new BackgroundFill(Color.GOLD, new CornerRadii(radius), Insets.EMPTY)));
-        SpelerGeel.setPadding(new Insets(10));
+        //Titel
+        newGameTitel = new Label("New Game");
+        newGameTitel.setFont(Font.font("Arial", FontWeight.BOLD, 50));
+        titel = new BorderPane();
+        titel.setTop(newGameTitel);
 
-        SpelerRood = new Button("Klik om CPU te maken");
-        SpelerRood.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
-        SpelerRood.setTextFill(Color.WHITE);
-        SpelerRood.setBackground(new Background(new BackgroundFill(Color.RED, new CornerRadii(radius), Insets.EMPTY)));
-        SpelerRood.setPadding(new Insets(10));
+        //Inhoud sub-grid Groen
+        naamLabelGroen = new Label("Naam: ");
+        naamLabelGroen.setTextFill(Color.WHITE);
+        naamLabelGroen.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+        vulNaamGroenIn = new TextField();
+        checkBoxGroen = new CheckBox("Vink aan om CPU te maken");
+        checkBoxGroen.setTextFill(Color.WHITE);
+        checkBoxGroen.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
 
-        SpelerBlauw = new Button("Klik om CPU te maken");
-        SpelerBlauw.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
-        SpelerBlauw.setTextFill(Color.WHITE);
-        SpelerBlauw.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(radius), Insets.EMPTY)));
-        SpelerBlauw.setPadding(new Insets(10));
+        //Inhoud sub-grid Geel
+        naamLabelGeel = new Label("Naam: ");
+        naamLabelGeel.setTextFill(Color.WHITE);
+        naamLabelGeel.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+        vulNaamGeelIn = new TextField();
+        checkBoxGeel = new CheckBox("Vink aan om CPU te maken");
+        checkBoxGeel.setTextFill(Color.WHITE);
+        checkBoxGeel.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
 
+        //Inhoud sub-grid Rood
+        naamLabelRood = new Label("Naam: ");
+        naamLabelRood.setTextFill(Color.WHITE);
+        naamLabelRood.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+        vulNaamRoodIn = new TextField();
+        checkBoxRood = new CheckBox("Vink aan om CPU te maken");
+        checkBoxRood.setTextFill(Color.WHITE);
+        checkBoxRood.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
+
+        //Inhoud sub-grid Blauw
+        naamLabelBlauw = new Label("Naam: ");
+        naamLabelBlauw.setTextFill(Color.WHITE);
+        naamLabelBlauw.setFont(Font.font("Arial", FontWeight.BOLD, 15));
+        vulNaamBlauwIn = new TextField();
+        checkBoxBlauw = new CheckBox("Vink aan om CPU te maken");
+        checkBoxBlauw.setTextFill(Color.WHITE);
+        checkBoxBlauw.setFont(Font.font("Arial", FontWeight.NORMAL, 15));
+
+        //Main grid
+        layoutGrid = new GridPane();
+
+        //Sub-grids
+        gridGroen = new GridPane(200,100);
+        gridGroen.setBackground(new Background(new BackgroundFill(Color.GREEN, new CornerRadii(0), Insets.EMPTY)));
+        gridGeel = new GridPane(200,100);
+        gridGeel.setBackground(new Background(new BackgroundFill(Color.GOLD, new CornerRadii(0), Insets.EMPTY)));
+        gridRood = new GridPane(200,100);
+        gridRood.setBackground(new Background(new BackgroundFill(Color.RED, new CornerRadii(0), Insets.EMPTY)));
+        gridBlauw = new GridPane(200,100);
+        gridBlauw.setBackground(new Background(new BackgroundFill(Color.DARKBLUE, new CornerRadii(0), Insets.EMPTY)));
+
+        //Cancel Button
         Cancel = new Button("CANCEL");
         Cancel.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         Cancel.setTextFill(Color.WHITE);
         Cancel.setBackground(new Background(new BackgroundFill(Color.GRAY, new CornerRadii(20), Insets.EMPTY)));
         Cancel.setPadding(new Insets(10));
 
+        //Create Button
         Create = new Button("CREATE");
         Create.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         Create.setTextFill(Color.WHITE);
@@ -64,36 +98,35 @@ public class NewGameView extends BorderPane{
     }
 
     private void layoutNodes() {
-        GridPane layoutGrid = new GridPane();
         layoutGrid.setHgap(50);
         layoutGrid.setVgap(50);
         layoutGrid.setAlignment(Pos.CENTER);
 
-        GridPane gridGroen = new GridPane();
-        GridPane gridGeel = new GridPane();
-        GridPane gridRood = new GridPane();
-        GridPane gridBlauw = new GridPane();
+        //BorderPane.setAlignment(titel, Pos.TOP_CENTER);
 
-        gridGroen.setVgap(10);
-        gridGeel.setVgap(10);
-        gridRood.setVgap(10);
-        gridBlauw.setVgap(10);
+        gridGroen.setVgap(5);
+        gridGeel.setVgap(5);
+        gridRood.setVgap(5);
+        gridBlauw.setVgap(5);
 
+        //Voeg elementen toe aan sub-grid Groen
+        gridGroen.add(naamLabelGroen, 0, 0);
+        gridGroen.add(vulNaamGroenIn, 0, 1);
+        gridGroen.add(checkBoxGroen, 0, 2);
+        //Voeg elementen toe aan sub-grid Geel
+        gridGeel.add(naamLabelGeel, 0, 0);
+        gridGeel.add(vulNaamGeelIn, 0, 1);
+        gridGeel.add(checkBoxGeel, 0, 2);
+        //Voeg elementen toe aan sub-grid Rood
+        gridRood.add(naamLabelRood, 0, 0);
+        gridRood.add(vulNaamRoodIn, 0, 1);
+        gridRood.add(checkBoxRood, 0, 2);
+        //Voeg elementen toe aan sub-grid Blauw
+        gridBlauw.add(naamLabelBlauw, 0, 0);
+        gridBlauw.add(vulNaamBlauwIn, 0, 1);
+        gridBlauw.add(checkBoxBlauw, 0, 2);
 
-        TextField naamGroen = new TextField();
-        TextField naamGeel = new TextField();
-        TextField naamRood = new TextField();
-        TextField naamBlauw = new TextField();
-
-        gridGroen.add(naamGroen, 0, 0);
-        gridGroen.add(SpelerGroen, 0, 1);
-        gridGeel.add(naamGeel, 0, 0);
-        gridGeel.add(SpelerGeel, 0, 1);
-        gridRood.add(naamRood, 0, 0);
-        gridRood.add(SpelerRood, 0, 1);
-        gridBlauw.add(naamBlauw, 0, 0);
-        gridBlauw.add(SpelerBlauw, 0, 1);
-
+        //Voeg sub-grids, cancel en create toe aan main-grid
         layoutGrid.add(gridGroen, 0, 0);
         layoutGrid.add(gridGeel, 1, 0);
         layoutGrid.add(gridRood, 0, 1);

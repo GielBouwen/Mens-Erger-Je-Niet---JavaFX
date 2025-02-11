@@ -1,5 +1,6 @@
 package be.kdg.mens_erger_je_niet.view.loadingscreen;
 
+import be.kdg.mens_erger_je_niet.Main;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -10,14 +11,14 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
+//import javafx.stage.Stage;
 
 public class LoadingscreenView extends BorderPane {
     private Label mensErgerJeNiet;
     private Button startButton;
     private ImageView mensErgerJeNietImage;
 
-    public LoadingscreenView(Stage mainApp) {
+    public LoadingscreenView(Main mainApp) {
         initializeNodes();
         layoutNodes(mainApp);
     }
@@ -41,11 +42,11 @@ public class LoadingscreenView extends BorderPane {
         mensErgerJeNietImage.setPreserveRatio(true);
     }
 
-    private void layoutNodes(Stage mainApp) {
+    private void layoutNodes(Main mainApp) {
         VBox vbox = new VBox(20, mensErgerJeNietImage, mensErgerJeNiet, startButton);
         vbox.setAlignment(Pos.CENTER);
         this.setCenter(vbox);
 
         startButton.setOnAction(event -> mainApp.showMainMenu());
+        };
     }
-}

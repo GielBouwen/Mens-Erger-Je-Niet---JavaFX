@@ -16,7 +16,7 @@ public class MainMenuView extends BorderPane {
     private Button help;
     private Button about;
 
-    public MainMenuView() {
+    public MainMenuView(Main mainApp) {
         initializeNodes();
         layoutNodes();
         setupEventHandlers(mainApp);
