@@ -1,7 +1,7 @@
 package be.kdg.mens_erger_je_niet;
 
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
-import be.kdg.mens_erger_je_niet.view.help.HelpView;
+import be.kdg.mens_erger_je_niet.view.about.HelpView;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
@@ -58,8 +58,9 @@ public class Main extends Application {
         primaryStage.setScene(about);
     }
 
+
     public void helpView() {
-        HelpView helpView = new HelpView();
+        HelpView helpView = new HelpView(this);
         Scene help = new Scene(helpView);
         primaryStage.setScene(help);
     }
