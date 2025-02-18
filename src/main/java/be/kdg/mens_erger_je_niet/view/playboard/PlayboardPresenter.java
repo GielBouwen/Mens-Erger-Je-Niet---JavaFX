@@ -10,13 +10,12 @@ import javafx.event.EventHandler;
 public class PlayboardPresenter {
     private Main mainApp;
     private PlayboardView view;
-    private Bord bord;
-    private HelpView helpView;
+    private MensErgerJeNietControler model;
 
-    public PlayboardPresenter(Main mainApp, PlayboardView view, Bord model) {
+    public PlayboardPresenter(Main mainApp, PlayboardView view, MensErgerJeNietControler model) {
         this.mainApp = mainApp;
         this.view = view;
-        this.bord = model;
+        this.model = model;
         this.addEventHandlers();
     }
 

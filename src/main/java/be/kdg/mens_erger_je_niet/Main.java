@@ -1,14 +1,16 @@
 package be.kdg.mens_erger_je_niet;
 
 import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
+import be.kdg.mens_erger_je_niet.view.about.AboutPresenter;
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
-import be.kdg.mens_erger_je_niet.view.help.HelpPresenter;
 import be.kdg.mens_erger_je_niet.view.help.HelpView;
+import be.kdg.mens_erger_je_niet.view.load_game.LoadGamePresenter;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenPresenter;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuPresenter;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
+import be.kdg.mens_erger_je_niet.view.new_game.NewGamePresenter;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 import be.kdg.mens_erger_je_niet.view.playboard.PlayboardPresenter;
 import be.kdg.mens_erger_je_niet.view.playboard.PlayboardView;
@@ -18,7 +20,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     private Stage primaryStage;
-    private boolean komtVanMainMenu = true;
 
     @Override
     public void start(Stage primaryStage) {
@@ -42,7 +43,6 @@ public class Main extends Application {
 
 
     public void showMainMenu() {
-        komtVanMainMenu = true;
         MainMenuView mainMenuView = new MainMenuView(this);
         MensErgerJeNietControler model = new MensErgerJeNietControler();
         new MainMenuPresenter(this, mainMenuView, model);
@@ -54,9 +54,14 @@ public class Main extends Application {
 
     public void showNewGame() {
         NewGameView newGameView = new NewGameView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new NewGamePresenter(newGameView, this, model);
+
         Scene newGame = new Scene(newGameView);
         primaryStage.setScene(newGame);
+        primaryStage.show();
     }
+
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -64,39 +69,38 @@ public class Main extends Application {
 
     public void loadGameView() {
         LoadGameView loadGameView = new LoadGameView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new LoadGamePresenter(model, loadGameView, this);
+
         Scene loadGame = new Scene(loadGameView);
         primaryStage.setScene(loadGame);
+        primaryStage.show();
     }
 
     public void aboutView() {
         AboutView aboutView = new AboutView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new AboutPresenter(model, aboutView, this);
+
         Scene about = new Scene(aboutView);
         primaryStage.setScene(about);
+        primaryStage.show();
     }
 
 
     public void helpView() {
         HelpView helpView = new HelpView(this);
-        MensErgerJeNietControler model = new MensErgerJeNietControler();
-        new HelpPresenter(this, helpView, model);
-
         Scene help = new Scene(helpView);
         primaryStage.setScene(help);
-        primaryStage.show();
     }
 
-    public void playboardView(){
-        komtVanMainMenu = false;
+    public void showPlayboardView(){
         PlayboardView playboardView = new PlayboardView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new PlayboardPresenter(this, playboardView, model);
+
         Scene playboard = new Scene(playboardView);
         primaryStage.setScene(playboard);
-    }
-
-    public void goBack(){ //Methode om van spelregels naar het juiste scherm terug te keren
-        if (komtVanMainMenu) {
-            showMainMenu(); // Terug naar het hoofdmenu
-        } else {
-            playboardView(); // Terug naar het spelbord
-        }
+        primaryStage.show();
     }
 }

@@ -23,7 +23,6 @@ public class NewGameView extends BorderPane{
     public NewGameView(Main mainApp) {
         initializeNodes();
         layoutNodes();
-        setupEventHandlers(mainApp);
     }
 
     private void initializeNodes() {
@@ -142,8 +141,11 @@ public class NewGameView extends BorderPane{
         this.setCenter(layoutGrid);
     }
 
-    private void setupEventHandlers(Main mainApp){
-        cancelButton.setOnAction(event -> mainApp.showMainMenu());
-        createButton.setOnAction(event -> mainApp.playboardView());
+    public Button getCancelButton() {
+        return cancelButton;
+    }
+
+    public Button getCreateButton() {
+        return createButton;
     }
 }

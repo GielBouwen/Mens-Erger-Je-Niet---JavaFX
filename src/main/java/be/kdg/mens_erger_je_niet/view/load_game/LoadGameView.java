@@ -20,8 +20,6 @@ public class LoadGameView extends BorderPane {
     public LoadGameView(Main mainApp) {
         initializeNodes();
         layoutNodes();
-        setupEventHandlers(mainApp);
-
     }
 
     private void initializeNodes(){
@@ -41,9 +39,7 @@ public class LoadGameView extends BorderPane {
         this.setCenter(vbox);
     }
 
-    private void setupEventHandlers(Main mainApp) {
-        goBackButton.setOnAction(event -> mainApp.showMainMenu());
+    public Button getGoBackButton() {
+        return goBackButton;
     }
-
-
 }

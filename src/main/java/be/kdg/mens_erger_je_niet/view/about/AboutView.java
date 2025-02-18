@@ -66,6 +66,10 @@ public class AboutView extends BorderPane {
         this.setCenter(content);
         this.setBottom(goBackButton);
 
-        GoBackButton.setOnAction(event -> mainApp.showMainMenu());
+    }
+
+
+    public Button getGoBackButton() {
+        return GoBackButton;
     }
 }
