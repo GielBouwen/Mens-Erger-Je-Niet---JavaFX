@@ -1,9 +1,12 @@
 package be.kdg.mens_erger_je_niet;
 
+import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
 import be.kdg.mens_erger_je_niet.view.help.HelpView;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
+import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenPresenter;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
+import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuPresenter;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 import be.kdg.mens_erger_je_niet.view.playboard.PlayboardView;
@@ -26,15 +29,23 @@ public class Main extends Application {
 
     private void showLoadingScreen() {
         LoadingscreenView loadingscreenView = new LoadingscreenView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new LoadingscreenPresenter(model, loadingscreenView, this);
+
         Scene loadingscreen = new Scene(loadingscreenView);
         primaryStage.setScene(loadingscreen);
         primaryStage.show();
     }
 
+
     public void showMainMenu() {
         MainMenuView mainMenuView = new MainMenuView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new MainMenuPresenter(this, mainMenuView, model);
+
         Scene mainMenu = new Scene(mainMenuView);
         primaryStage.setScene(mainMenu);
+        primaryStage.show();
     }
 
     public void showNewGame() {

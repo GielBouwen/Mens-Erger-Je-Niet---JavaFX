@@ -17,5 +17,6 @@ public class LoadingscreenPresenter {
 
     private void addEventHandlers() {
         view.getStartButton().setOnAction(event -> mainApp.showMainMenu());
+
     }
 }
