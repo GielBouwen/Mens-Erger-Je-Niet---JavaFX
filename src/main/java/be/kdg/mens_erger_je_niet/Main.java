@@ -1,7 +1,7 @@
 package be.kdg.mens_erger_je_niet;
 
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
-import be.kdg.mens_erger_je_niet.view.about.HelpView;
+import be.kdg.mens_erger_je_niet.view.help.HelpView;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
@@ -67,7 +67,7 @@ public class Main extends Application {
     }
 
     public void playboardView(){
-        PlayboardView playboardView = new PlayboardView();
+        PlayboardView playboardView = new PlayboardView(this);
         Scene playboard = new Scene(playboardView);
         primaryStage.setScene(playboard);
     }
