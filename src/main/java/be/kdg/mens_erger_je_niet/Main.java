@@ -2,6 +2,7 @@ package be.kdg.mens_erger_je_niet;
 
 import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
+import be.kdg.mens_erger_je_niet.view.help.HelpPresenter;
 import be.kdg.mens_erger_je_niet.view.help.HelpView;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenPresenter;
@@ -9,6 +10,7 @@ import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuPresenter;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
+import be.kdg.mens_erger_je_niet.view.playboard.PlayboardPresenter;
 import be.kdg.mens_erger_je_niet.view.playboard.PlayboardView;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -16,6 +18,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     private Stage primaryStage;
+    private boolean komtVanMainMenu = true;
 
     @Override
     public void start(Stage primaryStage) {
@@ -39,6 +42,7 @@ public class Main extends Application {
 
 
     public void showMainMenu() {
+        komtVanMainMenu = true;
         MainMenuView mainMenuView = new MainMenuView(this);
         MensErgerJeNietControler model = new MensErgerJeNietControler();
         new MainMenuPresenter(this, mainMenuView, model);
@@ -73,13 +77,26 @@ public class Main extends Application {
 
     public void helpView() {
         HelpView helpView = new HelpView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new HelpPresenter(this, helpView, model);
+
         Scene help = new Scene(helpView);
         primaryStage.setScene(help);
+        primaryStage.show();
     }
 
     public void playboardView(){
+        komtVanMainMenu = false;
         PlayboardView playboardView = new PlayboardView(this);
         Scene playboard = new Scene(playboardView);
         primaryStage.setScene(playboard);
+    }
+
+    public void goBack(){ //Methode om van spelregels naar het juiste scherm terug te keren
+        if (komtVanMainMenu) {
+            showMainMenu(); // Terug naar het hoofdmenu
+        } else {
+            playboardView(); // Terug naar het spelbord
+        }
     }
 }

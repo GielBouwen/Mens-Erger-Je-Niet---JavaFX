@@ -16,7 +16,6 @@ public class HelpView extends BorderPane {
     private Label titleLabel;
     private TextFlow aboutTextFlow;
     private Button GoBackButton;
-    private boolean komtVanMainMenu = false;
 
 
     public HelpView(Main mainApp) {
@@ -60,7 +59,10 @@ public class HelpView extends BorderPane {
         this.setCenter(content);
         this.setBottom(goBackButton);
 
-        GoBackButton.setOnAction(event -> mainApp.showMainMenu());
-        //Boolean gebruiken om te bepalen of je terug gaat naar spel of naar mainmenu, bijv "komtVanMainmenu"
     }
+
+    public Button getGoBackButton() {
+        return GoBackButton;
+    }
+
 }
