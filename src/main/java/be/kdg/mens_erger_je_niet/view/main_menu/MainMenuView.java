@@ -16,10 +16,9 @@ public class MainMenuView extends BorderPane {
     private Button help;
     private Button about;
 
-    public MainMenuView(Main mainApp) {
+    public MainMenuView(Main main) {
         initializeNodes();
         layoutNodes();
-        setupEventHandlers(mainApp);
     }
 
     private void initializeNodes() {
@@ -77,10 +76,19 @@ public class MainMenuView extends BorderPane {
         this.setCenter(mainMenuGrid);
     }
 
-    private void setupEventHandlers(Main mainApp) {
-        newGame.setOnAction(event -> mainApp.showNewGame());
-        loadGame.setOnAction(event -> mainApp.loadGameView());
-        about.setOnAction(event -> mainApp.aboutView());
-        help.setOnAction(event -> mainApp.helpView());
+    public Button getNewGame() {
+        return newGame;
+    }
+
+    public Button getLoadGame() {
+        return loadGame;
+    }
+
+    public Button getHelp() {
+        return help;
+    }
+
+    public Button getAbout() {
+        return about;
     }
 }

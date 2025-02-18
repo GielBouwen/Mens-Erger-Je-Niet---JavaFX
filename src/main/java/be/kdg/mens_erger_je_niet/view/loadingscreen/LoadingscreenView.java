@@ -46,7 +46,10 @@ public class LoadingscreenView extends BorderPane {
         VBox vbox = new VBox(20, mensErgerJeNietImage, mensErgerJeNiet, startButton);
         vbox.setAlignment(Pos.CENTER);
         this.setCenter(vbox);
-
-        startButton.setOnAction(event -> mainApp.showMainMenu());
         };
+
+
+    public Button getStartButton() {
+        return startButton;
     }
+}

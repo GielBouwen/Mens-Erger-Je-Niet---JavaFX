@@ -27,7 +27,6 @@ public class HelpView extends BorderPane {
         titleLabel = new Label("HELP");
         titleLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
 
-
         GoBackButton = new Button("Ga terug");
         GoBackButton.setFont(Font.font("Tohoma", FontWeight.NORMAL, 30));
         GoBackButton.setTextFill(Color.WHITE);
