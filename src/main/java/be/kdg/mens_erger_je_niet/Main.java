@@ -1,12 +1,9 @@
 package be.kdg.mens_erger_je_niet;
 
-import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
 import be.kdg.mens_erger_je_niet.view.about.HelpView;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
-import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenPresenter;
 import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
-import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuPresenter;
 import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 import be.kdg.mens_erger_je_niet.view.playboard.PlayboardView;
@@ -28,10 +25,7 @@ public class Main extends Application {
     }
 
     private void showLoadingScreen() {
-        LoadingscreenView loadingscreenView = new LoadingscreenView(this);  // Dit geeft mainApp door aan de view
-        MensErgerJeNietControler model = new MensErgerJeNietControler();
-        new LoadingscreenPresenter(model, loadingscreenView, this);           // Maak de presenter aan
-
+        LoadingscreenView loadingscreenView = new LoadingscreenView(this);
         Scene loadingscreen = new Scene(loadingscreenView);
         primaryStage.setScene(loadingscreen);
         primaryStage.show();
@@ -39,12 +33,8 @@ public class Main extends Application {
 
     public void showMainMenu() {
         MainMenuView mainMenuView = new MainMenuView(this);
-        MensErgerJeNietControler model = new MensErgerJeNietControler();
-        new MainMenuPresenter(this, mainMenuView, model);
-
         Scene mainMenu = new Scene(mainMenuView);
         primaryStage.setScene(mainMenu);
-        primaryStage.show();
     }
 
     public void showNewGame() {
@@ -69,13 +59,14 @@ public class Main extends Application {
         primaryStage.setScene(about);
     }
 
+
     public void helpView() {
         HelpView helpView = new HelpView(this);
         Scene help = new Scene(helpView);
         primaryStage.setScene(help);
     }
 
-    public void playboardView() {
+    public void playboardView(){
         PlayboardView playboardView = new PlayboardView();
         Scene playboard = new Scene(playboardView);
         primaryStage.setScene(playboard);

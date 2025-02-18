@@ -1,4 +1,4 @@
-package be.kdg.mens_erger_je_niet.view.about;
+package be.kdg.mens_erger_je_niet.view.help;
 
 import be.kdg.mens_erger_je_niet.Main;
 import javafx.geometry.Insets;
@@ -16,6 +16,7 @@ public class HelpView extends BorderPane {
     private Label titleLabel;
     private TextFlow aboutTextFlow;
     private Button GoBackButton;
+    private boolean komtVanMainMenu = false;
 
 
     public HelpView(Main mainApp) {
@@ -60,5 +61,6 @@ public class HelpView extends BorderPane {
         this.setBottom(goBackButton);
 
         GoBackButton.setOnAction(event -> mainApp.showMainMenu());
+        //Boolean gebruiken om te bepalen of je terug gaat naar spel of naar mainmenu, bijv "komtVanMainmenu"
     }
 }

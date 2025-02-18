@@ -1,5 +1,7 @@
 package be.kdg.mens_erger_je_niet.view.playboard;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,10 +17,10 @@ import be.kdg.mens_erger_je_niet.Main;
 public class PlayboardView extends BorderPane{
     private Button spelregels;
 
-
-    public PlayboardView() {
+    public PlayboardView(Main mainApp) {
         initializeNodes();
         layoutNodes();
+        setupEventHandlers(mainApp);
     }
 
     private void initializeNodes() {
@@ -38,7 +40,11 @@ public class PlayboardView extends BorderPane{
         spelregels.setAlignment(Pos.CENTER);
     }
 
-    /*private void setupEventHandlers(Main mainApp){
-        spelregels.setOnMouseClicked(event -> mainApp.helpView());
-    }*/
+    private void setupEventHandlers(Main mainApp){
+        spelregels.setOnAction(event -> mainApp.helpView());
+    }
+
+    public Button getSpelregels() {
+        return spelregels;
+    }
 }
