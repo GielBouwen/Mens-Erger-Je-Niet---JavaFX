@@ -95,7 +95,7 @@ public class Main extends Application {
     }
 
     public void showPlayboardView(){
-        PlayboardView playboardView = new PlayboardView(this);
+        PlayboardView playboardView = new PlayboardView();
         MensErgerJeNietControler model = new MensErgerJeNietControler();
         new PlayboardPresenter(this, playboardView, model);
 

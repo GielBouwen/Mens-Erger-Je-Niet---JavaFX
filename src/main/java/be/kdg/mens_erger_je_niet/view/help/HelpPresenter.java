@@ -16,15 +16,16 @@ public class HelpPresenter {
         this.mainApp = mainApp;
         this.view = view;
         this.model = model;
-        this.addEventHandlers();
+       // this.addEventHandlers();
     }
 
-    public void addEventHandlers(){
+   /* public void addEventHandlers(){
         view.getGoBackButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event){
                 mainApp.goBack();
             }
         });
-    }
+    */
 }
+
