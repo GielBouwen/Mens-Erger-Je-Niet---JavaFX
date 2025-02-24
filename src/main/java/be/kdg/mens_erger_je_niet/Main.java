@@ -3,6 +3,7 @@ package be.kdg.mens_erger_je_niet;
 import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
 import be.kdg.mens_erger_je_niet.view.about.AboutPresenter;
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
+import be.kdg.mens_erger_je_niet.view.help.HelpPresenter;
 import be.kdg.mens_erger_je_niet.view.help.HelpView;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGamePresenter;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     private Stage primaryStage;
+    private boolean komtVanMainMenu = true;
 
     @Override
     public void start(Stage primaryStage) {
@@ -43,6 +45,7 @@ public class Main extends Application {
 
 
     public void showMainMenu() {
+        komtVanMainMenu = true; //Voor navigatie spelregels
         MainMenuView mainMenuView = new MainMenuView(this);
         MensErgerJeNietControler model = new MensErgerJeNietControler();
         new MainMenuPresenter(this, mainMenuView, model);
@@ -90,11 +93,16 @@ public class Main extends Application {
 
     public void helpView() {
         HelpView helpView = new HelpView(this);
+        MensErgerJeNietControler model = new MensErgerJeNietControler();
+        new HelpPresenter(model, helpView, this);
+
         Scene help = new Scene(helpView);
         primaryStage.setScene(help);
+        primaryStage.show();
     }
 
     public void showPlayboardView(){
+        komtVanMainMenu = false; //Voor navigatie naar spelregels
         PlayboardView playboardView = new PlayboardView();
         MensErgerJeNietControler model = new MensErgerJeNietControler();
         new PlayboardPresenter(this, playboardView, model);
@@ -102,5 +110,13 @@ public class Main extends Application {
         Scene playboard = new Scene(playboardView);
         primaryStage.setScene(playboard);
         primaryStage.show();
+    }
+
+    public void gaTerugVanSpelregels(){ //Om van help menu naar het juiste scherm terug te kunnen gaan
+        if (komtVanMainMenu) {
+            showMainMenu();
+        } else {
+            showPlayboardView();
+        }
     }
 }
