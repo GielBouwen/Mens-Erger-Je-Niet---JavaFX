@@ -2,6 +2,7 @@ package be.kdg.mens_erger_je_niet.model;
 
 import java.time.LocalDateTime;
 import be.kdg.mens_erger_je_niet.Kleur;
+import be.kdg.mens_erger_je_niet.model.Pion;
 
 public class Spel {
     int spelerTeller;
@@ -11,6 +12,7 @@ public class Spel {
     private boolean beurtBlauw = false;
     private boolean beurtRood = false;
     private Dobbelsteen dobbelsteen;
+    private int aantalBeurten = 0;
 
     public int getSpelerTeller() {
         return spelerTeller;
@@ -47,6 +49,7 @@ public class Spel {
 
     public void veranderBeurt(){ //Verandert de beurt van het spel, volgorde is groen, geel, blauw, rood
         if(beurtGroen){
+            aantalBeurten++;
             beurtGroen = false;
             beurtGeel = true;
         } else if (beurtGeel){
@@ -92,9 +95,9 @@ public class Spel {
     }
 
     public void verplaatsPion(Kleur kleur, int id){ //Verplaatst de pion met 1 vakje
-        /*
-        pion.veldnummer += 1
-         */
+        //Of moet methode in klasse Pion??
+        //pion.veldnummer += 1
+
     }
 
     public void zetPionOpVeld(Kleur kleur, int id){  //Zet de pion op het beginvakje van de juiste kleur
@@ -110,9 +113,16 @@ public class Spel {
             verwijderPion();
         }*/
     }
+    public void controleerOfSpelerGewonnenHeeft(Speler speler){
+        if(speler.aantalPionnenUitgespeeld == 4){
+            eindigSpel(true); //Geeft true mee aan de methode eindigSpel. Het spel wordt geëindigd
+        }
+    }
 
-    public void verwijderPion(){
-        //Verandert aantal pionnen op het veld met +1, pion moet naar thuisveld gestuurd worden
-        //
+    public void verwijderPion(Speler speler, Pion pion){
+        //Verandert aantal pionnen op het veld met -1, pion moet naar thuisveld gestuurd worden
+        /*speler.aantalPionnenInSpel -= 1;
+        speler.aantalPionnenUitgespeeld += 1;
+        pion.huidigVeldNummer = -1;*/
     }
 }

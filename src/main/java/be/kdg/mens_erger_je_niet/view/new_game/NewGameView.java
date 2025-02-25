@@ -148,4 +148,20 @@ public class NewGameView extends BorderPane{
     public Button getCreateButton() {
         return createButton;
     }
+
+    public TextField getVulNaamGroenIn() {
+        return vulNaamGroenIn;
+    }
+
+    public TextField getVulNaamGeelIn() {
+        return vulNaamGeelIn;
+    }
+
+    public TextField getVulNaamRoodIn() {
+        return vulNaamRoodIn;
+    }
+
+    public TextField getVulNaamBlauwIn() {
+        return vulNaamBlauwIn;
+    }
 }
