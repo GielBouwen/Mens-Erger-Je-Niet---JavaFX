@@ -3,15 +3,23 @@ package be.kdg.mens_erger_je_niet.view.playboard;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+
 
 public class PlayboardView extends BorderPane {
     private Button spelregels;
+    private Button stopGame;
+    private Button pauseGame;
     private GridPane speelbord;
+    private ImageView diceImageView;
+    private Button rollButton;
     private static final int SPEELBORD_SIZE = 15; // Afmetingen 15x15
-    private static final int CELL_SIZE = 55;
+    private static final int CELL_SIZE = 50;
 
     public PlayboardView() {
         initializeNodes();
@@ -19,11 +27,31 @@ public class PlayboardView extends BorderPane {
     }
 
     private void initializeNodes() {
-        // Spelregels-knop aanmaken
+        //Cellen met cirkels (dubbele array (Y en X, (vanaf 0 tellen))
+        int [][] cirkelPositions = {{0, 0}, {0, 1}, {8, 0}, {0, 13}, {0,14},
+                {1, 0}, {1, 1}, {1, 13}, {1, 14},
+                {0, 6}, {14, 8},
+                {13, 0}, {13, 1}, {13, 13}, {13, 14},
+                {14, 0}, {14, 1}, {6, 14}, {14, 13}, {14, 14}};
+
+
+        // Spelregelsknop
         spelregels = new Button("Spelregels");
         spelregels.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: green;");
         spelregels.setPadding(new Insets(10));
         BorderPane.setAlignment(spelregels, Pos.TOP_RIGHT);
+
+        //StopKnop
+        stopGame = new Button("Stop Game");
+        stopGame.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: red;");
+        stopGame.setPadding(new Insets(10));
+        BorderPane.setAlignment(stopGame, Pos.BOTTOM_LEFT);
+
+        //pauzeerKnop
+        pauseGame = new Button("Pause Game");
+        pauseGame.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: green;");
+        pauseGame.setPadding(new Insets(10));
+        BorderPane.setAlignment(pauseGame, Pos.BOTTOM_LEFT);
 
         // GridPane speelbord
         speelbord = new GridPane();
@@ -32,30 +60,67 @@ public class PlayboardView extends BorderPane {
         speelbord.setAlignment(Pos.CENTER);
 
         // Speelbord vullen met cellen
-        for (int row = 0; row < SPEELBORD_SIZE; row++) {
-            for (int col = 0; col < SPEELBORD_SIZE; col++) {
+        for (int rij = 0; rij < SPEELBORD_SIZE; rij++) {
+            for (int kolom = 0; kolom < SPEELBORD_SIZE; kolom++) {
                 Rectangle cell = new Rectangle(CELL_SIZE, CELL_SIZE);
                 cell.setStroke(Color.BLACK);
-                cell.setFill(getCellColor(row, col));
+                cell.setFill(getCellColor(rij, kolom));
 
-                speelbord.add(cell, col, row);
+                StackPane stackPane = new StackPane();
+                stackPane.getChildren().add(cell);
+
+
+            for (int[] position : cirkelPositions) {
+                if(rij == position[0] && kolom == position[1]) {
+                    Circle circle = new Circle(CELL_SIZE /3);
+                    circle.setFill(Color.WHITE);
+                    circle.setStroke(Color.BLACK);
+                    stackPane.getChildren().add(circle);
+                }
+            }
+            speelbord.add(stackPane, rij, kolom);
+
             }
         }
+
+        //Dobbelsteen Afbeelding
+        diceImageView = new ImageView(new Image("file:src/resources/Dice1.png"));
+        diceImageView.setFitWidth(150);
+        diceImageView.setFitHeight(150);
+
+
+        //Rol dobbelsteen Knop
+        rollButton = new Button("Gooi Dobbelsteen");
+        rollButton.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: blue;");
+
     }
 
     private void layoutNodes() {
-        this.setCenter(speelbord);  // Bord in het midden
-        this.setRight(spelregels);  // Spelregels-knop rechts
-        BorderPane.setAlignment(spelregels, Pos.CENTER);
+        //VBOX Spelvord
+        this.setCenter(speelbord);
 
-    }
+        // HBox Spelregels Boven Rechts
+        HBox topBox = new HBox();
+        topBox.setAlignment(Pos.TOP_RIGHT);
+        topBox.setPadding(new Insets(15));
+        topBox.getChildren().add(spelregels);
+        this.setTop(topBox);
 
-    public Button getSpelregels() {
-        return spelregels;
-    }
+        // HBox and VBox Dice en speelbord
+        HBox centerBox = new HBox();
+        centerBox.setAlignment(Pos.CENTER);
+        centerBox.setPadding(new Insets(15));
+        centerBox.setSpacing(25);
 
-    public GridPane getSpeelbord() {
-        return speelbord;
+        VBox buttonAndDiceBox = new VBox();
+        buttonAndDiceBox.setAlignment(Pos.CENTER_LEFT);
+        buttonAndDiceBox.setSpacing(15);
+        buttonAndDiceBox.setPadding(new Insets(15));
+        buttonAndDiceBox.getChildren().addAll(diceImageView, rollButton, pauseGame, stopGame);
+
+        centerBox.getChildren().addAll(buttonAndDiceBox, speelbord);
+        this.setCenter(centerBox);
+
     }
 
     // Bepaalt de kleur van de vakjes
@@ -66,7 +131,7 @@ public class PlayboardView extends BorderPane {
         if (rij >= 13 && kolom < 2) return Color.RED;   // Rood Start
         if (rij >= 13 && kolom >= 13) return Color.GREEN; // Groen Start
 
-        //Middengebied
+        //Middengebied (zwart vakje)
         if (rij == 7 && kolom == 7) return Color.BLACK;
 
         //Gekleurde eindroutes
@@ -82,6 +147,23 @@ public class PlayboardView extends BorderPane {
 
 
         return Color.WHITE; // Overige vakjes
+    }
+
+
+    public Button getSpelregels() {
+        return spelregels;
+    }
+
+    public GridPane getSpeelbord() {
+        return speelbord;
+    }
+
+    public Button getRollButton() {
+        return rollButton;
+    }
+
+    public ImageView getDiceImageView() {
+        return diceImageView;
     }
 
 

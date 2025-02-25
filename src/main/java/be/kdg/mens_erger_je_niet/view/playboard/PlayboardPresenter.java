@@ -5,6 +5,7 @@ import be.kdg.mens_erger_je_niet.model.Dobbelsteen;
 import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
@@ -22,10 +23,10 @@ public class PlayboardPresenter {
     }
 
     public void addEventHandlers() {
-        // Eventhandler voor spelregels-knop
         view.getSpelregels().setOnAction(event -> mainApp.helpView());
 
-        // Eventhandlers voor speelbord
+        view.getRollButton().setOnAction(event -> gooiDobbelsteen());
+
         addBoardEventHandlers();
     }
 
@@ -45,6 +46,12 @@ public class PlayboardPresenter {
 
         System.out.println("Klik op vakje: (" + rij + ", " + kolom + ")");
 
+    }
+
+    private void gooiDobbelsteen() {
+        int worp = model.gooiDobbelsteen();
+        //Update Dice View
+        view.getDiceImageView().setImage(new Image("file:resources/Dice" + worp + ".png"));
     }
 
 
