@@ -84,9 +84,10 @@ public class PlayboardView extends BorderPane {
         }
 
         //Dobbelsteen Afbeelding
-        diceImageView = new ImageView(new Image("file:src/resources/Dice1.png"));
+        diceImageView = new ImageView();
         diceImageView.setFitWidth(150);
         diceImageView.setFitHeight(150);
+        diceImageView.setImage(new Image("file:src/resources/Dice1.png"));
 
 
         //Rol dobbelsteen Knop
