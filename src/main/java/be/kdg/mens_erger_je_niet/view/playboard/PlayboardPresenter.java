@@ -51,8 +51,7 @@ public class PlayboardPresenter {
     private void gooiDobbelsteen() {
         int worp = model.gooiDobbelsteen();
         //Update Dice View
-        view.getDiceImageView().setImage(new Image("file:resources/Dice" + worp + ".png"));
+        view.getDiceImageView().setImage(new Image("file:resources/Dice3.png"));
     }
-
 
 }
