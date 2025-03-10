@@ -2,10 +2,7 @@ package be.kdg.mens_erger_je_niet.view.playboard;
 
 import be.kdg.mens_erger_je_niet.Kleur;
 import be.kdg.mens_erger_je_niet.Main;
-import be.kdg.mens_erger_je_niet.model.Bord;
-import be.kdg.mens_erger_je_niet.model.Dobbelsteen;
-import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
-import be.kdg.mens_erger_je_niet.model.Pion;
+import be.kdg.mens_erger_je_niet.model.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -13,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.util.List;
 
 public class PlayboardPresenter {
     private final Main mainApp;
@@ -24,12 +23,13 @@ public class PlayboardPresenter {
         this.view = view;
         this.model = model;
         this.addEventHandlers();
-        plaatsPionnenOpHoeken();
+        initialiseerPionnen();
     }
 
     public void addEventHandlers() {
         view.getSpelregels().setOnAction(event -> mainApp.helpView());
-        view.getRollButton().setOnAction(event -> { gooiDobbelsteen();
+        view.getRollButton().setOnAction(event -> {
+            gooiDobbelsteen();
         });
 
         addBoardEventHandlers();
@@ -76,68 +76,47 @@ public class PlayboardPresenter {
         view.getDiceImageView().setImage(new Image(imagePath));
     }
 
-
-
-
-    private void plaatsPionnenOpHoeken() {
+    private void initialiseerPionnen() {
+        // Lijst van spelers ophalen
+        List<Speler> spelers = model.getSpelers(); // Haal de lijst van spelers via de controller
         Bord bord = model.getBord();
 
-        Pion pion1_1 = new Pion(1, Kleur.BLAUW);
-        Pion pion1_2 = new Pion(2, Kleur.BLAUW);
-        Pion pion1_3 = new Pion(3, Kleur.BLAUW);
-        Pion pion1_4 = new Pion(4, Kleur.BLAUW);
+        // Loop door elke speler en zet hun pionnen op het bord
+        for (Speler speler : spelers) {
+            List<Pion> pionnen = speler.getPionnen();
 
-        Pion pion2_1 = new Pion(5, Kleur.GEEL);
-        Pion pion2_2 = new Pion(6, Kleur.GEEL);
-        Pion pion2_3 = new Pion(7, Kleur.GEEL);
-        Pion pion2_4 = new Pion(8, Kleur.GEEL);
+            // Zet pionnen op de juiste startposities
+            for (int i = 0; i < pionnen.size(); i++) {
+                Pion pion = pionnen.get(i);
+                int startRij = -1;
+                int startKolom = -1;
 
-        Pion pion3_1 = new Pion(9, Kleur.ROOD);
-        Pion pion3_2 = new Pion(10, Kleur.ROOD);
-        Pion pion3_3 = new Pion(11, Kleur.ROOD);
-        Pion pion3_4 = new Pion(12, Kleur.ROOD);
+                // Afhankelijk van de kleur van de speler, geef een andere startpositie
+                switch (speler.getKleur()) {
+                    case BLAUW:
+                        startRij = i < 2 ? 0 : 1;
+                        startKolom = i % 2 == 0 ? 0 : 1;
+                        break;
+                    case GEEL:
+                        startRij = i < 2 ? 0 : 1;
+                        startKolom = i % 2 == 0 ? 13 : 14;
+                        break;
+                    case ROOD:
+                        startRij = i < 2 ? 13 : 14;
+                        startKolom = i % 2 == 0 ? 0 : 1;
+                        break;
+                    case GROEN:
+                        startRij = i < 2 ? 13 : 14;
+                        startKolom = i % 2 == 0 ? 13 : 14;
+                        break;
+                }
 
-        Pion pion4_1 = new Pion(13, Kleur.GROEN);
-        Pion pion4_2 = new Pion(14, Kleur.GROEN);
-        Pion pion4_3 = new Pion(15, Kleur.GROEN);
-        Pion pion4_4 = new Pion(16, Kleur.GROEN);
-
-        bord.zetPionOpBord(pion1_1, 0, 0);
-        bord.zetPionOpBord(pion1_2, 0, 1);
-        bord.zetPionOpBord(pion1_3, 1, 0);
-        bord.zetPionOpBord(pion1_4, 1, 1);
-
-        bord.zetPionOpBord(pion2_1, 0, 14);
-        bord.zetPionOpBord(pion2_2, 0, 13);
-        bord.zetPionOpBord(pion2_3, 1, 14);
-        bord.zetPionOpBord(pion2_4, 1, 13);
-
-        bord.zetPionOpBord(pion3_1, 14, 0);
-        bord.zetPionOpBord(pion3_2, 14, 1);
-        bord.zetPionOpBord(pion3_3, 13, 0);
-        bord.zetPionOpBord(pion3_4, 13, 1);
-
-        bord.zetPionOpBord(pion4_1, 14, 14);
-        bord.zetPionOpBord(pion4_2, 14, 13);
-        bord.zetPionOpBord(pion4_3, 13, 14);
-        bord.zetPionOpBord(pion4_4, 13, 13);
-
-        view.plaatsPionOpBord(pion1_1);
-        view.plaatsPionOpBord(pion1_2);
-        view.plaatsPionOpBord(pion1_3);
-        view.plaatsPionOpBord(pion1_4);
-        view.plaatsPionOpBord(pion2_1);
-        view.plaatsPionOpBord(pion2_2);
-        view.plaatsPionOpBord(pion2_3);
-        view.plaatsPionOpBord(pion2_4);
-        view.plaatsPionOpBord(pion3_1);
-        view.plaatsPionOpBord(pion3_2);
-        view.plaatsPionOpBord(pion3_3);
-        view.plaatsPionOpBord(pion3_4);
-        view.plaatsPionOpBord(pion4_1);
-        view.plaatsPionOpBord(pion4_2);
-        view.plaatsPionOpBord(pion4_3);
-        view.plaatsPionOpBord(pion4_4);
+                // Zet de pion op het bord op de juiste startpositie
+                bord.zetPionOpBord(pion, startRij, startKolom);
+                view.plaatsPionOpBord(pion); // Plaats de pion visueel op het bord
+            }
+        }
     }
+
 
 }

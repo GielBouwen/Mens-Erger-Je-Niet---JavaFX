@@ -175,11 +175,12 @@ public class PlayboardView extends BorderPane {
         StackPane cellStackPane = (StackPane) speelbord.getChildren().get(rij * SPEELBORD_SIZE + kolom);
 
         Circle pionCircle = new Circle(CELL_SIZE / 3);
-        pionCircle.setFill(getKleurVoorPion(pion.getKleur()));
+        pionCircle.setFill(getKleurVoorPion(pion.getKleur())); // Zet de kleur van de pion
         pionCircle.setStroke(Color.WHITE);
         pionCircle.setStrokeWidth(4);
         cellStackPane.getChildren().add(pionCircle);
     }
+
 
     private Color getKleurVoorPion(Kleur kleur) {
         switch (kleur) {

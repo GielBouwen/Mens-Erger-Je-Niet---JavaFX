@@ -1,6 +1,7 @@
 package be.kdg.mens_erger_je_niet;
 
 import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
+import be.kdg.mens_erger_je_niet.model.Speler;
 import be.kdg.mens_erger_je_niet.view.about.AboutPresenter;
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
 import be.kdg.mens_erger_je_niet.view.help.HelpPresenter;
@@ -19,11 +20,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class Main extends Application {
     private Stage primaryStage;
     private boolean komtVanMainMenu = true;
 
-    @Override
+   @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Mens-Erger-Je-Niet");
