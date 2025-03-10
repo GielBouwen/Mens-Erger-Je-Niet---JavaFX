@@ -108,7 +108,8 @@ public class Spel {
     }
 
     public void speelBeurt(){
-        //Kijk wie zijn beurt het is met methode getSpelerAanBeurt()
+        //Kijk wie zijn beurt het is met methode getSpelerAanBeurt() (done)
+        System.out.println(getSpelerAanBeurt() + " begint zijn beurt.");
 
         //Gooi dobbelsteen (done)
         dobbelsteen.werp();
@@ -144,7 +145,7 @@ public class Spel {
                 }
             }
         }
-        return null; // Geen pion gevonden
+        return null; //Geen pion gevonden
     }
 
     public void verplaatsPion(Kleur kleur, int id){ //Verplaatst de pion met 1 vakje
@@ -153,6 +154,8 @@ public class Spel {
     }
 
     public void zetPionOpVeld(Kleur kleur, int id){  //Zet de pion op het beginvakje van de juiste kleur
+        //zoekPion(getSpelerKleur(), id).plaatsOpStartpositie(rij, kolom);
+
         //met switch werken,
         // als het rood is vakje 0,
         // als het blauw is vakje 10,
