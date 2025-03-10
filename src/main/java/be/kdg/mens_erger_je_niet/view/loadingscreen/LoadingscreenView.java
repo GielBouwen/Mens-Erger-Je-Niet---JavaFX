@@ -11,7 +11,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-//import javafx.stage.Stage;
+import javafx.stage.Stage;
 
 public class LoadingscreenView extends BorderPane {
     private Label mensErgerJeNiet;
@@ -35,7 +35,7 @@ public class LoadingscreenView extends BorderPane {
         startButton.setBackground(new Background(new BackgroundFill(Color.GREEN, new CornerRadii(5), Insets.EMPTY)));
         startButton.setPadding(new Insets(10, 20, 10, 20));
 
-        String imageUrl = "https://drive.google.com/uc?export=view&id=12LgHbOrbKYGDsQpFe9u8CvsAKEt71O4u";
+        String imageUrl = "file:src/resources/Ludo Logo.jpg";
         Image mensErgerJeNietURL = new Image(imageUrl);
         mensErgerJeNietImage = new ImageView(mensErgerJeNietURL);
         mensErgerJeNietImage.setFitWidth(300);

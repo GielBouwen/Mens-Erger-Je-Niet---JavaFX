@@ -5,33 +5,53 @@ import be.kdg.mens_erger_je_niet.Kleur;
 public class Pion {
     private int pionId;
     private Kleur kleur;
-    int huidigVeldNummer;
+    private int kolom;
+    private int rij;
+    private boolean isOpBord;
 
 
     public Pion(int pionId, Kleur kleur) {
         this.pionId = pionId;
         this.kleur = kleur;
-        this.huidigVeldNummer = -1;
+        this.kolom = -1;
+        this.rij = -1 ;
+        this.isOpBord = false; //zien ofdat de pion op het bord staat (mag pas op het bord staan als er 6 wordt gegooid)
     }
 
-    public void beweegPion(int stappen) {
+    public int getPionId() {
+        return pionId;
+    }
 
-        for(int i = 0; i < stappen; i++) {
-            huidigVeldNummer += 1;
-            if (huidigVeldNummer >= 40) { //Als de waarde 40 of groter is, moeten we deze waarde met 40 verkleinen (gaat van groen gebied 39 naar rood gebied 0)
-                huidigVeldNummer -= 40;
-            }
+    public Kleur getKleur() {
+        return kleur;
+    }
+
+    public int getKolom() {
+        return kolom;
+    }
+
+    public int getRij() {
+        return rij;
+    }
+
+    public boolean isOpBord() {
+        return isOpBord;
+    }
+
+    public void plaatsOpStartpositie(int startRij, int startKolom) {
+        this.rij = startRij;
+        this.kolom = startKolom;
+        this.isOpBord = true;
+    }
+
+
+    public boolean move(int nieuweRij, int nieuweKolom) {
+        if (!isOpBord) {
+            return false;
         }
+        this.rij = nieuweRij;
+        this.kolom = nieuweKolom;
+        return true;
     }
 
-    public void zetPionOpVeld(Kleur kleur) {
-        //Kijken welke kleur een pion is voor startpositie
-
-        switch(kleur){
-            case ROOD -> this.huidigVeldNummer = 0; //Startlocatie ROOD is op veldnummer 0
-            case BLAUW -> this.huidigVeldNummer = 10; //Startlocatie BLAUW is op veldnummer 10
-            case GEEL -> this.huidigVeldNummer = 20; //Startlocatie GEEL is op veldnummer 20
-            case GROEN -> this.huidigVeldNummer = 30; //Startlocatie GROEN is op veldnummer 30
-        }
-    }
 }

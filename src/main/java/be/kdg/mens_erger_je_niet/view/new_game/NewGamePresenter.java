@@ -17,11 +17,9 @@ public class NewGamePresenter {
 
     private void addEventHandlers() {
         view.getCancelButton().setOnAction(event -> {
-            System.out.println("Cancel button clicked");  // Debugging
             mainApp.showMainMenu();
         });
         view.getCreateButton().setOnAction(event -> {
-            System.out.println("Create button clicked"); //debugging
             mainApp.showPlayboardView();
         });
     }

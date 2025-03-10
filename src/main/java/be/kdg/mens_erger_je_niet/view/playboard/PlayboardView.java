@@ -150,6 +150,9 @@ public class PlayboardView extends BorderPane {
         return Color.WHITE; // Overige vakjes
     }
 
+    public int getSpeelbordSize(){
+        return SPEELBORD_SIZE;
+    }
 
     public Button getSpelregels() {
         return spelregels;
