@@ -164,4 +164,20 @@ public class NewGameView extends BorderPane{
     public TextField getVulNaamBlauwIn() {
         return vulNaamBlauwIn;
     }
+
+    public CheckBox getCheckBoxGroen() {
+        return checkBoxGroen;
+    }
+
+    public CheckBox getCheckBoxGeel() {
+        return checkBoxGeel;
+    }
+
+    public CheckBox getCheckBoxRood() {
+        return checkBoxRood;
+    }
+
+    public CheckBox getCheckBoxBlauw() {
+        return checkBoxBlauw;
+    }
 }
