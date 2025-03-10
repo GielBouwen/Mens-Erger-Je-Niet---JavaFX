@@ -1,8 +1,12 @@
 package be.kdg.mens_erger_je_niet.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
+
 import be.kdg.mens_erger_je_niet.Kleur;
 import be.kdg.mens_erger_je_niet.model.Pion;
+import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 
 public class Spel {
     int spelerTeller;
@@ -13,6 +17,32 @@ public class Spel {
     private boolean beurtRood = false;
     private Dobbelsteen dobbelsteen;
     private int aantalBeurten = 0;
+    private Speler spelerGroen;
+    private Speler spelerGeel;
+    private Speler spelerBlauw;
+    private Speler spelerRood;
+    private List<Speler> spelers = new ArrayList<>();
+    private NewGameView newGameView;
+
+    public void maakSpelersAan() {
+        //Maakt spelers aan
+        spelerGroen = new Speler(Kleur.GROEN, 1, newGameView.getVulNaamGroenIn().getText());
+        spelerGeel = new Speler(Kleur.GEEL, 2, newGameView.getVulNaamGeelIn().getText());
+        spelerBlauw = new Speler(Kleur.BLAUW, 3, newGameView.getVulNaamBlauwIn().getText());
+        spelerRood = new Speler(Kleur.ROOD, 4, newGameView.getVulNaamRoodIn().getText());
+
+        //Kijkt of de speler een CPU is
+        spelerGroen.setCPU(newGameView.getCheckBoxGroen().isSelected());
+        spelerGeel.setCPU(newGameView.getCheckBoxGeel().isSelected());
+        spelerBlauw.setCPU(newGameView.getCheckBoxBlauw().isSelected());
+        spelerRood.setCPU(newGameView.getCheckBoxRood().isSelected());
+
+        //Voegt de spelers toe aan een lijst "spelers"
+        spelers.add(spelerGroen);
+        spelers.add(spelerGeel);
+        spelers.add(spelerBlauw);
+        spelers.add(spelerRood);
+    }
 
     public int getSpelerTeller() {
         return spelerTeller;
@@ -30,7 +60,7 @@ public class Spel {
 
     public void startSpel(boolean startSpel){
         if (startSpel){
-
+            //maakSpelersAan();
         }
     }
     public void kiesSpelerAantal(int aantalSpelers) throws IllegalArgumentException {  //Het spel moet minstens met twee spelers worden gespeeld. Hieronder vallen zowel menselijke als computergestuurde spelers. Wanneer men geen gebruikersnaam ingeeft, zal er automatisch worden gekozen voor een computergestuurde.
@@ -47,7 +77,9 @@ public class Spel {
 
     }
 
-    public void veranderBeurt(){ //Verandert de beurt van het spel, volgorde is groen, geel, blauw, rood
+    public void veranderBeurt(){
+        //Verandert de beurt van het spel
+        //Volgorde is groen, geel, blauw, rood
         if(beurtGroen){
             aantalBeurten++;
             beurtGroen = false;
@@ -64,8 +96,8 @@ public class Spel {
         }
     }
 
-    public void speelBeurt(Kleur kleur){
-        //Kijk wie zijn beurt het is, meegegeven in methode
+    public void speelBeurt(){
+        //Kijk wie zijn beurt het is met methode getSpelerAanBeurt()
 
         //Gooi dobbelsteen (done)
         //dobbelsteen.gooiDobbelsteen();
@@ -124,5 +156,12 @@ public class Spel {
         /*speler.aantalPionnenInSpel -= 1;
         speler.aantalPionnenUitgespeeld += 1;
         pion.huidigVeldNummer = -1;*/
+    }
+    public Speler getSpelerAanBeurt() {
+        if (beurtGroen) {return spelerGroen;}
+        if (beurtGeel) {return spelerGeel;}
+        if (beurtRood) {return spelerRood;}
+        if (beurtBlauw) {return spelerBlauw;}
+        return null;
     }
 }

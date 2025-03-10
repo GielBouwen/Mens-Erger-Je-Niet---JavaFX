@@ -22,5 +22,33 @@ public class NewGamePresenter {
         view.getCreateButton().setOnAction(event -> {
             mainApp.showPlayboardView();
         });
+        view.getCheckBoxGroen().setOnAction(event -> {
+            if(view.getCheckBoxGroen().isSelected()) {
+                System.out.println("Groen is een CPU");
+            } else{
+                System.out.println("Groen is een Speler");
+            }
+        });
+        view.getCheckBoxGeel().setOnAction(event -> {
+            if(view.getCheckBoxGeel().isSelected()) {
+                System.out.println("Geel is een CPU");
+            } else{
+                System.out.println("Geel is een Speler");
+            }
+        });
+        view.getCheckBoxRood().setOnAction(event -> {
+            if(view.getCheckBoxRood().isSelected()) {
+                System.out.println("Rood is een CPU");
+            } else{
+                System.out.println("Rood is een Speler");
+            }
+        });
+        view.getCheckBoxBlauw().setOnAction(event -> {
+            if(view.getCheckBoxBlauw().isSelected()) {
+                System.out.println("Blauw is een CPU");
+            } else{
+                System.out.println("Blauw is een Speler");
+            }
+        });
     }
 }
