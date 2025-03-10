@@ -1,5 +1,7 @@
 package be.kdg.mens_erger_je_niet.view.playboard;
 
+import be.kdg.mens_erger_je_niet.Kleur;
+import be.kdg.mens_erger_je_niet.model.Pion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -27,7 +29,7 @@ public class PlayboardView extends BorderPane {
     }
 
     private void initializeNodes() {
-        //Cellen met cirkels (dubbele array (Y en X, (vanaf 0 tellen))
+       //Cellen met cirkels (dubbele array (Y en X, (vanaf 0 tellen))
         int [][] cirkelPositions = {{0, 0}, {0, 1}, {8, 0}, {0, 13}, {0,14},
                 {1, 0}, {1, 1}, {1, 13}, {1, 14},
                 {0, 6}, {14, 8},
@@ -124,8 +126,8 @@ public class PlayboardView extends BorderPane {
 
     }
 
-    // Bepaalt de kleur van de vakjes
-    private Color getCellColor(int rij, int kolom) {
+    private Color getCellColor(int rij, int kolom) {     // Bepaalt de kleur van de vakjes
+
         //Startgebieden 2x2 per kleur
         if (rij < 2 && kolom < 2) return Color.BLUE;   // Blauw Start
         if (rij < 2 && kolom >= 13) return Color.YELLOW; // Geel Start
@@ -150,9 +152,6 @@ public class PlayboardView extends BorderPane {
         return Color.WHITE; // Overige vakjes
     }
 
-    public int getSpeelbordSize(){
-        return SPEELBORD_SIZE;
-    }
 
     public Button getSpelregels() {
         return spelregels;
@@ -168,6 +167,33 @@ public class PlayboardView extends BorderPane {
 
     public ImageView getDiceImageView() {
         return diceImageView;
+    }
+    public void plaatsPionOpBord(Pion pion) {
+        int rij = pion.getRij();
+        int kolom = pion.getKolom();
+
+        StackPane cellStackPane = (StackPane) speelbord.getChildren().get(rij * SPEELBORD_SIZE + kolom);
+
+        Circle pionCircle = new Circle(CELL_SIZE / 3);
+        pionCircle.setFill(getKleurVoorPion(pion.getKleur()));
+        pionCircle.setStroke(Color.WHITE);
+        pionCircle.setStrokeWidth(4);
+        cellStackPane.getChildren().add(pionCircle);
+    }
+
+    private Color getKleurVoorPion(Kleur kleur) {
+        switch (kleur) {
+            case BLAUW:
+                return Color.BLUE;
+            case GEEL:
+                return Color.YELLOW;
+            case ROOD:
+                return Color.RED;
+            case GROEN:
+                return Color.GREEN;
+            default:
+                return Color.BLACK;
+        }
     }
 
 

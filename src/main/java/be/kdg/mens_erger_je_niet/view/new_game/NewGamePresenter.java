@@ -21,6 +21,7 @@ public class NewGamePresenter {
         });
         view.getCreateButton().setOnAction(event -> {
             mainApp.showPlayboardView();
+
         });
         view.getCheckBoxGroen().setOnAction(event -> {
             if(view.getCheckBoxGroen().isSelected()) {

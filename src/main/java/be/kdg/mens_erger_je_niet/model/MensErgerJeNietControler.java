@@ -1,7 +1,5 @@
 package be.kdg.mens_erger_je_niet.model;
 
-import be.kdg.mens_erger_je_niet.view.playboard.PlayboardView;
-
 public class MensErgerJeNietControler {
     private Dobbelsteen dobbelsteen;
     private Bord bord;
@@ -16,4 +14,7 @@ public class MensErgerJeNietControler {
         return dobbelsteen.getAantalOgen();
     }
 
+    public Bord getBord() {
+        return bord;
+    }
 }

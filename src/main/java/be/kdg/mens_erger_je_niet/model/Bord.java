@@ -17,27 +17,17 @@ public class Bord {
     }
 
     private boolean isBezet(int rij, int kolom) {
-        for (Pion p : pionnenOpBord.values()) {
-            if (p.getRij() == rij && p.getKolom() == kolom) {   // checkt of de pion op de opgegeven rij en kolom staat
+        for (Pion p : pionnenOpBord.values()) { // checkt of de pion op de opgegeven rij en kolom staat
+            if (p.getRij() == rij && p.getKolom() == kolom) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean verplaatsPion(Pion pion, int newRij, int newKolom) {
-        if (!pion.isOpBord()) {
-            System.out.println("De pion moet nog op het bord worden gezet");
-            return false;
-        }
-        if (isBezet(newRij, newKolom)) {
-            System.out.println("Plek is al bezet. ");
-            return false;
-        }
-        pion.move(newRij, newKolom);
-        return true;
+    public Map<Integer, Pion> getPionnenOpBord() {
+        return pionnenOpBord;
     }
-
-
-
 }
+
+
