@@ -8,7 +8,7 @@ public class MensErgerJeNietControler {
 
     public MensErgerJeNietControler() {
         this.dobbelsteen = new Dobbelsteen();
-        this.bord = new bord();
+        this.bord = new Bord();
     }
 
     public int gooiDobbelsteen() {
