@@ -15,13 +15,7 @@ public class Speler {
     int aantalPionnenInStart;
     int aantalPionnenInSpel;
     int aantalPionnenUitgespeeld; //Teller die bijhoudt hoeveel pionnen van een speler het einde hebben bereikt, als het 4 is, stopt het spel
-    NewGameView newGameView;
-    private List<Pion> pionnen;
-
-    Speler spelerGroen;
-    Speler spelerGeel;
-    Speler spelerBlauw;
-    Speler spelerRood;
+    List<Pion> pionnen;
 
     public Speler(Kleur kleur, int spelerId, String gebruikersnaam) {
         this.kleur = kleur;
@@ -37,26 +31,8 @@ public class Speler {
         aantalPionnenUitgespeeld = 0;
     }
 
-    /* Methode verplaatst naar klasse Spel. Is logischer om spelers in het spel te hebben staan ipv de hele tijd te moeten gaan naar klasse speler
-    public void maakSpelersAan() {
-        spelerGroen = new Speler(Kleur.GROEN, 1, newGameView.getVulNaamGroenIn().getText());
-        spelerGeel = new Speler(Kleur.GEEL, 2, newGameView.getVulNaamGeelIn().getText());
-        spelerBlauw = new Speler(Kleur.BLAUW, 3, newGameView.getVulNaamBlauwIn().getText());
-        spelerRood = new Speler(Kleur.ROOD, 4, newGameView.getVulNaamRoodIn().getText());
-
-        spelers.add(spelerGroen);
-        spelers.add(spelerGeel);
-        spelers.add(spelerBlauw);
-        spelers.add(spelerRood);
-    }*/
-
-    public String printSpelersInfo(){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(spelerGroen.toString());
-        stringBuilder.append(spelerGeel.toString());
-        stringBuilder.append(spelerBlauw.toString());
-        stringBuilder.append(spelerRood.toString());
-        return stringBuilder.toString();
+    public String getGebruikersnaam() {
+        return gebruikersnaam;
     }
 
     public Kleur getKleur() {
@@ -73,5 +49,9 @@ public class Speler {
 
     public void setCPU(boolean CPU) {
         isCPU = CPU;
+    }
+
+    public List<Pion> getPionnen() {
+        return pionnen;
     }
 }

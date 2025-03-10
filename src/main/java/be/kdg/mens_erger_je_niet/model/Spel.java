@@ -16,13 +16,14 @@ public class Spel {
     private boolean beurtBlauw = false;
     private boolean beurtRood = false;
     private Dobbelsteen dobbelsteen;
-    private int aantalBeurten = 0;
+    private int aantalBeurten = 1;
     private Speler spelerGroen;
     private Speler spelerGeel;
     private Speler spelerBlauw;
     private Speler spelerRood;
     private List<Speler> spelers = new ArrayList<>();
     private NewGameView newGameView;
+    private boolean eindigSpel = false;
 
     public void maakSpelersAan() {
         //Maakt spelers aan
@@ -60,9 +61,21 @@ public class Spel {
 
     public void startSpel(boolean startSpel){
         if (startSpel){
-            //maakSpelersAan();
+            maakSpelersAan();
+            do{
+                speelBeurt();
+                veranderBeurt();
+            }
+            while(!eindigSpel);
         }
     }
+
+    public void eindigSpel(){
+        if (eindigSpel){
+
+        }
+    }
+
     public void kiesSpelerAantal(int aantalSpelers) throws IllegalArgumentException {  //Het spel moet minstens met twee spelers worden gespeeld. Hieronder vallen zowel menselijke als computergestuurde spelers. Wanneer men geen gebruikersnaam ingeeft, zal er automatisch worden gekozen voor een computergestuurde.
         if (aantalSpelers < 2 || aantalSpelers > 4){
             throw new IllegalArgumentException("Kies tussen 2 en 4 spelers.");
@@ -70,29 +83,27 @@ public class Spel {
         this.spelerTeller=aantalSpelers;
     }
 
-    public void eindigSpel(boolean eindigSpel){
-        if (eindigSpel){
-
-        }
-
-    }
-
     public void veranderBeurt(){
         //Verandert de beurt van het spel
         //Volgorde is groen, geel, blauw, rood
+        System.out.println("Dit is de " + aantalBeurten + "e beurt van " + getSpelerAanBeurt().getGebruikersnaam());
         if(beurtGroen){
-            aantalBeurten++;
             beurtGroen = false;
             beurtGeel = true;
+            System.out.println("De beurt van groen is gedaan. De beurt is nu aan geel.");
         } else if (beurtGeel){
             beurtGeel = false;
             beurtBlauw = true;
+            System.out.println("De beurt van geel is gedaan. De beurt is nu aan blauw.");
         } else if (beurtBlauw){
             beurtBlauw = false;
             beurtRood = true;
+            System.out.println("De beurt van blauw is gedaan. De beurt is nu aan rood.");
         } else if (beurtRood){
             beurtRood = false;
             beurtGroen = true;
+            aantalBeurten++;
+            System.out.println("De beurt van Rood is gedaan. De beurt is nu aan groen.");
         }
     }
 
@@ -100,36 +111,45 @@ public class Spel {
         //Kijk wie zijn beurt het is met methode getSpelerAanBeurt()
 
         //Gooi dobbelsteen (done)
-        //dobbelsteen.gooiDobbelsteen();
-        //int worp = dobbelsteen.getAantalOgen();
+        dobbelsteen.werp();
+        int worp = dobbelsteen.getAantalOgen();
 
         //Als de worp 6 is OF er is 1 pion op het veld: kies pion
-        /*if(worp == 6 || kleur.aantalPionnenInSpel >= 1){
-            kiesPion(Kleur kleur, int id)
-        } */
+        if(worp == 6 || getSpelerAanBeurt().aantalPionnenInSpel >= 1){
+            //kiesPion(getSpelerKleur(),int id, worp);
+        }
 
         //zetPionOpVeld(kleur, pionID, worp) en verplaatsPion(kleur, pionID, stappen)
 
 
         //controleerOfPionEenSpelerSlaat() -> if(isBezet == true), andere pion die matcht met veldnummer moet terug naar start, isThuis op true, aantalPionnenOpVeld -1
-        //controleerOfSpelerGewonnenHeeft() -> if(speler.aantalPionnenUitgespeeld == 4), speler heeft gewonnen
+        controleerOfSpelerGewonnenHeeft(getSpelerAanBeurt()); //Done
     }
 
     public void kiesPion(Kleur kleur, int id, int worp){ //Zet nieuwe pion op veld als de worp 6 is en/of verplaatst de gekozen pion met het aantal ogen
-        /*if (pion.isThuis == true || worp = 6 ||){
-            zetPionOpVeld(kleur, id)
-        }
-         */
-
+        /*if (pion.isThuis == true || worp = 6){
+            zetPionOpVeld(kleur, id);
+        }*/
         /*for(int i = 0, i < worp, i++){
             verplaatsPion();
         }*/
     }
 
+    public Pion zoekPion(Kleur kleur, int pionId) {
+        Speler speler = getSpelerAanBeurt();
+        if (speler != null) {
+            for (Pion pion : speler.getPionnen()) {
+                if (pion.getPionId() == pionId) {
+                    return pion; // Return de pion met het juiste ID
+                }
+            }
+        }
+        return null; // Geen pion gevonden
+    }
+
     public void verplaatsPion(Kleur kleur, int id){ //Verplaatst de pion met 1 vakje
         //Of moet methode in klasse Pion??
         //pion.veldnummer += 1
-
     }
 
     public void zetPionOpVeld(Kleur kleur, int id){  //Zet de pion op het beginvakje van de juiste kleur
@@ -140,28 +160,35 @@ public class Spel {
         // als het groen is vakje 30
     }
 
-    public void controleerOfPionEenSpelerSlaat(){ //Als het vakje bezet is, staat er een andere pion, kill die pion
-        /*if(getVakNummer.isBezet == true){
-            verwijderPion();
-        }*/
-    }
-    public void controleerOfSpelerGewonnenHeeft(Speler speler){
-        if(speler.aantalPionnenUitgespeeld == 4){
-            eindigSpel(true); //Geeft true mee aan de methode eindigSpel. Het spel wordt geëindigd
-        }
-    }
-
     public void verwijderPion(Speler speler, Pion pion){
         //Verandert aantal pionnen op het veld met -1, pion moet naar thuisveld gestuurd worden
         /*speler.aantalPionnenInSpel -= 1;
         speler.aantalPionnenUitgespeeld += 1;
         pion.huidigVeldNummer = -1;*/
     }
+
+    public void controleerOfPionEenSpelerSlaat(Speler speler, int id){ //Als het vakje bezet is, staat er een andere pion, kill die pion
+        /*if(getVakNummer.isBezet == true){
+            verwijderPion(getSpelerAanBeurt(), Pion pion);
+        }*/
+    }
+
+    public void controleerOfSpelerGewonnenHeeft(Speler speler){
+        if(speler.aantalPionnenUitgespeeld == 4){
+            eindigSpel = true;
+            eindigSpel(); //Roept methode eindigSpel op. Het spel wordt geëindigd
+        }
+    }
+
     public Speler getSpelerAanBeurt() {
         if (beurtGroen) {return spelerGroen;}
         if (beurtGeel) {return spelerGeel;}
-        if (beurtRood) {return spelerRood;}
         if (beurtBlauw) {return spelerBlauw;}
+        if (beurtRood) {return spelerRood;}
         return null;
+    }
+
+    public Kleur getSpelerKleur() {
+        return getSpelerAanBeurt().getKleur();
     }
 }
