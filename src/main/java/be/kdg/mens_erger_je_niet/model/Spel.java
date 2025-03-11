@@ -155,12 +155,12 @@ public class Spel {
         return null; //Geen pion gevonden
     }
 
-    public void verplaatsPion(Kleur kleur, int id){ //Verplaatst de pion met 1 vakje
-        //Of moet methode in klasse Pion??
-        //pion.veldnummer += 1
+    public void verplaatsPion(int pionId){ //Verplaatst de pion van kleur met id met 1 vakje
+        getSpelerAanBeurt().getPion(getSpelerAanBeurt(), pionId).setAantalVakjesVer
+                (getSpelerAanBeurt().getPion(getSpelerAanBeurt(), pionId).getAantalVakjesVer()+1); //Verhoogt het aantal vakjes van de geselecteerde pion met 1, methode moet aantal gegooide ogen keer uitgevoerd worden achter elkaar
     }
 
-    public void zetPionOpVeld(Kleur kleur, int id){  //Zet de pion op het beginvakje van de juiste kleur
+    /*public void zetPionOpVeld(Kleur kleur, int id){  //Zet de pion op het beginvakje van de juiste kleur
         //zoekPion(getSpelerKleur(), id).plaatsOpStartpositie(rij, kolom);
 
         //met switch werken,
@@ -168,7 +168,7 @@ public class Spel {
         // als het blauw is vakje 10,
         // als het geel is vakje 20,
         // als het groen is vakje 30
-    }
+    }*/
 
     public void verwijderPion(Speler speler, Pion pion){
         //Verandert aantal pionnen op het veld met -1, pion moet naar thuisveld gestuurd worden
@@ -177,10 +177,11 @@ public class Spel {
         pion.huidigVeldNummer = -1;*/
     }
 
-    public void controleerOfPionEenSpelerSlaat(Speler speler, int id){ //Als het vakje bezet is, staat er een andere pion, kill die pion
+    public void controleerOfPionEenSpelerSlaat(int id){ //Als het vakje bezet is, staat er een andere pion, kill die pion
         /*if(getVakNummer.isBezet == true){
             verwijderPion(getSpelerAanBeurt(), Pion pion);
         }*/
+        //if(getSpelerAanBeurt().getPion().)
     }
 
     public void controleerOfSpelerGewonnenHeeft(Speler speler){

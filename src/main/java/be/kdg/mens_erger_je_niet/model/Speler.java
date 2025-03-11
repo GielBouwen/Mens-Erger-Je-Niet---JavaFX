@@ -24,7 +24,7 @@ public class Speler {
         this.isCPU = false;
         this.pionnen = new ArrayList<>();
         for(int i = 1; i <= 4; i++){ //Vult arraylist
-            pionnen.add(new Pion(i, kleur));
+            pionnen.add(new Pion(i, kleur, this));
         }
         aantalPionnenInStart = 4;
         aantalPionnenInSpel = 0;
@@ -53,5 +53,16 @@ public class Speler {
 
     public List<Pion> getPionnen() {
         return pionnen;
+    }
+
+    public Pion getPion(Speler speler, int pionId) {
+        if(pionId < 1 || pionId > 4){ //Speler kan maar tussen 4 pionnen kiezen
+            throw new IllegalArgumentException("Geef een getal tussen 1 en 4.");
+        }
+        if(speler.pionnen.get(pionId).isGefinished()){ //Speler kan alleen maar pionnen kiezen die niet gefinished zijn
+            throw new IllegalArgumentException("Deze pion is al gefinished.");
+        }
+        pionId -= 1; //Als speler Pion "1" ingeeft, wordt er in de array gezocht naar het 0e element om overeen te komen
+        return speler.pionnen.get(pionId);
     }
 }

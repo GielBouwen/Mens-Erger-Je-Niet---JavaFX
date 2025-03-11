@@ -8,14 +8,18 @@ public class Pion {
     private int kolom;
     private int rij;
     private boolean isOpBord;
+    private int aantalVakjesVer;
+    private boolean isGefinished;
+    private Speler eigenaar;
 
-
-    public Pion(int pionId, Kleur kleur) {
+    public Pion(int pionId, Kleur kleur, Speler eigenaar) {
         this.pionId = pionId;
         this.kleur = kleur;
         this.kolom = -1;
         this.rij = -1 ;
         this.isOpBord = false; //zien ofdat de pion op het bord staat (mag pas op het bord staan als er 6 wordt gegooid)
+        this.aantalVakjesVer = -1; //Pion is nog niet op het 'main' bord
+        this.eigenaar = eigenaar;
     }
 
     public int getPionId() {
@@ -38,10 +42,27 @@ public class Pion {
         return isOpBord;
     }
 
+    public boolean isGefinished() {
+        return isGefinished;
+    }
+
+    public int getAantalVakjesVer() {
+        return aantalVakjesVer;
+    }
+
+    public void setAantalVakjesVer(int aantalVakjesVer) {
+        this.aantalVakjesVer = aantalVakjesVer;
+    }
+
+    public Speler getEigenaar() {
+        return eigenaar;
+    }
+
     public void plaatsOpStartpositie(int startRij, int startKolom) {
         this.rij = startRij;
         this.kolom = startKolom;
         this.isOpBord = true;
+        this.aantalVakjesVer = 0;
     }
 
 
