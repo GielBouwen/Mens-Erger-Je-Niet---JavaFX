@@ -79,47 +79,60 @@ public class Bord {
         gewoneVelden.add(new Veld(7, 0, 55, null));
 
             // Initialiseer eindvelden
-        eindVeldenRood.add(new Veld(9, 1, 56, null));
-        eindVeldenRood.add(new Veld(9, 2, 57, null));
-        eindVeldenRood.add(new Veld(9, 3, 58, null));
-        eindVeldenRood.add(new Veld(9, 4, 59, null));
+        //KLAAR
+        eindVeldenRood.add(new Veld(7, 1, 56, null));
+        eindVeldenRood.add(new Veld(7, 2, 57, null));
+        eindVeldenRood.add(new Veld(7, 3, 58, null));
+        eindVeldenRood.add(new Veld(7, 4, 59, null));
+        eindVeldenRood.add(new Veld(7, 5, 60, null));
+        eindVeldenRood.add(new Veld(7, 6, 61, null));
 
-        eindVeldenGroen.add(new Veld(13, 7, 60, null));
-        eindVeldenGroen.add(new Veld(12, 7, 61, null));
-        eindVeldenGroen.add(new Veld(11, 7, 62, null));
-        eindVeldenGroen.add(new Veld(10, 7, 63, null));
+        //KLAAR
+        eindVeldenGroen.add(new Veld(8, 7, 62, null));
+        eindVeldenGroen.add(new Veld(9, 7, 63, null));
+        eindVeldenGroen.add(new Veld(10, 7, 64, null));
+        eindVeldenGroen.add(new Veld(11, 7, 65, null));
+        eindVeldenGroen.add(new Veld(12, 7, 66, null));
+        eindVeldenGroen.add(new Veld(13, 7, 67, null));
 
-        eindVeldenGeel.add(new Veld(7, 13, 64, null));
-        eindVeldenGeel.add(new Veld(7, 12, 65, null));
-        eindVeldenGeel.add(new Veld(7, 11, 66, null));
-        eindVeldenGeel.add(new Veld(7, 10, 67, null));
 
-        eindVeldenBlauw.add(new Veld(1, 7, 68, null));
-        eindVeldenBlauw.add(new Veld(2, 7, 69, null));
-        eindVeldenBlauw.add(new Veld(3, 7, 70, null));
-        eindVeldenBlauw.add(new Veld(4, 7, 71, null));
+        //inProgress
+        eindVeldenGeel.add(new Veld(7, 8, 68, null));
+        eindVeldenGeel.add(new Veld(7, 9, 69, null));
+        eindVeldenGeel.add(new Veld(7, 10, 70, null));
+        eindVeldenGeel.add(new Veld(7, 11, 71, null));
+        eindVeldenGeel.add(new Veld(7, 12, 72, null));
+        eindVeldenGeel.add(new Veld(7, 13, 73, null));
+
+        eindVeldenBlauw.add(new Veld(1, 7, 74, null));
+        eindVeldenBlauw.add(new Veld(2, 7, 75, null));
+        eindVeldenBlauw.add(new Veld(3, 7, 76, null));
+        eindVeldenBlauw.add(new Veld(4, 7, 77, null));
+        eindVeldenBlauw.add(new Veld(5, 7, 78, null));
+        eindVeldenBlauw.add(new Veld(6, 7, 79, null));
+
 
 
         // Initialiseer parkeervelden
-        parkeerVeldenRood.add(new Veld(11, 1, 72, ));
-        parkeerVeldenRood.add(new Veld(12, 1, 73, null));
-        parkeerVeldenRood.add(new Veld(13, 1, 74, null));
-        parkeerVeldenRood.add(new Veld(14, 1, 75, null));
+        parkeerVeldenRood.add(new Veld(13, 13, 80, null));
+        parkeerVeldenRood.add(new Veld(13, 14, 81, null));
+        parkeerVeldenRood.add(new Veld(14, 13, 82, null));
+        parkeerVeldenRood.add(new Veld(14, 14, 83, null));
 
-        parkeerVeldenGroen.add(new Veld(13, 11, 76, null));
-        parkeerVeldenGroen.add(new Veld(13, 12, 77, null));
-        parkeerVeldenGroen.add(new Veld(13, 13, 78, null));
-        parkeerVeldenGroen.add(new Veld(13, 14, 79, null));
+        parkeerVeldenGroen.add(new Veld(13, 13, 84, null));
+        parkeerVeldenGroen.add(new Veld(13, 14, 85, null));
+        parkeerVeldenGroen.add(new Veld(14, 13, 86, null));
+        parkeerVeldenGroen.add(new Veld(14, 14, 87, null));
 
-        parkeerVeldenGeel.add(new Veld(1, 13, 80, null));
-        parkeerVeldenGeel.add(new Veld(2, 13, 81, null));
-        parkeerVeldenGeel.add(new Veld(3, 13, 82, null));
-        parkeerVeldenGeel.add(new Veld(4, 13, 83, null));
+        parkeerVeldenGeel.add(new Veld(0, 13, 88, null));
+        parkeerVeldenGeel.add(new Veld(0, 14, 89, null));
+        parkeerVeldenGeel.add(new Veld(1, 13, 90, null));
+        parkeerVeldenGeel.add(new Veld(1, 14, 91, null));
 
-        parkeerVeldenBlauw.add(new Veld(1, 1, 84, null));
-        parkeerVeldenBlauw.add(new Veld(1, 2, 85, null));
-        parkeerVeldenBlauw.add(new Veld(1, 3, 86, null));
-        parkeerVeldenBlauw.add(new Veld(1, 4, 87, null));
+        parkeerVeldenBlauw.add(new Veld(0, 0, 92, null));
+        parkeerVeldenBlauw.add(new Veld(0, 1, 93, null));
+        parkeerVeldenBlauw.add(new Veld(1, 0, 94, null));
+        parkeerVeldenBlauw.add(new Veld(1, 1, 95, null));
 
     }
 
