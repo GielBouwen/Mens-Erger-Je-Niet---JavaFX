@@ -11,7 +11,6 @@ import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 public class Spel {
     private int aantalSpelers;
     private int beurtIndex; //houdt bij wie er aan de beurt is.
-    //private LocalDateTime datum;
     private Dobbelsteen dobbelsteen;
     private int aantalBeurten = 1; //
     private Speler huidigeSpeler;
@@ -33,15 +32,15 @@ public class Spel {
         }
         if(newGameView.getVulNaamGeelIn() != null){
             index++;
-            spelers.add(new Speler(Kleur.GEEL, 2, newGameView.getVulNaamGeelIn().getText(), newGameView.getCheckBoxGeel().isSelected()));
+            spelers.add(new Speler(Kleur.GEEL, index, newGameView.getVulNaamGeelIn().getText(), newGameView.getCheckBoxGeel().isSelected()));
         }
         if(newGameView.getVulNaamBlauwIn() != null){
             index++;
-            spelers.add(new Speler(Kleur.BLAUW, 3, newGameView.getVulNaamBlauwIn().getText(), newGameView.getCheckBoxBlauw().isSelected()));
+            spelers.add(new Speler(Kleur.BLAUW, index, newGameView.getVulNaamBlauwIn().getText(), newGameView.getCheckBoxBlauw().isSelected()));
         }
         if(newGameView.getVulNaamRoodIn() != null){
             index++;
-            spelers.add(new Speler(Kleur.ROOD, 4, newGameView.getVulNaamRoodIn().getText(), newGameView.getCheckBoxRood().isSelected()));
+            spelers.add(new Speler(Kleur.ROOD, index, newGameView.getVulNaamRoodIn().getText(), newGameView.getCheckBoxRood().isSelected()));
         }
         huidigeSpeler = spelers.get(beurtIndex);
         if(index <= 1){
@@ -50,9 +49,7 @@ public class Spel {
     }
 
 
-    /*public LocalDateTime getDatum() {
-        return datum;
-    }*/
+
 
     public void pauzeerSpel(boolean pauzeerSpel){
         if (pauzeerSpel){
@@ -98,7 +95,7 @@ public class Spel {
     }
 
     public void verplaatsPion(int pionId, int dobbelsteenWorp){ //Verplaatst de pion van kleur met id met 1 vakje
-        Pion pion = huidigeSpeler.getPion(huidigeSpeler, pionId);
+        Pion pion = huidigeSpeler.getPionnen(huidigeSpeler, pionId);
         bord.verplaatsPion(pion, dobbelsteenWorp);
 
         if(pion.getAantalVakjesVer() >= 56){
@@ -169,13 +166,6 @@ public class Spel {
         return eindigSpel;
     }
 
-    public void setSpelerTeller(int spelerTeller) {
-        this.spelerTeller = spelerTeller;
-    }
-
-    public void setDatum(LocalDateTime datum) {
-        this.datum = datum;
-    }
 
     public void setDobbelsteen(Dobbelsteen dobbelsteen) {
         this.dobbelsteen = dobbelsteen;

@@ -16,7 +16,6 @@ public class MensErgerJeNietFileManagement {
         try {
             DataOutputStream stream = new DataOutputStream(new FileOutputStream(filename));
             stream.writeInt(spel.getSpelerTeller());
-            stream.writeUTF(spel.getDatum().toString());
             stream.writeInt(spel.getAantalBeurten());
 
             List<Speler> spelers = spel.getSpelers();
@@ -47,7 +46,6 @@ public class MensErgerJeNietFileManagement {
 
             Spel spel = new Spel(null);
             spel.setSpelerTeller(spelerTeller);
-            spel.setDatum(datum);
             spel.setAantalBeurten(aantalBeurten);
 
             int aantalSpelers = stream.readInt();
