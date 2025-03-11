@@ -50,9 +50,9 @@ public class Spel {
     }
 
 
-    public LocalDateTime getDatum() {
+    /*public LocalDateTime getDatum() {
         return datum;
-    }
+    }*/
 
     public void pauzeerSpel(boolean pauzeerSpel){
         if (pauzeerSpel){
@@ -72,41 +72,12 @@ public class Spel {
         eindigSpel = true;
     }
 
-    /*public void kiesSpelerAantal(int aantalSpelers) throws IllegalArgumentException {  //Het spel moet minstens met twee spelers worden gespeeld. Hieronder vallen zowel menselijke als computergestuurde spelers. Wanneer men geen gebruikersnaam ingeeft, zal er automatisch worden gekozen voor een computergestuurde.
-        if (aantalSpelers < 2 || aantalSpelers > 4){
-            throw new IllegalArgumentException("Kies tussen 2 en 4 spelers.");
-        }
-        this.spelerTeller=aantalSpelers;
-    }*/
-
-    /*public void veranderBeurt(){
-        //Verandert de beurt van het spel
-        //Volgorde is groen, geel, blauw, rood
-        System.out.println("Dit is de " + aantalBeurten + "e beurt van " + getSpelerAanBeurt().getGebruikersnaam());
-        if(beurtGroen){
-            beurtGroen = false;
-            beurtGeel = true;
-            System.out.println("De beurt van groen is gedaan. De beurt is nu aan geel.");
-        } else if (beurtGeel){
-            beurtGeel = false;
-            beurtBlauw = true;
-            System.out.println("De beurt van geel is gedaan. De beurt is nu aan blauw.");
-        } else if (beurtBlauw){
-            beurtBlauw = false;
-            beurtRood = true;
-            System.out.println("De beurt van blauw is gedaan. De beurt is nu aan rood.");
-        } else if (beurtRood){
-            beurtRood = false;
-            beurtGroen = true;
-            aantalBeurten++;
-            System.out.println("De beurt van Rood is gedaan. De beurt is nu aan groen.");
-        }
-    }*/
-
     public void veranderBeurt() {
         beurtIndex = (beurtIndex + 1) % spelers.size();
         huidigeSpeler = spelers.get(beurtIndex);
-        aantalBeurten++;
+        if((beurtIndex + 1) % spelers.size() == 0){
+            aantalBeurten++;
+        }
         System.out.println("Beurt " + aantalBeurten + " is nu aan " + huidigeSpeler.getGebruikersnaam());
     }
 
@@ -185,11 +156,12 @@ public class Spel {
         }
         //if(getSpelerAanBeurt().getPion().getAantalVakjesVer());
     }*/
-    public void controleerOfSpelerGewonnenHeeft(Speler speler){
+    public boolean controleerOfSpelerGewonnenHeeft(Speler speler){
         if(speler.getAantalPionnenUitgespeeld() == 4){
             eindigSpel = true;
             eindigSpel(); //Roept methode eindigSpel op. Het spel wordt geëindigd
         }
+        return eindigSpel;
     }
 
     public Kleur getSpelerKleur() {
