@@ -26,14 +26,27 @@ public class Spel {
 
     public void maakSpelersAan() {
         //Maakt spelers aan
-        spelers.add(new Speler(Kleur.GROEN, 1, newGameView.getVulNaamGroenIn().getText(), newGameView.getCheckBoxGroen().isSelected()));
-        spelers.add(new Speler(Kleur.GEEL, 2, newGameView.getVulNaamGeelIn().getText(), newGameView.getCheckBoxGeel().isSelected()));
-        spelers.add(new Speler(Kleur.BLAUW, 3, newGameView.getVulNaamBlauwIn().getText(), newGameView.getCheckBoxBlauw().isSelected()));
-        spelers.add(new Speler(Kleur.ROOD, 4, newGameView.getVulNaamRoodIn().getText(), newGameView.getCheckBoxRood().isSelected()));
+        int index = 0;
+        if(newGameView.getVulNaamGroenIn() != null){
+            index++;
+            spelers.add(new Speler(Kleur.GROEN, index, newGameView.getVulNaamGroenIn().getText(), newGameView.getCheckBoxGroen().isSelected()));
+        }
+        if(newGameView.getVulNaamGeelIn() != null){
+            index++;
+            spelers.add(new Speler(Kleur.GEEL, 2, newGameView.getVulNaamGeelIn().getText(), newGameView.getCheckBoxGeel().isSelected()));
+        }
+        if(newGameView.getVulNaamBlauwIn() != null){
+            index++;
+            spelers.add(new Speler(Kleur.BLAUW, 3, newGameView.getVulNaamBlauwIn().getText(), newGameView.getCheckBoxBlauw().isSelected()));
+        }
+        if(newGameView.getVulNaamRoodIn() != null){
+            index++;
+            spelers.add(new Speler(Kleur.ROOD, 4, newGameView.getVulNaamRoodIn().getText(), newGameView.getCheckBoxRood().isSelected()));
+        }
         huidigeSpeler = spelers.get(beurtIndex);
-
-
-
+        if(index <= 1){
+            throw new IllegalArgumentException("Vul de velden in voor minstens 2 kleuren");
+        }
     }
 
 
