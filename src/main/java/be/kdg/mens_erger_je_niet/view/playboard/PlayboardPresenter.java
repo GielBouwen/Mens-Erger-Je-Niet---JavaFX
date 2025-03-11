@@ -38,7 +38,7 @@ public class PlayboardPresenter {
             gooiDobbelsteen();
         });
 
-        view.getStopGame().setOnAction(event -> {
+        /*view.getStopGame().setOnAction(event -> {
             // Maak een bevestigingsdialoog voor het stoppen van het spel
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Stop Game");
@@ -53,10 +53,11 @@ public class PlayboardPresenter {
             });
         });
 
+         */
         addBoardEventHandlers();
     }
 
-    private void showSaveFileDialog() {
+    /* private void showSaveFileDialog() {
         // Maak een FileChooser voor het opslaan van het bestand
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Mens Erger Je Niet Spel", "*.dat"));
@@ -79,6 +80,8 @@ public class PlayboardPresenter {
             System.out.println("Fout bij opslaan van het spel: " + e.getMessage());
         }
     }
+
+     */
 
 
     private void addBoardEventHandlers() {

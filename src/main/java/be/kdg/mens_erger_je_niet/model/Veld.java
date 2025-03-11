@@ -18,17 +18,11 @@ public class Veld {
     }
 
     public boolean isBezet(){
-        return false; //Tijdelijke code om foutmeldingen tegen te gaan
+        return this.isBezet;
     }
 
     public void setBezet(boolean bezet) {
-        isBezet = bezet;
-    }
-
-    public void verwijderPion(){
-    }
-
-    public void plaatsPion(){
+        this.isBezet = bezet;
     }
 
 }

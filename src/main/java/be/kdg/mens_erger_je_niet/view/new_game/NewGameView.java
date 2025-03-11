@@ -10,7 +10,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.control.CheckBox;
-import be.kdg.mens_erger_je_niet.Main;
 
 public class NewGameView extends BorderPane{
     private Button cancelButton, createButton;
@@ -20,7 +19,7 @@ public class NewGameView extends BorderPane{
     private TextField vulNaamGroenIn, vulNaamGeelIn, vulNaamRoodIn, vulNaamBlauwIn;
     private VBox titel;
 
-    public NewGameView(Main mainApp) {
+    public NewGameView() {
         initializeNodes();
         layoutNodes();
     }

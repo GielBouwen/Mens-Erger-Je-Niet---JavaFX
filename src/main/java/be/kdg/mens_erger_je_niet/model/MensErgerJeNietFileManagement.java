@@ -17,10 +17,6 @@ public class MensErgerJeNietFileManagement {
             DataOutputStream stream = new DataOutputStream(new FileOutputStream(filename));
             stream.writeInt(spel.getSpelerTeller());
             stream.writeUTF(spel.getDatum().toString());
-            stream.writeBoolean(spel.isBeurtBlauw());
-            stream.writeBoolean(spel.isBeurtGeel());
-            stream.writeBoolean(spel.isBeurtGroen());
-            stream.writeBoolean(spel.isBeurtRood());
             stream.writeInt(spel.getAantalBeurten());
 
             List<Speler> spelers = spel.getSpelers();
@@ -28,7 +24,7 @@ public class MensErgerJeNietFileManagement {
             for (Speler speler : spelers) {
                 stream.writeUTF(speler.gebruikersnaam);
                 stream.writeUTF(speler.getKleur().name());
-                stream.writeBoolean(speler.isCPU());
+                stream.writeBoolean(speler.GetIsCPU());
             }
             System.out.println("spel is succesvol opgeslagen: " + filename);
         } catch (FileNotFoundException e) {
@@ -52,10 +48,6 @@ public class MensErgerJeNietFileManagement {
             Spel spel = new Spel(null);
             spel.setSpelerTeller(spelerTeller);
             spel.setDatum(datum);
-            spel.setBeurtBlauw(beurtBlauw);
-            spel.setBeurtGeel(beurtGeel);
-            spel.setBeurtGroen(beurtGroen);
-            spel.setBeurtRood(beurtRood);
             spel.setAantalBeurten(aantalBeurten);
 
             int aantalSpelers = stream.readInt();

@@ -1,7 +1,6 @@
 package be.kdg.mens_erger_je_niet.model;
 
 import be.kdg.mens_erger_je_niet.Kleur;
-import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +20,9 @@ public class Speler {
         this.kleur = kleur;
         this.spelerId = spelerId;
         this.gebruikersnaam = gebruikersnaam;
-        this.isCPU = false;
+        this.isCPU = isCPU;
         this.pionnen = new ArrayList<>();
-        for(int i = 1; i <= 4; i++){ //Vult arraylist
+        for(int i = 1; i <= 4; i++){
             pionnen.add(new Pion(i, kleur, this));
         }
         aantalPionnenInStart = 4;
@@ -32,30 +31,30 @@ public class Speler {
     }
 
     public String getGebruikersnaam() {
-        return gebruikersnaam;
+        return this.gebruikersnaam;
     }
 
     public Kleur getKleur() {
-        return kleur;
+        return this.kleur;
     }
 
     public int getSpelerId() {
-        return spelerId;
+        return this.spelerId;
     }
 
-    public boolean isCPU() {
-        return isCPU;
+    public boolean GetIsCPU() {
+        return this.isCPU;
     }
 
-    public void setCPU(boolean CPU) {
-        isCPU = CPU;
+    public void setCPU(boolean isCpu) {
+        this.isCPU = isCpu;
     }
 
     public List<Pion> getPionnen() {
         return pionnen;
     }
 
-    public Pion getPion(Speler speler, int pionId) {
+   /* public Pion getPion(Speler speler, int pionId) {
         if(pionId < 1 || pionId > 4){ //Speler kan maar tussen 4 pionnen kiezen
             throw new IllegalArgumentException("Geef een getal tussen 1 en 4.");
         }
@@ -65,6 +64,8 @@ public class Speler {
         pionId -= 1; //Als speler Pion "1" ingeeft, wordt er in de array gezocht naar het 0e element om overeen te komen
         return speler.pionnen.get(pionId);
     }
+
+    */
 
     public int getAantalPionnenInStart() {
         return aantalPionnenInStart;
