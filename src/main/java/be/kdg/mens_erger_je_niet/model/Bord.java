@@ -101,7 +101,7 @@ public class Bord {
 
 
         // Initialiseer parkeervelden
-        parkeerVeldenRood.add(new Veld(11, 1, 72, null));
+        parkeerVeldenRood.add(new Veld(11, 1, 72, ));
         parkeerVeldenRood.add(new Veld(12, 1, 73, null));
         parkeerVeldenRood.add(new Veld(13, 1, 74, null));
         parkeerVeldenRood.add(new Veld(14, 1, 75, null));
@@ -121,7 +121,6 @@ public class Bord {
         parkeerVeldenBlauw.add(new Veld(1, 3, 86, null));
         parkeerVeldenBlauw.add(new Veld(1, 4, 87, null));
 
-    }
     }
 
 
