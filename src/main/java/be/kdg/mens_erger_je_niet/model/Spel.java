@@ -84,8 +84,8 @@ public class Spel {
         dobbelsteen.werp();
         int worp = dobbelsteen.getAantalOgen();
 
-        //Als de worp 6 is OF er is 1 pion op het veld: kies pion
-        if (worp == 6 || huidigeSpeler.getAantalPionnenInSpel() >= 1) {
+        if (worp == 6 || huidigeSpeler.getAantalPionnenInSpel() >= 1) {         //Als de worp 6 is OF er is 1 pion op het veld: kies pion
+
             // kiesPion en verplaats
         }
         //zetPionOpVeld(kleur, pionID, worp) en verplaatsPion(kleur, pionID, stappen)
@@ -139,6 +139,10 @@ public class Spel {
             eindigSpel(); //Roept methode eindigSpel op. Het spel wordt geëindigd
         }
         return eindigSpel;
+    }
+
+    public Pion kiesPion(int pionId){
+       return huidigeSpeler.getPion(pionId);
     }
 
     public Kleur getSpelerKleur() {

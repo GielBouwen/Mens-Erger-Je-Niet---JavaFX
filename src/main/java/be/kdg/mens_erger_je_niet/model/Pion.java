@@ -23,6 +23,7 @@ public class Pion {
         this.eigenaar = eigenaar;
     }
 
+
     public int getPionId() {
         return pionId;
     }

@@ -78,4 +78,8 @@ public class Speler {
     public int getAantalPionnenUitgespeeld() {
         return aantalPionnenUitgespeeld;
     }
+
+    public Pion getPion (int pionId){
+        return pionnen.get(pionId);
+    }
 }
