@@ -21,7 +21,7 @@ public class Bord {
 
     public Bord() {
             // Initialiseer gewone velden
-        gewoneVelden.add(new Veld(8, 0, 0, null));
+        gewoneVelden.add(new Veld(8, 0, 0, null)); //Beginvakje Rood
         gewoneVelden.add(new Veld(8, 1, 1, null));
         gewoneVelden.add(new Veld(8, 2, 2, null));
         gewoneVelden.add(new Veld(8, 3, 3, null));
@@ -35,7 +35,7 @@ public class Bord {
         gewoneVelden.add(new Veld(13, 6, 11, null));
         gewoneVelden.add(new Veld(14, 6, 12, null));
         gewoneVelden.add(new Veld(14, 7, 13, null));
-        gewoneVelden.add(new Veld(14, 8, 14, null));
+        gewoneVelden.add(new Veld(14, 8, 14, null)); //Beginvakje Groen
         gewoneVelden.add(new Veld(13, 8, 15, null));
         gewoneVelden.add(new Veld(12, 8, 16, null));
         gewoneVelden.add(new Veld(11, 8, 17, null));
@@ -49,7 +49,7 @@ public class Bord {
         gewoneVelden.add(new Veld(8, 13, 25, null));
         gewoneVelden.add(new Veld(8, 14, 26, null));
         gewoneVelden.add(new Veld(7, 14, 27, null));
-        gewoneVelden.add(new Veld(6, 14, 28, null));
+        gewoneVelden.add(new Veld(6, 14, 28, null)); //Beginvakje Geel
         gewoneVelden.add(new Veld(6, 13, 29, null));
         gewoneVelden.add(new Veld(6, 12, 30, null));
         gewoneVelden.add(new Veld(6, 11, 31, null));
@@ -63,7 +63,7 @@ public class Bord {
         gewoneVelden.add(new Veld(1, 8, 39, null));
         gewoneVelden.add(new Veld(0, 8, 40, null));
         gewoneVelden.add(new Veld(0, 7, 41, null));
-        gewoneVelden.add(new Veld(0, 6, 42, null));
+        gewoneVelden.add(new Veld(0, 6, 42, null)); //Beginvakje Blauw
         gewoneVelden.add(new Veld(1, 6, 43, null));
         gewoneVelden.add(new Veld(2, 6, 44, null));
         gewoneVelden.add(new Veld(3, 6, 45, null));
