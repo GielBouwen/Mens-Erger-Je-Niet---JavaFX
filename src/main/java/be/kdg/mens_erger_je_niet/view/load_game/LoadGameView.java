@@ -15,9 +15,10 @@ public class LoadGameView extends BorderPane {
     //private final VBox radioButtons;
     //private final Button loadButton;
     private Button goBackButton;
+    private Label LoadGameLabel;
     //private final ToggleGroup toggleGroup;
 
-    public LoadGameView(Main mainApp) {
+    public LoadGameView() {
         initializeNodes();
         layoutNodes();
     }
@@ -31,13 +32,23 @@ public class LoadGameView extends BorderPane {
         goBackButton.setTextFill(Color.WHITE);
         goBackButton.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(125), Insets.EMPTY)));
         goBackButton.setPadding(new Insets(20));
+
+        LoadGameLabel = new Label("Laad game");
+        LoadGameLabel.setFont(Font.font("Tohoma", FontWeight.NORMAL, 30));
+        LoadGameLabel.setTextFill(Color.BLACK);
+        LoadGameLabel.setPadding(new Insets(20));
     }
 
     private void layoutNodes() {
-        VBox vbox = new VBox(20, goBackButton);
-        vbox.setAlignment(Pos.BOTTOM_LEFT);
-        this.setCenter(vbox);
+        BorderPane.setAlignment(LoadGameLabel, Pos.TOP_LEFT);
+        this.setTop(LoadGameLabel);
+
+        VBox vbox = new VBox(goBackButton);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPadding(new Insets(20));
+        this.setBottom(vbox);
     }
+
 
     public Button getGoBackButton() {
         return goBackButton;

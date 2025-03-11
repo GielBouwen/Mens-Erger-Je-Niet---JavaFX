@@ -9,6 +9,7 @@ import be.kdg.mens_erger_je_niet.model.Pion;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 
 public class Spel {
+
     int spelerTeller;
     LocalDateTime datum;
     private boolean beurtGroen = true;
@@ -24,6 +25,12 @@ public class Spel {
     private List<Speler> spelers = new ArrayList<>();
     private NewGameView newGameView;
     private boolean eindigSpel = false;
+
+    public Spel(NewGameView newGameView) {
+        this.newGameView = newGameView;
+    }
+
+
 
     public void maakSpelersAan() {
         //Maakt spelers aan
@@ -193,5 +200,117 @@ public class Spel {
 
     public Kleur getSpelerKleur() {
         return getSpelerAanBeurt().getKleur();
+    }
+
+    public boolean isBeurtGroen() {
+        return beurtGroen;
+    }
+
+    public boolean isBeurtGeel() {
+        return beurtGeel;
+    }
+
+    public boolean isBeurtBlauw() {
+        return beurtBlauw;
+    }
+
+    public boolean isBeurtRood() {
+        return beurtRood;
+    }
+
+    public Dobbelsteen getDobbelsteen() {
+        return dobbelsteen;
+    }
+
+    public int getAantalBeurten() {
+        return aantalBeurten;
+    }
+
+    public Speler getSpelerGroen() {
+        return spelerGroen;
+    }
+
+    public Speler getSpelerGeel() {
+        return spelerGeel;
+    }
+
+    public Speler getSpelerBlauw() {
+        return spelerBlauw;
+    }
+
+    public Speler getSpelerRood() {
+        return spelerRood;
+    }
+
+    public List<Speler> getSpelers() {
+        return spelers;
+    }
+
+    public NewGameView getNewGameView() {
+        return newGameView;
+    }
+
+    public boolean isEindigSpel() {
+        return eindigSpel;
+    }
+
+    public void setSpelerTeller(int spelerTeller) {
+        this.spelerTeller = spelerTeller;
+    }
+
+    public void setDatum(LocalDateTime datum) {
+        this.datum = datum;
+    }
+
+    public void setBeurtGroen(boolean beurtGroen) {
+        this.beurtGroen = beurtGroen;
+    }
+
+    public void setBeurtGeel(boolean beurtGeel) {
+        this.beurtGeel = beurtGeel;
+    }
+
+    public void setBeurtBlauw(boolean beurtBlauw) {
+        this.beurtBlauw = beurtBlauw;
+    }
+
+    public void setBeurtRood(boolean beurtRood) {
+        this.beurtRood = beurtRood;
+    }
+
+    public void setDobbelsteen(Dobbelsteen dobbelsteen) {
+        this.dobbelsteen = dobbelsteen;
+    }
+
+    public void setAantalBeurten(int aantalBeurten) {
+        this.aantalBeurten = aantalBeurten;
+    }
+
+    public void setSpelerGroen(Speler spelerGroen) {
+        this.spelerGroen = spelerGroen;
+    }
+
+    public void setSpelerGeel(Speler spelerGeel) {
+        this.spelerGeel = spelerGeel;
+    }
+
+    public void setSpelerBlauw(Speler spelerBlauw) {
+        this.spelerBlauw = spelerBlauw;
+    }
+
+    public void setSpelerRood(Speler spelerRood) {
+        this.spelerRood = spelerRood;
+    }
+
+    public void setSpelers(List<Speler> spelers) {
+        this.spelers = spelers;
+    }
+
+    public void setNewGameView(NewGameView newGameView) {
+        this.newGameView = newGameView;
+    }
+
+    public void setEindigSpel(boolean eindigSpel) {
+        this.eindigSpel = eindigSpel;
     }
 }

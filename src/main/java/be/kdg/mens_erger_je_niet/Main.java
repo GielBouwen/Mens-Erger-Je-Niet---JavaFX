@@ -74,7 +74,7 @@ public class Main extends Application {
     }
 
     public void loadGameView() {
-        LoadGameView loadGameView = new LoadGameView(this);
+        LoadGameView loadGameView = new LoadGameView();
         MensErgerJeNietControler model = new MensErgerJeNietControler();
         new LoadGamePresenter(model, loadGameView, this);
 

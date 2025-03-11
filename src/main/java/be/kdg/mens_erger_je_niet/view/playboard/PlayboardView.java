@@ -138,10 +138,10 @@ public class PlayboardView extends BorderPane {
         if (rij == 7 && kolom == 7) return Color.BLACK;
 
         //Gekleurde eindroutes
-        if (kolom == 7 && rij < 7 && rij > 0) return Color.YELLOW; // Geel eindpad
-        if (rij == 7 && kolom > 7 && kolom < 14) return Color.GREEN; // Groen eindpad
-        if (kolom == 7 && rij > 7 && rij < 14) return Color.RED; // Rood eindpad
-        if (rij == 7 && kolom < 7 && kolom > 0) return Color.BLUE; // Blauw eindpad
+        if (kolom == 7 && rij < 7 && rij > 0) return Color.BLUE; // Geel eindpad
+        if (rij == 7 && kolom > 7 && kolom < 14) return Color.YELLOW; // Groen eindpad
+        if (kolom == 7 && rij > 7 && rij < 14) return Color.GREEN; // Rood eindpad
+        if (rij == 7 && kolom < 7 && kolom > 0) return Color.RED; // Blauw eindpad
 
         //Looproute (Normale vakjes)
         if ((rij == 6 || rij == 8) && (kolom >= 0 && kolom < 15)) return Color.LIGHTGRAY; // Horizontale route
