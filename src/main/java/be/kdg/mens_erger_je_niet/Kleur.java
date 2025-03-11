@@ -13,9 +13,5 @@ public enum Kleur {
     Kleur(Color kleur) {
         this.kleur = kleur;
     }
-
-    public Color getkleur() {
-        return kleur;
-    }
 }
 

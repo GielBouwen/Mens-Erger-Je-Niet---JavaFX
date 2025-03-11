@@ -197,5 +197,7 @@ public class PlayboardView extends BorderPane {
         }
     }
 
-
+    public Button getStopGame() {
+        return stopGame;
+    }
 }

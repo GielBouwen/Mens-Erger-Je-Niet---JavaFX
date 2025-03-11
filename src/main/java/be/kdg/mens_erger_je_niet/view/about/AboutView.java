@@ -18,9 +18,9 @@ public class AboutView extends BorderPane {
     private Button GoBackButton;
 
 
-    public AboutView(Main mainApp) {
+    public AboutView() {
         initializeNodes();
-        layoutNodes(mainApp);
+        layoutNodes();
     }
 
     private void initializeNodes() {
@@ -48,7 +48,7 @@ public class AboutView extends BorderPane {
         aboutTextFlow.setPadding(new Insets(10));
     }
 
-    private void layoutNodes(Main mainApp) {
+    private void layoutNodes() {
         VBox title = new VBox(10, titleLabel);
         title.setPadding(new Insets(10));
         title.setAlignment(Pos.TOP_CENTER);

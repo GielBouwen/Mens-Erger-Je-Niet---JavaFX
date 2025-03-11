@@ -5,12 +5,18 @@ import be.kdg.mens_erger_je_niet.Main;
 import be.kdg.mens_erger_je_niet.model.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.File;
 import java.util.List;
 
 public class PlayboardPresenter {
@@ -32,8 +38,48 @@ public class PlayboardPresenter {
             gooiDobbelsteen();
         });
 
+        view.getStopGame().setOnAction(event -> {
+            // Maak een bevestigingsdialoog voor het stoppen van het spel
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Stop Game");
+            alert.setHeaderText("Weet je zeker dat je het spel wilt stoppen?");
+            alert.setContentText("Je moet je voortgang opslaan voordat je stopt.");
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    // Als de gebruiker op OK klikt, open de Save As dialoog
+                    showSaveFileDialog();
+                }
+            });
+        });
+
         addBoardEventHandlers();
     }
+
+    private void showSaveFileDialog() {
+        // Maak een FileChooser voor het opslaan van het bestand
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Mens Erger Je Niet Spel", "*.dat"));
+
+        // Laat de gebruiker een bestandslocatie kiezen
+        File file = fileChooser.showSaveDialog(new Stage());
+
+        if (file != null) {
+            // Als een bestand gekozen is, sla het spel op met de gekozen naam
+            saveGame(file);
+        }
+    }
+
+    private void saveGame(File file) {
+        try {
+            // Sla het spel op met behulp van de MensErgerJeNietFileManagement klasse
+            MensErgerJeNietFileManagement.save(file.getAbsolutePath(), model.getSpel());
+            System.out.println("Spel succesvol opgeslagen!");
+        } catch (MensErgerJeNietException e) {
+            System.out.println("Fout bij opslaan van het spel: " + e.getMessage());
+        }
+    }
+
 
     private void addBoardEventHandlers() {
         GridPane speelbord = view.getSpeelbord();
