@@ -59,7 +59,7 @@ public class Main extends Application {
     }
 
     public void showNewGame() {
-        NewGameView newGameView = new NewGameView();
+        NewGameView newGameView = new NewGameView(this);
         MensErgerJeNietControler model = new MensErgerJeNietControler();
         new NewGamePresenter(newGameView, this, model);
 
