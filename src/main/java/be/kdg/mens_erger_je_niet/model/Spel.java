@@ -59,10 +59,14 @@ public class Spel {
 
     public void startSpel() {
         maakSpelersAan();
+        zetPionnenOpParkeerplaats();
         while (!eindigSpel) {
             speelBeurt();
             veranderBeurt();
         }
+    }
+
+    private void zetPionnenOpParkeerplaats() {
     }
 
     public void eindigSpel(){
