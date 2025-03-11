@@ -83,6 +83,7 @@ public class Spel {
 
     public void speelBeurt(){
         System.out.println(huidigeSpeler.getGebruikersnaam()+ " begint zijn beurt.");
+
         dobbelsteen.werp();
         int worp = dobbelsteen.getAantalOgen();
 
@@ -95,27 +96,6 @@ public class Spel {
         //controleerOfPionEenSpelerSlaat() -> if(isBezet == true), andere pion die matcht met veldnummer moet terug naar start, isThuis op true, aantalPionnenOpVeld -1
         controleerOfSpelerGewonnenHeeft(huidigeSpeler); //Done
     }
-
-    /*public void kiesPion(Kleur kleur, int id, int worp){ //Zet nieuwe pion op veld als de worp 6 is en/of verplaatst de gekozen pion met het aantal ogen
-        if (pion.isThuis == true || worp = 6){
-            zetPionOpVeld(kleur, id);
-        }
-        for(int i = 0, i < worp, i++){
-            verplaatsPion();
-        }
-    }*/
-
-    /*public Pion zoekPion(Kleur kleur, int pionId) {
-        Speler speler = getSpelerAanBeurt();
-        if (speler != null) {
-            for (Pion pion : speler.getPionnen()) {
-                if (pion.getPionId() == pionId) {
-                    return pion; // Return de pion met het juiste ID
-                }
-            }
-        }
-        return null; //Geen pion gevonden
-    }*/
 
     public void verplaatsPion(int pionId, int dobbelsteenWorp){ //Verplaatst de pion van kleur met id met 1 vakje
         Pion pion = huidigeSpeler.getPion(huidigeSpeler, pionId);
