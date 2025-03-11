@@ -17,7 +17,7 @@ public class Speler {
     int aantalPionnenUitgespeeld; //Teller die bijhoudt hoeveel pionnen van een speler het einde hebben bereikt, als het 4 is, stopt het spel
     List<Pion> pionnen;
 
-    public Speler(Kleur kleur, int spelerId, String gebruikersnaam) {
+    public Speler(Kleur kleur, int spelerId, String gebruikersnaam, boolean isCPU) {
         this.kleur = kleur;
         this.spelerId = spelerId;
         this.gebruikersnaam = gebruikersnaam;
@@ -64,5 +64,17 @@ public class Speler {
         }
         pionId -= 1; //Als speler Pion "1" ingeeft, wordt er in de array gezocht naar het 0e element om overeen te komen
         return speler.pionnen.get(pionId);
+    }
+
+    public int getAantalPionnenInStart() {
+        return aantalPionnenInStart;
+    }
+
+    public int getAantalPionnenInSpel() {
+        return aantalPionnenInSpel;
+    }
+
+    public int getAantalPionnenUitgespeeld() {
+        return aantalPionnenUitgespeeld;
     }
 }

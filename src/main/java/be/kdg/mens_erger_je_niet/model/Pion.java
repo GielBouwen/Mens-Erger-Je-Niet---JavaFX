@@ -9,6 +9,7 @@ public class Pion {
     private int rij;
     private boolean isOpBord;
     private int aantalVakjesVer;
+    private int veldNummer;
     private boolean isGefinished;
     private Speler eigenaar;
 
@@ -52,6 +53,21 @@ public class Pion {
 
     public void setAantalVakjesVer(int aantalVakjesVer) {
         this.aantalVakjesVer = aantalVakjesVer;
+    }
+
+    public int getVeldNummer() {
+        return veldNummer;
+    }
+
+    public void setVeldNummer(int veldNummer) {
+        this.veldNummer = veldNummer;
+        if(this.veldNummer >= 56){
+            this.veldNummer -= 56;
+        }
+    }
+
+    public void setGefinished(boolean gefinished) {
+        isGefinished = gefinished;
     }
 
     public Speler getEigenaar() {

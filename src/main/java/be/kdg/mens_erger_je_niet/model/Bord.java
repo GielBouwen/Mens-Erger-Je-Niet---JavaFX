@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Bord {
     private Map<Integer, Pion> pionnenOpBord = new HashMap<>();
+    private HashMap<Integer, Pion> velden;
 
     public Bord() {
         ArrayList<Veld> velden = new ArrayList<Veld>();
@@ -89,6 +90,35 @@ public class Bord {
 
     public Map<Integer, Pion> getPionnenOpBord() {
         return pionnenOpBord;
+    }
+
+    public Pion getPionOpVeld(int positie){
+        return velden.get(positie);
+    }
+
+    public void verplaatsPion(Pion pion, int dobbelsteenWorp){
+        int huidigePositie = pion.getVeldNummer();
+        int nieuwePositie = berekenNieuwePositie(pion, dobbelsteenWorp);
+
+        pion.setAantalVakjesVer(pion.getAantalVakjesVer()+dobbelsteenWorp); //Verandert het aantalvakjesver van de pion. Wordt gebruikt om einde te kunnen controleren
+
+        Pion bestaandePion = velden.get(nieuwePositie); //Haalt de pion die al staat op de locatie waar de huidige pion naartoe gaat
+        if(bestaandePion != null){ //Als de nieuwe positie bezet is, wordt er geslagen
+            System.out.println("Pion" + bestaandePion.getKleur() + " van " + bestaandePion.getEigenaar().getGebruikersnaam() + " wordt geslagen!");
+            bestaandePion.setAantalVakjesVer(-1); //Zet geslagen pion naar start
+            velden.remove(nieuwePositie); //Haalt pion weg uit de hashmap
+        }
+
+        velden.remove(huidigePositie); //Haalt pion weg van de huidige positie
+        pion.setAantalVakjesVer(nieuwePositie); //Verplaatst de pion naar de nieuwe positie
+        velden.put(nieuwePositie, pion); //Plaatst de pion terug in de map met de nieuwe positie
+
+        System.out.println("Pion " + pion.getKleur() + " van " +pion.getEigenaar().getGebruikersnaam() + " staat nu op veld " + nieuwePositie);
+    }
+    public int berekenNieuwePositie(Pion pion, int dobbelSteenWorp){
+        int huidigePositie = pion.getVeldNummer();
+
+        return huidigePositie + dobbelSteenWorp;
     }
 }
 
