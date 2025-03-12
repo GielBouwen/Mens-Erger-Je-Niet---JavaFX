@@ -5,9 +5,12 @@ import be.kdg.mens_erger_je_niet.Main;
 import be.kdg.mens_erger_je_niet.model.*;
 import be.kdg.mens_erger_je_niet.view.help.HelpPresenter;
 import be.kdg.mens_erger_je_niet.view.help.HelpView;
+import be.kdg.mens_erger_je_niet.view.help_from_game.HelpFromGamePresenter;
+import be.kdg.mens_erger_je_niet.view.help_from_game.HelpFromGameView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
@@ -16,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -37,10 +41,15 @@ public class PlayboardPresenter {
         view.getSpelregels().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                HelpView helpView = new HelpView();
-                HelpPresenter helpPresenter = new HelpPresenter(model, helpView);
-                view.getScene().setRoot(helpView);
-                helpView.getScene().getWindow().hide();
+                HelpFromGameView helpFromGameView = new HelpFromGameView();
+                HelpFromGamePresenter helpFromGamePresenter = new HelpFromGamePresenter(model, helpFromGameView);
+                Stage helpFromGameStage = new Stage();
+                helpFromGameStage.initOwner(view.getScene().getWindow());
+                helpFromGameStage.initModality(Modality.APPLICATION_MODAL);
+                helpFromGameStage.setScene(new Scene(helpFromGameView));
+                helpFromGameStage.setX(view.getScene().getWindow().getX() + 100);
+                helpFromGameStage.setY(view.getScene().getWindow().getY() + 100);
+                helpFromGameStage.showAndWait();
             }
         });
 
