@@ -3,7 +3,10 @@ package be.kdg.mens_erger_je_niet.view.playboard;
 import be.kdg.mens_erger_je_niet.Kleur;
 import be.kdg.mens_erger_je_niet.Main;
 import be.kdg.mens_erger_je_niet.model.*;
+import be.kdg.mens_erger_je_niet.view.help.HelpPresenter;
+import be.kdg.mens_erger_je_niet.view.help.HelpView;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -20,12 +23,10 @@ import java.io.File;
 import java.util.List;
 
 public class PlayboardPresenter {
-    private final Main mainApp;
     private final PlayboardView view;
     private final MensErgerJeNietControler model;
 
-    public PlayboardPresenter(Main mainApp, PlayboardView view, MensErgerJeNietControler model) {
-        this.mainApp = mainApp;
+    public PlayboardPresenter(MensErgerJeNietControler model, PlayboardView view) {
         this.view = view;
         this.model = model;
         this.addEventHandlers();
@@ -33,7 +34,18 @@ public class PlayboardPresenter {
     }
 
     public void addEventHandlers() {
-        view.getSpelregels().setOnAction(event -> mainApp.helpView());
+        view.getSpelregels().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                HelpView helpView = new HelpView();
+                HelpPresenter helpPresenter = new HelpPresenter(model, helpView);
+                view.getScene().setRoot(helpView);
+                helpView.getScene().getWindow().hide();
+            }
+        });
+
+
+
         view.getRollButton().setOnAction(event -> {
             gooiDobbelsteen();
         });

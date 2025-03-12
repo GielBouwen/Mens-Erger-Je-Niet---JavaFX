@@ -160,9 +160,6 @@ public class Bord {
         return pionnenOpBord;
     }
 
-    public Pion getPionOpVeld(int positie){
-        return velden.get(positie);
-    }
 
     public void verplaatsPion(Pion pion, int dobbelsteenWorp){
         int huidigePositie = pion.getVeldNummer();
@@ -188,6 +185,8 @@ public class Bord {
 
         return huidigePositie + dobbelSteenWorp;
     }
+
+
 }
 
 

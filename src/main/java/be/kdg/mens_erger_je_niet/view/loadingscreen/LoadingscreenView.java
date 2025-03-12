@@ -18,9 +18,9 @@ public class LoadingscreenView extends BorderPane {
     private Button startButton;
     private ImageView mensErgerJeNietImage;
 
-    public LoadingscreenView(Main mainApp) {
+    public LoadingscreenView() {
         initializeNodes();
-        layoutNodes(mainApp);
+        layoutNodes();
     }
 
     private void initializeNodes() {
@@ -42,7 +42,7 @@ public class LoadingscreenView extends BorderPane {
         mensErgerJeNietImage.setPreserveRatio(true);
     }
 
-    private void layoutNodes(Main mainApp) {
+    private void layoutNodes() {
         VBox vbox = new VBox(20, mensErgerJeNietImage, mensErgerJeNiet, startButton);
         vbox.setAlignment(Pos.CENTER);
         this.setCenter(vbox);
