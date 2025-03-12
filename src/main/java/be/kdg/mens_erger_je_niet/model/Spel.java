@@ -58,6 +58,7 @@ public class Spel {
     }
 
     public void startSpel() {
+        bord = new Bord();
         maakSpelersAan();
         zetPionnenOpParkeerplaats();
         while (!eindigSpel) {
@@ -67,6 +68,12 @@ public class Spel {
     }
 
     private void zetPionnenOpParkeerplaats() {
+        for (int i = 0; i < 4; i++) {
+            bord.getParkeerVeldRood(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.ROOD)).getPion(i)); //i is de index voor het getal in de array. Het i'de element van het parkeerveld wordt gevuld met de i'de pion van de bijbehorende kleur
+            bord.getParkeerVeldGroen(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.GROEN)).getPion(i));
+            bord.getParkeerVeldGeel(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.GEEL)).getPion(i));
+            bord.getParkeerVeldBlauw(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.BLAUW)).getPion(i));
+        }
     }
 
     public void eindigSpel(){
@@ -164,6 +171,19 @@ public class Spel {
 
     public List<Speler> getSpelers() {
         return spelers;
+    }
+
+    public Speler getSpeler(int index){
+        return spelers.get(index);
+    }
+
+    public int getSpelerIdDoorKleur(Kleur kleur) {
+        for (Speler speler : spelers) {
+            if (speler.getKleur().equals(kleur)) {
+                return speler.getSpelerId();
+            }
+        }
+        throw new IllegalArgumentException("Geen speler gevonden met kleur: " + kleur);
     }
 
     public NewGameView getNewGameView() {

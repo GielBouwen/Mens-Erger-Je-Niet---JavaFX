@@ -186,7 +186,34 @@ public class Bord {
         return huidigePositie + dobbelSteenWorp;
     }
 
+    public List<Veld> getParkeerVeldenRood() {
+        return parkeerVeldenRood;
+    }
 
+    public List<Veld> getParkeerVeldenGroen() {
+        return parkeerVeldenGroen;
+    }
+
+    public List<Veld> getParkeerVeldenGeel() {
+        return parkeerVeldenGeel;
+    }
+
+    public List<Veld> getParkeerVeldenBlauw() {
+        return parkeerVeldenBlauw;
+    }
+
+    public Veld getParkeerVeldRood(int index){
+        return parkeerVeldenRood.get(index);
+    }
+    public Veld getParkeerVeldGroen(int index){
+        return parkeerVeldenGroen.get(index);
+    }
+    public Veld getParkeerVeldGeel(int index){
+        return parkeerVeldenGeel.get(index);
+    }
+    public Veld getParkeerVeldBlauw(int index){
+        return parkeerVeldenBlauw.get(index);
+    }
 }
 
 
