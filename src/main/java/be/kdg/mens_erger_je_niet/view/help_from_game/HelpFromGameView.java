@@ -12,6 +12,7 @@ public class HelpFromGameView extends BorderPane {
     public HelpFromGameView() {
         this.initialiseNodes();
         this.layoutNodes();
+
     }
 
     private void initialiseNodes() {

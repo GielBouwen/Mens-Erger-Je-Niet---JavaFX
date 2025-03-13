@@ -34,6 +34,7 @@ public class PlayboardPresenter {
         this.view = view;
         this.model = model;
         this.addEventHandlers();
+
         initialiseerPionnen();
     }
 
@@ -147,43 +148,13 @@ public class PlayboardPresenter {
     }
 
     private void initialiseerPionnen() {
-        // Lijst van spelers ophalen
-        List<Speler> spelers = model.getSpelers(); // Haal de lijst van spelers via de controller
+        List<Speler> spelers = model.getSpelers();
         Bord bord = model.getBord();
 
-        // Loop door elke speler en zet hun pionnen op het bord
         for (Speler speler : spelers) {
-            List<Pion> pionnen = speler.getPionnen();
-
-            // Zet pionnen op de juiste startposities
-            for (int i = 0; i < pionnen.size(); i++) {
-                Pion pion = pionnen.get(i);
-                int startRij = -1;
-                int startKolom = -1;
-
-                // Afhankelijk van de kleur van de speler, geef een andere startpositie
-                switch (speler.getKleur()) {
-                    case BLAUW:
-                        startRij = i < 2 ? 0 : 1;
-                        startKolom = i % 2 == 0 ? 0 : 1;
-                        break;
-                    case GEEL:
-                        startRij = i < 2 ? 0 : 1;
-                        startKolom = i % 2 == 0 ? 13 : 14;
-                        break;
-                    case ROOD:
-                        startRij = i < 2 ? 13 : 14;
-                        startKolom = i % 2 == 0 ? 0 : 1;
-                        break;
-                    case GROEN:
-                        startRij = i < 2 ? 13 : 14;
-                        startKolom = i % 2 == 0 ? 13 : 14;
-                        break;
-                }
-
-                // Zet de pion op het bord op de juiste startpositie
-                bord.zetPionOpBord(pion, startRij, startKolom);
-                view.plaatsPionOpBord(pion); // Plaats de pion visueel op het bord
+            for (Pion pion : speler.getPionnen()) {
+                bord.plaatsPionOpStartPositie(pion); // Model bepaalt de startpositie
+                view.plaatsPionOpBord(pion); // View plaatst de pion visueel
             }
         }
     }

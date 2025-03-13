@@ -21,6 +21,8 @@ public class HelpView extends BorderPane {
     public HelpView() {
         initializeNodes();
         layoutNodes();
+        this.setPrefSize(1280, 800);
+
     }
 
     private void initializeNodes() {

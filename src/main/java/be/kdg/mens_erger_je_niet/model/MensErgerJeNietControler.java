@@ -33,7 +33,9 @@ public class MensErgerJeNietControler {
         return spelers;
     }
 
-    public void load(String filename) throws MensErgerJeNietException {
+    /* public void load(String filename) throws MensErgerJeNietException {
      this.spel = MensErgerJeNietFileManagement.load(filename);
     }
+
+     */
 }

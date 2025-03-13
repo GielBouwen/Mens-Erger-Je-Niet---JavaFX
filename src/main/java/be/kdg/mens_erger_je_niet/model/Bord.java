@@ -161,7 +161,7 @@ public class Bord {
     }
 
 
-    public void verplaatsPion(Pion pion, int dobbelsteenWorp){
+   /* public void verplaatsPion(Pion pion, int dobbelsteenWorp){
         int huidigePositie = pion.getVeldNummer();
         int nieuwePositie = berekenNieuwePositie(pion, dobbelsteenWorp);
 
@@ -180,11 +180,43 @@ public class Bord {
 
         System.out.println("Pion " + pion.getKleur() + " van " +pion.getEigenaar().getGebruikersnaam() + " staat nu op veld " + nieuwePositie);
     }
+
+    */
     public int berekenNieuwePositie(Pion pion, int dobbelSteenWorp){
         int huidigePositie = pion.getVeldNummer();
 
         return huidigePositie + dobbelSteenWorp;
     }
+
+    public void plaatsPionOpStartPositie(Pion pion) {
+        Speler speler = pion.getSpeler(); // Krijg de speler van de pion
+        int index = speler.getPionnen().indexOf(pion);
+
+        int startRij = -1;
+        int startKolom = -1;
+
+        switch (speler.getKleur()) {
+            case BLAUW:
+                startRij = index < 2 ? 0 : 1;
+                startKolom = index % 2 == 0 ? 0 : 1;
+                break;
+            case GEEL:
+                startRij = index < 2 ? 0 : 1;
+                startKolom = index % 2 == 0 ? 13 : 14;
+                break;
+            case ROOD:
+                startRij = index < 2 ? 13 : 14;
+                startKolom = index % 2 == 0 ? 0 : 1;
+                break;
+            case GROEN:
+                startRij = index < 2 ? 13 : 14;
+                startKolom = index % 2 == 0 ? 13 : 14;
+                break;
+        }
+
+        pion.setPositie(startRij, startKolom);  // Update pion positie
+    }
+
 
     public List<Veld> getParkeerVeldenRood() {
         return parkeerVeldenRood;

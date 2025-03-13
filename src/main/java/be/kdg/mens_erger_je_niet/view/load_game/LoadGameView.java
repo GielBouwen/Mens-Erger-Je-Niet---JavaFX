@@ -19,6 +19,8 @@ public class LoadGameView extends BorderPane {
     public LoadGameView() {
         initializeNodes();
         layoutNodes();
+        this.setPrefSize(1280, 800);
+
     }
 
     private void initializeNodes(){

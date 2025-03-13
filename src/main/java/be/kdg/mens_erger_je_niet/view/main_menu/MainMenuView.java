@@ -19,6 +19,8 @@ public class MainMenuView extends BorderPane {
     public MainMenuView() {
         initializeNodes();
         layoutNodes();
+        this.setPrefSize(1280, 800);
+
     }
 
     private void initializeNodes() {

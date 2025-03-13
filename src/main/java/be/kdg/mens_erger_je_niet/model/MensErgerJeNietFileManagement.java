@@ -15,7 +15,6 @@ public class MensErgerJeNietFileManagement {
     public static void save(String filename, Spel spel) throws MensErgerJeNietException {
         try {
             DataOutputStream stream = new DataOutputStream(new FileOutputStream(filename));
-            stream.writeInt(spel.getSpelerTeller());
             stream.writeInt(spel.getAantalBeurten());
 
             List<Speler> spelers = spel.getSpelers();
@@ -34,7 +33,7 @@ public class MensErgerJeNietFileManagement {
 
     }
 
-    public static Spel load(String filename) throws MensErgerJeNietException {
+    /* public static Spel load(String filename) throws MensErgerJeNietException {
         try (DataInputStream stream = new DataInputStream(new FileInputStream(filename))) {
             int spelerTeller = stream.readInt();
             LocalDateTime datum = LocalDateTime.parse(stream.readUTF());
@@ -45,7 +44,6 @@ public class MensErgerJeNietFileManagement {
             int aantalBeurten = stream.readInt();
 
             Spel spel = new Spel(null);
-            spel.setSpelerTeller(spelerTeller);
             spel.setAantalBeurten(aantalBeurten);
 
             int aantalSpelers = stream.readInt();
@@ -70,4 +68,6 @@ public class MensErgerJeNietFileManagement {
             throw new MensErgerJeNietException("Fout bij het inladen van " + filename, e);
         }
     }
+
+     */
 }

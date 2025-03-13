@@ -21,6 +21,8 @@ public class LoadingscreenView extends BorderPane {
     public LoadingscreenView() {
         initializeNodes();
         layoutNodes();
+        this.setPrefSize(1280, 800);
+
     }
 
     private void initializeNodes() {

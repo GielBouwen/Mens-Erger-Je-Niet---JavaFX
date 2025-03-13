@@ -26,6 +26,8 @@ public class PlayboardView extends BorderPane {
     public PlayboardView() {
         initializeNodes();
         layoutNodes();
+        this.setPrefSize(1280, 800);
+
     }
 
     private void initializeNodes() {
