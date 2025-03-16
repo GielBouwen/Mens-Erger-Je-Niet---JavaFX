@@ -52,7 +52,7 @@ public class HelpView extends BorderPane {
 
     private void layoutNodes() {
 
-        //Titel toevoegen en layouten aan Vbox
+        //titel toevoegen en layout aan Vbox
         VBox title = new VBox(10, titleLabel);
         title.setPadding(new Insets(10));
         title.setAlignment(Pos.TOP_CENTER);

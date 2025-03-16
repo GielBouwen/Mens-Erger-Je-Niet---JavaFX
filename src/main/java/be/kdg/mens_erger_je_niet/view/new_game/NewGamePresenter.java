@@ -39,6 +39,16 @@ public class NewGamePresenter {
             }
         });
 
+        view.getCancelButton().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MainMenuView mainMenuView = new MainMenuView();
+                MainMenuPresenter mainMenuPresenter = new MainMenuPresenter(model, mainMenuView);
+                view.getScene().setRoot(mainMenuView);
+                mainMenuView.getScene().getWindow().sizeToScene();
+            }
+        });
+
         view.getCheckBoxGroen().setOnAction(event -> {
             if (view.getCheckBoxGroen().isSelected()) {
                 System.out.println("Groen is een CPU");

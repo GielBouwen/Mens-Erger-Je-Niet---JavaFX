@@ -3,7 +3,6 @@ package be.kdg.mens_erger_je_niet.model;
 import be.kdg.mens_erger_je_niet.Kleur;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +20,7 @@ public class MensErgerJeNietControler {
         this.huidigeSpelerIndex = 0;
     }
 
-    public void startSpel() {
-        if (spelers.isEmpty()) {
-            spelers.add(new Speler(Kleur.ROOD, 1, "Speler 1", false));
-            spelers.add(new Speler(Kleur.GROEN, 2, "Speler 2", false));
-        }
-        System.out.println("Spelers zijn toegevoegd: " + spelers.size());
-    }
+
 
 
     public Speler getHuidigeSpeler() {
