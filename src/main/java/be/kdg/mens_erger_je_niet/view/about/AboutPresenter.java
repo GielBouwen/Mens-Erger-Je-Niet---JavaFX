@@ -20,7 +20,7 @@ public class AboutPresenter {
 
 
     private void addEventHandlers() {
-        view.getGoBackButton().setOnAction(new EventHandler<ActionEvent>() {
+        view.getGoBackButton().setOnAction(new EventHandler<ActionEvent>() { //Ga terug naar Main Menu
             @Override
             public void handle(ActionEvent actionEvent) {
                 MainMenuView mainMenuView = new MainMenuView();

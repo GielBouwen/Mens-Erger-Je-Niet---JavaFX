@@ -17,7 +17,7 @@ public class LoadingscreenPresenter {
     }
 
     private void addEventHandlers() {
-        //Startknop
+        //Startknop, gaat naar Main Menu
         view.getStartButton().setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 MainMenuView mainMenuView = new MainMenuView();

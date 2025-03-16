@@ -19,7 +19,7 @@ public class HelpPresenter {
     }
 
     private void addEventHandlers() {
-        view.getGoBackButton().setOnAction(new EventHandler<ActionEvent>() {
+        view.getGoBackButton().setOnAction(new EventHandler<ActionEvent>() { //Ga terug naar Main Menu
             @Override
             public void handle(ActionEvent event) {
                 MainMenuView mainMenuView = new MainMenuView();

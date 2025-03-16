@@ -9,7 +9,7 @@ public class HelpFromGamePresenter {
         helpFromGameView.getBtnOkeekes().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                helpFromGameView.getScene().getWindow().hide();
+                helpFromGameView.getScene().getWindow().hide(); //Verberg scherm na klikken op "OK"
             }
         });
     }
