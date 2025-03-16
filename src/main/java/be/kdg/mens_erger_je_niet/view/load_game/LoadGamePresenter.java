@@ -39,7 +39,7 @@ public class LoadGamePresenter {
             }
         });
 
-        view.getLoadGameButton().setOnAction(new EventHandler<ActionEvent>() {
+        /* view.getLoadGameButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 FileChooser fileChooser = new FileChooser();
@@ -56,6 +56,8 @@ public class LoadGamePresenter {
 
             }
         });
+
+         */
     }
 }
 

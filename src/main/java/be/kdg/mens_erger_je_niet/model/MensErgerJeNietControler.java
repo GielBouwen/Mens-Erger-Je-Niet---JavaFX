@@ -55,32 +55,6 @@ public class MensErgerJeNietControler {
     }
 
 
-    public void load(String filePath) throws Exception {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
-            Spel geladenSpel = (Spel) ois.readObject();
-
-            this.spelers = geladenSpel.getSpelers();
-            this.bord = geladenSpel.getBord();
-            this.huidigeSpelerIndex = 0;
-
-            System.out.println("Spel succesvol geladen vanuit " + filePath);
-        } catch (IOException | ClassNotFoundException e) {
-            throw new Exception("Fout bij het laden van het spel: " + e.getMessage());
-        }
-    }
-
-   /*  public void loadGame(String filePath) throws Exception {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
-            Spel geladenSpel = (Spel) ois.readObject();
-            this.spel = geladenSpel;
-            updateView();
-
-            System.out.println("Spel succesvol geladen vanuit " + filePath);
-        } catch (IOException | ClassNotFoundException e) {
-            throw new Exception("Fout bij het laden van het spel: " + e.getMessage());
-        }
-    }
-    */
 
     public void verplaatsPion(Pion pion, int dobbelsteenWorp, int extraPositie) {
         int huidigePositie = pion.getVeldNummer();
