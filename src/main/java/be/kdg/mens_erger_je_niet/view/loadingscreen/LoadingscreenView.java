@@ -26,17 +26,20 @@ public class LoadingscreenView extends BorderPane {
     }
 
     private void initializeNodes() {
+        //Titel van het startup-scherm
         mensErgerJeNiet = new Label("MENS-ERGER-JE-NIET");
         mensErgerJeNiet.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 80));
         mensErgerJeNiet.setTextFill(Color.BLACK);
         mensErgerJeNiet.setPadding(new Insets(10, 10, 10, 10));
 
+        //Knop om het programma te laten starten
         startButton = new Button("Start het spel");
         startButton.setFont(Font.font("Arial", FontWeight.BOLD, 25));
         startButton.setTextFill(Color.WHITE);
         startButton.setBackground(new Background(new BackgroundFill(Color.GREEN, new CornerRadii(5), Insets.EMPTY)));
         startButton.setPadding(new Insets(10, 20, 10, 20));
 
+        //Afbeelding van het 'logo' van Ludo aka MensErgerJeNiet
         String imageUrl = "file:src/resources/Ludo Logo.jpg";
         Image mensErgerJeNietURL = new Image(imageUrl);
         mensErgerJeNietImage = new ImageView(mensErgerJeNietURL);
@@ -45,6 +48,7 @@ public class LoadingscreenView extends BorderPane {
     }
 
     private void layoutNodes() {
+        //Plaats de afbeelding, titel tekst en startbutton onder elkaar en plaats deze in het midden
         VBox vbox = new VBox(20, mensErgerJeNietImage, mensErgerJeNiet, startButton);
         vbox.setAlignment(Pos.CENTER);
         this.setCenter(vbox);

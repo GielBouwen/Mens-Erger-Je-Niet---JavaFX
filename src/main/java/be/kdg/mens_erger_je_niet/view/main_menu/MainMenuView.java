@@ -27,6 +27,7 @@ public class MainMenuView extends BorderPane {
         double radius = 125;
         double textSize = 30;
 
+        //Button om naar het scherm te gaan om een nieuw spel aan te maken
         newGame = new Button("Nieuw Spel");
         newGame.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         newGame.setTextFill(Color.WHITE);
@@ -36,6 +37,7 @@ public class MainMenuView extends BorderPane {
         newGame.setMinSize((radius * 2), (radius * 2));
         newGame.setMaxSize((radius * 2), (radius * 2));
 
+        //Button om naar het scherm te gaan om een spel te laden
         loadGame = new Button("Laad Spel");
         loadGame.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         loadGame.setTextFill(Color.WHITE);
@@ -45,6 +47,7 @@ public class MainMenuView extends BorderPane {
         loadGame.setMinSize((radius * 2), (radius * 2));
         loadGame.setMaxSize((radius * 2), (radius * 2));
 
+        //Button om naar het scherm te gaan van de spelregels
         help = new Button("Help");
         help.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         help.setTextFill(Color.WHITE);
@@ -54,6 +57,7 @@ public class MainMenuView extends BorderPane {
         help.setMinSize((radius * 2), (radius * 2));
         help.setMaxSize((radius * 2), (radius * 2));
 
+        //Button om naar het scherm te gaan van de informatie over de makers
         about = new Button("Over");
         about.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         about.setTextFill(Color.WHITE);
@@ -65,6 +69,7 @@ public class MainMenuView extends BorderPane {
     }
 
     private void layoutNodes() {
+        //Gridpane aanmaken om de knoppen in een vierkant te kunnen plaatsen
         GridPane mainMenuGrid = new GridPane();
         mainMenuGrid.setHgap(50);
         mainMenuGrid.setVgap(50);

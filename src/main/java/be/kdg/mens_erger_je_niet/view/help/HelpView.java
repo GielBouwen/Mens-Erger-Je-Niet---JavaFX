@@ -26,15 +26,18 @@ public class HelpView extends BorderPane {
     }
 
     private void initializeNodes() {
+        //Titel
         titleLabel = new Label("HELP");
         titleLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
 
+        //Knop om terug te kunnen navigeren naar Main Menu
         GoBackButton = new Button("Ga terug");
         GoBackButton.setFont(Font.font("Tohoma", FontWeight.NORMAL, 30));
         GoBackButton.setTextFill(Color.WHITE);
         GoBackButton.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(125), Insets.EMPTY)));
         GoBackButton.setPadding(new Insets(20));
 
+        //Inhoud van de spelregels-tekst
         Text AboutText = new Text("Het doel van Mens-Erger-Je-Niet is om al je pionnen van de startpositie naar de " +
                 "thuis-positie te bewegen. Het spel wordt gespeeld met 2 tot 4 spelers, elk met 4 pionnen van een eigen " +
                 "kleur. Je begint door een 6 te gooien om een pion uit de startpositie te halen. Daarna beweeg je je " +
@@ -48,19 +51,23 @@ public class HelpView extends BorderPane {
     }
 
     private void layoutNodes() {
+
+        //Titel toevoegen en layouten aan Vbox
         VBox title = new VBox(10, titleLabel);
         title.setPadding(new Insets(10));
         title.setAlignment(Pos.TOP_CENTER);
 
+        //Inhoud toevoegen en layouten aan Vbox
         VBox content = new VBox(10, aboutTextFlow);
         content.setPadding(new Insets(10));
         content.setAlignment(Pos.CENTER);
 
+        //goBackButton toevoegen en layouten aan Vbox
         VBox goBackButton = new VBox(10, GoBackButton);
         goBackButton.setPadding(new Insets(10));
         goBackButton.setAlignment(Pos.CENTER);
 
-
+        //Titel, inhoud en goBackButton onder elkaar plaatsen
         this.setTop(title);
         this.setCenter(content);
         this.setBottom(goBackButton);
