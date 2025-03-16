@@ -54,7 +54,7 @@ public class MensErgerJeNietFileManagement {
                 String naam = stream.readUTF();
                 boolean isCPU = stream.readBoolean();
 
-                Speler speler = new Speler(kleur, i + 1, naam);
+                Speler speler = new Speler(kleur, i + 1, naam, isCPU);
                 spelers.add(speler);
                 speler.setCPU(isCPU);
             }

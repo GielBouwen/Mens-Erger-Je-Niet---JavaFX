@@ -1,5 +1,7 @@
 package be.kdg.mens_erger_je_niet.model;
 
+import be.kdg.mens_erger_je_niet.Kleur;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,126 +18,38 @@ public class Bord {
     private List<Veld> parkeerVeldenGeel = new ArrayList<>();
     private List<Veld> parkeerVeldenBlauw = new ArrayList<>();
     private Map<Integer, Pion> pionnenOpBord = new HashMap<>();
+    private Map<Integer, Pion> velden = new HashMap<>();
 
-
+    // Gebruik een 2D-array voor het bord
+    private Veld[][] bord = new Veld[15][15]; // Aanpassen afhankelijk van je bordgrootte
 
     public Bord() {
-            // Initialiseer gewone velden
-        gewoneVelden.add(new Veld(8, 0, 0, null)); //Beginvakje Rood
-        gewoneVelden.add(new Veld(8, 1, 1, null));
-        gewoneVelden.add(new Veld(8, 2, 2, null));
-        gewoneVelden.add(new Veld(8, 3, 3, null));
-        gewoneVelden.add(new Veld(8, 4, 4, null));
-        gewoneVelden.add(new Veld(8, 5, 5, null));
-        gewoneVelden.add(new Veld(8, 6, 6, null));
-        gewoneVelden.add(new Veld(9, 6, 7, null));
-        gewoneVelden.add(new Veld(10, 6, 8, null));
-        gewoneVelden.add(new Veld(11, 6, 9, null));
-        gewoneVelden.add(new Veld(12, 6, 10, null));
-        gewoneVelden.add(new Veld(13, 6, 11, null));
-        gewoneVelden.add(new Veld(14, 6, 12, null));
-        gewoneVelden.add(new Veld(14, 7, 13, null));
-        gewoneVelden.add(new Veld(14, 8, 14, null)); //Beginvakje Groen
-        gewoneVelden.add(new Veld(13, 8, 15, null));
-        gewoneVelden.add(new Veld(12, 8, 16, null));
-        gewoneVelden.add(new Veld(11, 8, 17, null));
-        gewoneVelden.add(new Veld(10, 8, 18, null));
-        gewoneVelden.add(new Veld(9, 8, 19, null));
-        gewoneVelden.add(new Veld(8, 8, 20, null));
-        gewoneVelden.add(new Veld(8, 9, 21, null));
-        gewoneVelden.add(new Veld(8, 10, 22, null));
-        gewoneVelden.add(new Veld(8, 11, 23, null));
-        gewoneVelden.add(new Veld(8, 12, 24, null));
-        gewoneVelden.add(new Veld(8, 13, 25, null));
-        gewoneVelden.add(new Veld(8, 14, 26, null));
-        gewoneVelden.add(new Veld(7, 14, 27, null));
-        gewoneVelden.add(new Veld(6, 14, 28, null)); //Beginvakje Geel
-        gewoneVelden.add(new Veld(6, 13, 29, null));
-        gewoneVelden.add(new Veld(6, 12, 30, null));
-        gewoneVelden.add(new Veld(6, 11, 31, null));
-        gewoneVelden.add(new Veld(6, 10, 32, null));
-        gewoneVelden.add(new Veld(6, 9, 33, null));
-        gewoneVelden.add(new Veld(6, 8, 34, null));
-        gewoneVelden.add(new Veld(5, 8, 35, null));
-        gewoneVelden.add(new Veld(4, 8, 36, null));
-        gewoneVelden.add(new Veld(3, 8, 37, null));
-        gewoneVelden.add(new Veld(2, 8, 38, null));
-        gewoneVelden.add(new Veld(1, 8, 39, null));
-        gewoneVelden.add(new Veld(0, 8, 40, null));
-        gewoneVelden.add(new Veld(0, 7, 41, null));
-        gewoneVelden.add(new Veld(0, 6, 42, null)); //Beginvakje Blauw
-        gewoneVelden.add(new Veld(1, 6, 43, null));
-        gewoneVelden.add(new Veld(2, 6, 44, null));
-        gewoneVelden.add(new Veld(3, 6, 45, null));
-        gewoneVelden.add(new Veld(4, 6, 46, null));
-        gewoneVelden.add(new Veld(5, 6, 47, null));
-        gewoneVelden.add(new Veld(6, 6, 48, null));
-        gewoneVelden.add(new Veld(6, 5, 49, null));
-        gewoneVelden.add(new Veld(6, 4, 50, null));
-        gewoneVelden.add(new Veld(6, 3, 51, null));
-        gewoneVelden.add(new Veld(6, 2, 52, null));
-        gewoneVelden.add(new Veld(6, 1, 53, null));
-        gewoneVelden.add(new Veld(6, 0, 54, null));
-        gewoneVelden.add(new Veld(7, 0, 55, null));
+        // Initialiseer velden en bord
+        // Voeg velden toe aan de arrays, bijvoorbeeld:
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                bord[i][j] = new Veld(i, j, i * 15 + j, null); // Veld initialisatie (pas aan naar jouw bordregels)
+            }
+        }
 
-            // Initialiseer eindvelden
-        //KLAAR
-        eindVeldenRood.add(new Veld(7, 1, 56, null));
-        eindVeldenRood.add(new Veld(7, 2, 57, null));
-        eindVeldenRood.add(new Veld(7, 3, 58, null));
-        eindVeldenRood.add(new Veld(7, 4, 59, null));
-        eindVeldenRood.add(new Veld(7, 5, 60, null));
-        eindVeldenRood.add(new Veld(7, 6, 61, null));
-
-        //KLAAR
-        eindVeldenGroen.add(new Veld(8, 7, 62, null));
-        eindVeldenGroen.add(new Veld(9, 7, 63, null));
-        eindVeldenGroen.add(new Veld(10, 7, 64, null));
-        eindVeldenGroen.add(new Veld(11, 7, 65, null));
-        eindVeldenGroen.add(new Veld(12, 7, 66, null));
-        eindVeldenGroen.add(new Veld(13, 7, 67, null));
-
-
-        //inProgress
-        eindVeldenGeel.add(new Veld(7, 8, 68, null));
-        eindVeldenGeel.add(new Veld(7, 9, 69, null));
-        eindVeldenGeel.add(new Veld(7, 10, 70, null));
-        eindVeldenGeel.add(new Veld(7, 11, 71, null));
-        eindVeldenGeel.add(new Veld(7, 12, 72, null));
-        eindVeldenGeel.add(new Veld(7, 13, 73, null));
-
-        eindVeldenBlauw.add(new Veld(1, 7, 74, null));
-        eindVeldenBlauw.add(new Veld(2, 7, 75, null));
-        eindVeldenBlauw.add(new Veld(3, 7, 76, null));
-        eindVeldenBlauw.add(new Veld(4, 7, 77, null));
-        eindVeldenBlauw.add(new Veld(5, 7, 78, null));
-        eindVeldenBlauw.add(new Veld(6, 7, 79, null));
-
-
-
-        // Initialiseer parkeervelden
-        parkeerVeldenRood.add(new Veld(13, 13, 80, null));
-        parkeerVeldenRood.add(new Veld(13, 14, 81, null));
-        parkeerVeldenRood.add(new Veld(14, 13, 82, null));
-        parkeerVeldenRood.add(new Veld(14, 14, 83, null));
-
-        parkeerVeldenGroen.add(new Veld(13, 13, 84, null));
-        parkeerVeldenGroen.add(new Veld(13, 14, 85, null));
-        parkeerVeldenGroen.add(new Veld(14, 13, 86, null));
-        parkeerVeldenGroen.add(new Veld(14, 14, 87, null));
-
-        parkeerVeldenGeel.add(new Veld(0, 13, 88, null));
-        parkeerVeldenGeel.add(new Veld(0, 14, 89, null));
-        parkeerVeldenGeel.add(new Veld(1, 13, 90, null));
-        parkeerVeldenGeel.add(new Veld(1, 14, 91, null));
-
-        parkeerVeldenBlauw.add(new Veld(0, 0, 92, null));
-        parkeerVeldenBlauw.add(new Veld(0, 1, 93, null));
-        parkeerVeldenBlauw.add(new Veld(1, 0, 94, null));
-        parkeerVeldenBlauw.add(new Veld(1, 1, 95, null));
-
+        // Initialiseer gewone velden, parkeer velden, eind velden enz.
+        // Dit kun je doen op basis van de specificaties van je bord
     }
 
+    public void updatePionPosition(Pion pion, int nieuwePositie) {
+        int row = nieuwePositie / 15;  // Bereken de rij op basis van de positie
+        int col = nieuwePositie % 15;  // Bereken de kolom op basis van de positie
+
+        // Verwijder de pion van de huidige plaats
+        velden.remove(pion.getVeldNummer());  // Verwijder de pion uit de velden map
+
+        // Zet de pion op de nieuwe positie
+        bord[row][col].setPion(pion);  // Dit werkt omdat we het bord als een 2D-array hebben
+
+        // Zet de pion in de velden map met de nieuwe positie
+        pion.setAantalVakjesVer(nieuwePositie); // Verander het veldnummer van de pion
+        velden.put(nieuwePositie, pion);
+    }
 
     public boolean zetPionOpBord(Pion pion, int rij, int kolom) {
         if (isBezet(rij, kolom)) {
@@ -160,63 +74,30 @@ public class Bord {
         return pionnenOpBord;
     }
 
-
-   /* public void verplaatsPion(Pion pion, int dobbelsteenWorp){
+    public void verplaatsPion(Pion pion, int dobbelsteenWorp) {
         int huidigePositie = pion.getVeldNummer();
         int nieuwePositie = berekenNieuwePositie(pion, dobbelsteenWorp);
 
-        pion.setAantalVakjesVer(pion.getAantalVakjesVer()+dobbelsteenWorp); //Verandert het aantalvakjesver van de pion. Wordt gebruikt om einde te kunnen controleren
+        pion.setAantalVakjesVer(pion.getAantalVakjesVer() + dobbelsteenWorp); // Verandert het aantal vakjes van de pion.
 
-        Pion bestaandePion = velden.get(nieuwePositie); //Haalt de pion die al staat op de locatie waar de huidige pion naartoe gaat
-        if(bestaandePion != null){ //Als de nieuwe positie bezet is, wordt er geslagen
-            System.out.println("Pion" + bestaandePion.getKleur() + " van " + bestaandePion.getEigenaar().getGebruikersnaam() + " wordt geslagen!");
-            bestaandePion.setAantalVakjesVer(-1); //Zet geslagen pion naar start
-            velden.remove(nieuwePositie); //Haalt pion weg uit de hashmap
+        Pion bestaandePion = velden.get(nieuwePositie); // Haalt de pion die al staat op de locatie waar de huidige pion naartoe gaat.
+        if (bestaandePion != null) { // Als de nieuwe positie bezet is, wordt er geslagen.
+            System.out.println("Pion " + bestaandePion.getKleur() + " van " + bestaandePion.getEigenaar().getGebruikersnaam() + " wordt geslagen!");
+            bestaandePion.setAantalVakjesVer(-1); // Zet geslagen pion naar start
+            velden.remove(nieuwePositie); // Haalt pion weg uit de hashmap
         }
 
-        velden.remove(huidigePositie); //Haalt pion weg van de huidige positie
-        pion.setAantalVakjesVer(nieuwePositie); //Verplaatst de pion naar de nieuwe positie
-        velden.put(nieuwePositie, pion); //Plaatst de pion terug in de map met de nieuwe positie
+        velden.remove(huidigePositie); // Haalt pion weg van de huidige positie
+        pion.setAantalVakjesVer(nieuwePositie); // Verplaatst de pion naar de nieuwe positie
+        velden.put(nieuwePositie, pion); // Plaatst de pion terug in de map met de nieuwe positie
 
-        System.out.println("Pion " + pion.getKleur() + " van " +pion.getEigenaar().getGebruikersnaam() + " staat nu op veld " + nieuwePositie);
+        System.out.println("Pion " + pion.getKleur() + " van " + pion.getEigenaar().getGebruikersnaam() + " staat nu op veld " + nieuwePositie);
     }
 
-    */
-    public int berekenNieuwePositie(Pion pion, int dobbelSteenWorp){
+    public int berekenNieuwePositie(Pion pion, int dobbelSteenWorp) {
         int huidigePositie = pion.getVeldNummer();
-
         return huidigePositie + dobbelSteenWorp;
     }
-
-    public void plaatsPionOpStartPositie(Pion pion) {
-        Speler speler = pion.getSpeler(); // Krijg de speler van de pion
-        int index = speler.getPionnen().indexOf(pion);
-
-        int startRij = -1;
-        int startKolom = -1;
-
-        switch (speler.getKleur()) {
-            case BLAUW:
-                startRij = index < 2 ? 0 : 1;
-                startKolom = index % 2 == 0 ? 0 : 1;
-                break;
-            case GEEL:
-                startRij = index < 2 ? 0 : 1;
-                startKolom = index % 2 == 0 ? 13 : 14;
-                break;
-            case ROOD:
-                startRij = index < 2 ? 13 : 14;
-                startKolom = index % 2 == 0 ? 0 : 1;
-                break;
-            case GROEN:
-                startRij = index < 2 ? 13 : 14;
-                startKolom = index % 2 == 0 ? 13 : 14;
-                break;
-        }
-
-        pion.setPositie(startRij, startKolom);  // Update pion positie
-    }
-
 
     public List<Veld> getParkeerVeldenRood() {
         return parkeerVeldenRood;
@@ -234,17 +115,56 @@ public class Bord {
         return parkeerVeldenBlauw;
     }
 
-    public Veld getParkeerVeldRood(int index){
+    public Veld getParkeerVeldRood(int index) {
         return parkeerVeldenRood.get(index);
     }
-    public Veld getParkeerVeldGroen(int index){
+
+    public Veld getParkeerVeldGroen(int index) {
         return parkeerVeldenGroen.get(index);
     }
-    public Veld getParkeerVeldGeel(int index){
+
+    public Veld getParkeerVeldGeel(int index) {
         return parkeerVeldenGeel.get(index);
     }
-    public Veld getParkeerVeldBlauw(int index){
+
+    public Veld getParkeerVeldBlauw(int index) {
         return parkeerVeldenBlauw.get(index);
+    }
+
+    public Veld getVeld(int rij, int kolom) {
+        return bord[rij][kolom];
+    }
+
+    // Functie om de pion op de startpositie te plaatsen
+    public void plaatsPionOpStartPositie(Pion pion) {
+        // Hier bepalen we de startpositie voor de pion op basis van zijn kleur of speler
+        // Dit is een vereenvoudigde versie, je kunt de startpositie aanpassen afhankelijk van de regels
+        int startPositie = bepaalStartPositie(pion);
+
+        // Zet de pion op de startpositie
+        pion.setVeldNummer(startPositie);
+
+        // Voeg de pion toe aan de lijst van pionnen op het bord
+        pionnenOpBord.put(pion.getPionId(), pion);
+
+        System.out.println("Pion " + pion.getKleur() + " van speler " + pion.getEigenaar().getGebruikersnaam() + " is geplaatst op startpositie: " + startPositie);
+    }
+
+    // Functie om te bepalen op welke startpositie de pion moet beginnen (afhankelijk van de kleur of speler)
+    private int bepaalStartPositie(Pion pion) {
+        // Stel voor dat elke speler een andere startpositie heeft op het bord
+        if (pion.getKleur() == Kleur.ROOD) {
+            return 1;  // Startpositie voor rood
+        } else if (pion.getKleur() == Kleur.GROEN) {
+            return 10;  // Startpositie voor groen
+        } else if (pion.getKleur() == Kleur.BLAUW) {
+            return 20;  // Startpositie voor blauw
+        } else if (pion.getKleur() == Kleur.GEEL) {
+            return 30;  // Startpositie voor geel
+        }
+
+        // Defaultwaarde als er een onbekende kleur is
+        return 0;
     }
 }
 

@@ -26,36 +26,47 @@ public class Spel {
     public void maakSpelersAan() {
         //Maakt spelers aan
         int index = 0;
-        if(newGameView.getVulNaamGroenIn() != null){
+        if (newGameView.getVulNaamGroenIn() != null) {
             index++;
             spelers.add(new Speler(Kleur.GROEN, index, newGameView.getVulNaamGroenIn().getText(), newGameView.getCheckBoxGroen().isSelected()));
         }
-        if(newGameView.getVulNaamGeelIn() != null){
+        if (newGameView.getVulNaamGeelIn() != null) {
             index++;
             spelers.add(new Speler(Kleur.GEEL, index, newGameView.getVulNaamGeelIn().getText(), newGameView.getCheckBoxGeel().isSelected()));
         }
-        if(newGameView.getVulNaamBlauwIn() != null){
+        if (newGameView.getVulNaamBlauwIn() != null) {
             index++;
             spelers.add(new Speler(Kleur.BLAUW, index, newGameView.getVulNaamBlauwIn().getText(), newGameView.getCheckBoxBlauw().isSelected()));
         }
-        if(newGameView.getVulNaamRoodIn() != null){
+        if (newGameView.getVulNaamRoodIn() != null) {
             index++;
             spelers.add(new Speler(Kleur.ROOD, index, newGameView.getVulNaamRoodIn().getText(), newGameView.getCheckBoxRood().isSelected()));
         }
         huidigeSpeler = spelers.get(beurtIndex);
-        if(index <= 1){
+        if (index <= 1) {
             throw new IllegalArgumentException("Vul de velden in voor minstens 2 kleuren");
         }
     }
 
+    public Bord getBord() {
+        return bord;  // Dit moet een Bord-object retourneren
+    }
 
 
-
-    public void pauzeerSpel(boolean pauzeerSpel){
-        if (pauzeerSpel){
+    public void pauzeerSpel(boolean pauzeerSpel) {
+        if (pauzeerSpel) {
             //Game wordt opgeslagen (er wordt als het ware een soort van snapshot gemaakt) en vervolgens gesloten. Je kan het na het sluiten terug herstarten.
         }
     }
+
+    public void setSpelerTeller(int spelerTeller) {
+        // Mogelijke implementatie:
+        // spelerTeller kan bijvoorbeeld het aantal spelers voorstellen.
+        if (spelerTeller >= 0) {
+            this.spelers = new ArrayList<>(spelerTeller);
+        }
+    }
+
 
     public void startSpel() {
         bord = new Bord();
@@ -69,28 +80,29 @@ public class Spel {
 
     private void zetPionnenOpParkeerplaats() {
         for (int i = 0; i < 4; i++) {
-            bord.getParkeerVeldRood(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.ROOD)).getPion(i)); //i is de index voor het getal in de array. Het i'de element van het parkeerveld wordt gevuld met de i'de pion van de bijbehorende kleur
+            bord.getParkeerVeldRood(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.ROOD)).getPion(i));
             bord.getParkeerVeldGroen(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.GROEN)).getPion(i));
             bord.getParkeerVeldGeel(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.GEEL)).getPion(i));
             bord.getParkeerVeldBlauw(i).setPionAlInVeld(getSpeler(getSpelerIdDoorKleur(Kleur.BLAUW)).getPion(i));
         }
     }
 
-    public void eindigSpel(){
+
+    public void eindigSpel() {
         eindigSpel = true;
     }
 
     public void veranderBeurt() {
         beurtIndex = (beurtIndex + 1) % spelers.size();
         huidigeSpeler = spelers.get(beurtIndex);
-        if((beurtIndex + 1) % spelers.size() == 0){
+        if ((beurtIndex + 1) % spelers.size() == 0) {
             aantalBeurten++;
         }
         System.out.println("Beurt " + aantalBeurten + " is nu aan " + huidigeSpeler.getGebruikersnaam());
     }
 
-    public void speelBeurt(){
-        System.out.println(huidigeSpeler.getGebruikersnaam()+ " begint zijn beurt.");
+    public void speelBeurt() {
+        System.out.println(huidigeSpeler.getGebruikersnaam() + " begint zijn beurt.");
 
         dobbelsteen.werp();
         int worp = dobbelsteen.getAantalOgen();
@@ -105,21 +117,20 @@ public class Spel {
         controleerOfSpelerGewonnenHeeft(huidigeSpeler); //Done
     }
 
-    public void verplaatsPion(int pionId, int dobbelsteenWorp){ //Verplaatst de pion van kleur met id met 1 vakje
-        Pion pion = huidigeSpeler.getPionnen(huidigeSpeler, pionId);
+    public void verplaatsPion(int pionId, int dobbelsteenWorp) {
+        Pion pion = huidigeSpeler.getPionnen().get(pionId);
         bord.verplaatsPion(pion, dobbelsteenWorp);
 
-        if(pion.getAantalVakjesVer() >= 56){
+        if (pion.getAantalVakjesVer() >= 56) {
             pion.setGefinished(true);
         }
-       /*bord.verplaatsPion(getSpelerAanBeurt().getPion(getSpelerAanBeurt(), pionId), dobbelsteenWorp); //Verplaatst de pion
-
-        if(getSpelerAanBeurt().getPion(getSpelerAanBeurt(), pionId).getAantalVakjesVer() >= 56){ //Controleert of de pion het einde heeft gehaald
-            getSpelerAanBeurt().getPion(getSpelerAanBeurt(),pionId).setGefinished(true); //Zet de pion op gefinished
-            getSpelerAanBeurt().aantalPionnenInSpel -= 1; //Verlaagt de pionnen van de speler met 1
-            getSpelerAanBeurt().aantalPionnenUitgespeeld += 1; //Verhoogt de uitgespeelde pionnen met 1
-        }*/
     }
+
+
+    public int getSpelerTeller() {
+        return spelers.size(); // Of een andere manier om de speler teller te bepalen
+    }
+
 
     /*public void zetPionOpVeld(Kleur kleur, int id){  //Zet de pion op het beginvakje van de juiste kleur, gekozen pion mag niet al op het veld of gefinished staan
         //zoekPion(getSpelerKleur(), id).plaatsOpStartpositie(rij, kolom);
@@ -144,16 +155,16 @@ public class Spel {
         }
         //if(getSpelerAanBeurt().getPion().getAantalVakjesVer());
     }*/
-    public boolean controleerOfSpelerGewonnenHeeft(Speler speler){
-        if(speler.getAantalPionnenUitgespeeld() == 4){
+    public boolean controleerOfSpelerGewonnenHeeft(Speler speler) {
+        if (speler.getAantalPionnenUitgespeeld() == 4) {
             eindigSpel = true;
-            eindigSpel(); //Roept methode eindigSpel op. Het spel wordt geëindigd
+            eindigSpel(); //Roept methode eindigSpel op. Het spel wordt geÃ«indigd
         }
         return eindigSpel;
     }
 
-    public Pion kiesPion(int pionId){
-       return huidigeSpeler.getPion(pionId);
+    public Pion kiesPion(int pionId) {
+        return huidigeSpeler.getPion(pionId);
     }
 
     public Kleur getSpelerKleur() {
@@ -173,7 +184,7 @@ public class Spel {
         return spelers;
     }
 
-    public Speler getSpeler(int index){
+    public Speler getSpeler(int index) {
         return spelers.get(index);
     }
 

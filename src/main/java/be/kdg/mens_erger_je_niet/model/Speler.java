@@ -67,6 +67,8 @@ public class Speler {
 
     */
 
+
+
     public int getAantalPionnenInStart() {
         return aantalPionnenInStart;
     }

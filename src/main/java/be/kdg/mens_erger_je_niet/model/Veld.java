@@ -44,4 +44,7 @@ public class Veld {
     public void setKolom(int kolom) {
         this.kolom = kolom;
     }
+
+    public void setPion(Pion pion) {
+    }
 }
