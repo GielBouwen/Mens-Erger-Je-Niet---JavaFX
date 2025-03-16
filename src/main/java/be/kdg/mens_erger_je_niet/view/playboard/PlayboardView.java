@@ -16,7 +16,6 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 
 public class PlayboardView extends BorderPane {
-    private Button spelregelsButton;
     private Button stopGame;
     private Button pauseGame;
     private GridPane speelbord;

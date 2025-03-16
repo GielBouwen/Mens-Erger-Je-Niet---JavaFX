@@ -33,7 +33,7 @@ public class MovementManager {
 
         //controle ofdat niewe positie op het bord is.
         if (nieuweRij < 0 || nieuweRij >= PlayboardView.SPEELBORD_SIZE || nieuweKolom < 0 || nieuweKolom >= PlayboardView.SPEELBORD_SIZE) {
-            System.err.println("Invalid position: " + nieuweRij + ", " + nieuweKolom);
+            System.err.println("Niet valide: " + nieuweRij + ", " + nieuweKolom);
             return;
         }
 
@@ -49,6 +49,5 @@ public class MovementManager {
 
     public void placePionOnBoard(Pion pion) {
         // Plaats pion op het bord op basis van de kleur en de startpositie
-        // Gebruik logic zoals beschreven in de PlayboardView
     }
 }

@@ -1,18 +1,15 @@
 package be.kdg.mens_erger_je_niet.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 
 import be.kdg.mens_erger_je_niet.Kleur;
-import be.kdg.mens_erger_je_niet.model.Pion;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 
 public class Spel {
-    private int aantalSpelers;
     private int beurtIndex; //houdt bij wie er aan de beurt is.
     private Dobbelsteen dobbelsteen;
-    private int aantalBeurten = 1; //
+    private int aantalBeurten = 1;
     private Speler huidigeSpeler;
     private List<Speler> spelers = new ArrayList<>();
     private NewGameView newGameView;
@@ -51,15 +48,6 @@ public class Spel {
         return bord;
     }
 
-
-    /* public void pauzeerSpel(boolean pauzeerSpel) {
-        if (pauzeerSpel) {
-            //Game wordt opgeslagen (er wordt als het ware een soort van snapshot gemaakt) en vervolgens gesloten.
-            Je kan het na het sluiten terug herstarten.
-        }
-    }
-
-     */
 
     public void setSpelerTeller(int spelerTeller) {
         if (spelerTeller >= 0) {
@@ -122,10 +110,6 @@ public class Spel {
     }
 
 
-    public int getSpelerTeller() {
-        return spelers.size();
-    }
-
 
     public boolean controleerOfSpelerGewonnenHeeft(Speler speler) {
         if (speler.getAantalPionnenUitgespeeld() == 4) {
@@ -135,18 +119,6 @@ public class Spel {
         return eindigSpel;
     }
 
-    public Pion kiesPion(int pionId) {
-        return huidigeSpeler.getPion(pionId);
-    }
-
-    public Kleur getSpelerKleur() {
-        return huidigeSpeler.getKleur();
-    }
-
-
-    public Dobbelsteen getDobbelsteen() {
-        return dobbelsteen;
-    }
 
     public int getAantalBeurten() {
         return aantalBeurten;
@@ -169,18 +141,6 @@ public class Spel {
         throw new IllegalArgumentException("Geen speler gevonden met kleur: " + kleur);
     }
 
-    public NewGameView getNewGameView() {
-        return newGameView;
-    }
-
-    public boolean isEindigSpel() {
-        return eindigSpel;
-    }
-
-
-    public void setDobbelsteen(Dobbelsteen dobbelsteen) {
-        this.dobbelsteen = dobbelsteen;
-    }
 
     public void setAantalBeurten(int aantalBeurten) {
         this.aantalBeurten = aantalBeurten;
@@ -190,11 +150,5 @@ public class Spel {
         this.spelers = spelers;
     }
 
-    public void setNewGameView(NewGameView newGameView) {
-        this.newGameView = newGameView;
-    }
 
-    public void setEindigSpel(boolean eindigSpel) {
-        this.eindigSpel = eindigSpel;
-    }
 }

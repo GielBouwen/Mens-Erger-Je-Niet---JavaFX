@@ -97,7 +97,6 @@ public class PlayboardPresenter {
         GridPane speelbord = view.getSpeelbord();
         for (Node node : speelbord.getChildren()) {
             if (node instanceof Rectangle cell) {
-                // Voeg mouse click handler toe voor elke cel
                 cell.setOnMouseClicked(event -> handleBoardClick(event, cell));
             }
         }

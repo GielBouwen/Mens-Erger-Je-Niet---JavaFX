@@ -1,6 +1,5 @@
 package be.kdg.mens_erger_je_niet.view.main_menu;
 
-import be.kdg.mens_erger_je_niet.Main;
 import be.kdg.mens_erger_je_niet.model.MensErgerJeNietControler;
 import be.kdg.mens_erger_je_niet.view.about.AboutPresenter;
 import be.kdg.mens_erger_je_niet.view.about.AboutView;
@@ -8,12 +7,10 @@ import be.kdg.mens_erger_je_niet.view.help.HelpPresenter;
 import be.kdg.mens_erger_je_niet.view.help.HelpView;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGamePresenter;
 import be.kdg.mens_erger_je_niet.view.load_game.LoadGameView;
-import be.kdg.mens_erger_je_niet.view.loadingscreen.LoadingscreenView;
-import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
+
 import be.kdg.mens_erger_je_niet.view.new_game.NewGamePresenter;
 import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class MainMenuPresenter {

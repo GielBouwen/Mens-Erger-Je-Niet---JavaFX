@@ -82,14 +82,12 @@ public class NewGameView extends BorderPane{
         gridBlauw = new GridPane(200,100);
         gridBlauw.setBackground(new Background(new BackgroundFill(Color.DARKBLUE, new CornerRadii(0), Insets.EMPTY)));
 
-        //Cancel Button
         cancelButton = new Button("CANCEL");
         cancelButton.setFont(Font.font("Arial", FontWeight.BOLD, 30));
         cancelButton.setTextFill(Color.WHITE);
         cancelButton.setBackground(new Background(new BackgroundFill(Color.GRAY, new CornerRadii(20), Insets.EMPTY)));
         cancelButton.setPadding(new Insets(10));
 
-        //Create Button
         createButton = new Button("CREATE");
         createButton.setFont(Font.font("Arial", FontWeight.BOLD, 30));
         createButton.setTextFill(Color.WHITE);

@@ -33,7 +33,6 @@ public class HelpFromGameView extends BorderPane {
         this.btnOkeekes.setBackground(new Background(new BackgroundFill(Color.GREEN, new CornerRadii(125), Insets.EMPTY)));
         this.btnOkeekes.setPadding(new Insets(20));
 
-        //Inhoud van het pop-up venster
         Text helpText = new Text("Het doel van Mens-Erger-Je-Niet is om al je pionnen van de startpositie naar de " +
                 "thuis-positie te bewegen. Het spel wordt gespeeld met 2 tot 4 spelers, elk met 4 pionnen van een eigen " +
                 "kleur. Je begint door een 6 te gooien om een pion uit de startpositie te halen. Daarna beweeg je je " +
@@ -54,7 +53,6 @@ public class HelpFromGameView extends BorderPane {
         stackPane.getChildren().add(helpText);
         stackPane.setAlignment(Pos.CENTER);
 
-        //Stackpane in het midden van het scherm plaatsen
         this.setCenter(stackPane);
         BorderPane.setAlignment(this.btnOkeekes, Pos.CENTER);
         BorderPane.setMargin(this.btnOkeekes, new Insets(10.0, 0.0, 0.0, 0.0));
