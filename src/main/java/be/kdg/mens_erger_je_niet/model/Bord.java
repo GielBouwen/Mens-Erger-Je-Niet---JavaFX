@@ -20,34 +20,29 @@ public class Bord {
     private Map<Integer, Pion> pionnenOpBord = new HashMap<>();
     private Map<Integer, Pion> velden = new HashMap<>();
 
-    // Gebruik een 2D-array voor het bord
-    private Veld[][] bord = new Veld[15][15]; // Aanpassen afhankelijk van je bordgrootte
+
+    private Veld[][] bord = new Veld[15][15]; //2D-array bord
 
     public Bord() {
-        // Initialiseer velden en bord
-        // Voeg velden toe aan de arrays, bijvoorbeeld:
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
-                bord[i][j] = new Veld(i, j, i * 15 + j, null); // Veld initialisatie (pas aan naar jouw bordregels)
+                bord[i][j] = new Veld(i, j, i * 15 + j, null);
             }
         }
 
         // Initialiseer gewone velden, parkeer velden, eind velden enz.
-        // Dit kun je doen op basis van de specificaties van je bord
     }
 
     public void updatePionPosition(Pion pion, int nieuwePositie) {
-        int row = nieuwePositie / 15;  // Bereken de rij op basis van de positie
-        int col = nieuwePositie % 15;  // Bereken de kolom op basis van de positie
+        //bereken positie
+        int row = nieuwePositie / 15;
+        int col = nieuwePositie % 15;
+        //verwijder pion van huidige plaats en uit de velden map
+        velden.remove(pion.getVeldNummer());
 
-        // Verwijder de pion van de huidige plaats
-        velden.remove(pion.getVeldNummer());  // Verwijder de pion uit de velden map
-
-        // Zet de pion op de nieuwe positie
-        bord[row][col].setPion(pion);  // Dit werkt omdat we het bord als een 2D-array hebben
-
-        // Zet de pion in de velden map met de nieuwe positie
-        pion.setAantalVakjesVer(nieuwePositie); // Verander het veldnummer van de pion
+        bord[row][col].setPion(pion);
+        //verander positi pion en voeg toe aan velden map
+        pion.setAantalVakjesVer(nieuwePositie);
         velden.put(nieuwePositie, pion);
     }
 
@@ -62,7 +57,7 @@ public class Bord {
     }
 
     private boolean isBezet(int rij, int kolom) {
-        for (Pion p : pionnenOpBord.values()) { // checkt of de pion op de opgegeven rij en kolom staat
+        for (Pion p : pionnenOpBord.values()) { //checkt of de pion op de opgegeven rij en kolom staat
             if (p.getRij() == rij && p.getKolom() == kolom) {
                 return true;
             }
@@ -78,21 +73,22 @@ public class Bord {
         int huidigePositie = pion.getVeldNummer();
         int nieuwePositie = berekenNieuwePositie(pion, dobbelsteenWorp);
 
-        pion.setAantalVakjesVer(pion.getAantalVakjesVer() + dobbelsteenWorp); // Verandert het aantal vakjes van de pion.
+        pion.setAantalVakjesVer(pion.getAantalVakjesVer() + dobbelsteenWorp); //verander aantal vakjes
 
-        Pion bestaandePion = velden.get(nieuwePositie); // Haalt de pion die al staat op de locatie waar de huidige pion naartoe gaat.
-        if (bestaandePion != null) { // Als de nieuwe positie bezet is, wordt er geslagen.
+        Pion bestaandePion = velden.get(nieuwePositie); //kijkt na of veld bezet is
+        if (bestaandePion != null) {
             System.out.println("Pion " + bestaandePion.getKleur() + " van " + bestaandePion.getEigenaar().getGebruikersnaam() + " wordt geslagen!");
-            bestaandePion.setAantalVakjesVer(-1); // Zet geslagen pion naar start
-            velden.remove(nieuwePositie); // Haalt pion weg uit de hashmap
+            bestaandePion.setAantalVakjesVer(-1); //zet geslagen pion op start
+            velden.remove(nieuwePositie);
         }
 
-        velden.remove(huidigePositie); // Haalt pion weg van de huidige positie
-        pion.setAantalVakjesVer(nieuwePositie); // Verplaatst de pion naar de nieuwe positie
-        velden.put(nieuwePositie, pion); // Plaatst de pion terug in de map met de nieuwe positie
+        velden.remove(huidigePositie); //pion weg van huidige plek
+        pion.setAantalVakjesVer(nieuwePositie); //update pionpositie
+        velden.put(nieuwePositie, pion); //pion op nieuwe plek.
 
         System.out.println("Pion " + pion.getKleur() + " van " + pion.getEigenaar().getGebruikersnaam() + " staat nu op veld " + nieuwePositie);
     }
+
 
     public int berekenNieuwePositie(Pion pion, int dobbelSteenWorp) {
         int huidigePositie = pion.getVeldNummer();
@@ -135,35 +131,26 @@ public class Bord {
         return bord[rij][kolom];
     }
 
-    // Functie om de pion op de startpositie te plaatsen
     public void plaatsPionOpStartPositie(Pion pion) {
-        // Hier bepalen we de startpositie voor de pion op basis van zijn kleur of speler
-        // Dit is een vereenvoudigde versie, je kunt de startpositie aanpassen afhankelijk van de regels
         int startPositie = bepaalStartPositie(pion);
 
-        // Zet de pion op de startpositie
-        pion.setVeldNummer(startPositie);
+        pion.setVeldNummer(startPositie); //pion op startpos.
 
-        // Voeg de pion toe aan de lijst van pionnen op het bord
-        pionnenOpBord.put(pion.getPionId(), pion);
+        pionnenOpBord.put(pion.getPionId(), pion); //voeg pionnen toe op bord.
 
         System.out.println("Pion " + pion.getKleur() + " van speler " + pion.getEigenaar().getGebruikersnaam() + " is geplaatst op startpositie: " + startPositie);
     }
 
-    // Functie om te bepalen op welke startpositie de pion moet beginnen (afhankelijk van de kleur of speler)
     private int bepaalStartPositie(Pion pion) {
-        // Stel voor dat elke speler een andere startpositie heeft op het bord
         if (pion.getKleur() == Kleur.ROOD) {
-            return 1;  // Startpositie voor rood
+            return 1;  //start rood
         } else if (pion.getKleur() == Kleur.GROEN) {
-            return 10;  // Startpositie voor groen
+            return 10;  //start groen
         } else if (pion.getKleur() == Kleur.BLAUW) {
-            return 20;  // Startpositie voor blauw
+            return 20;  //start blauw
         } else if (pion.getKleur() == Kleur.GEEL) {
-            return 30;  // Startpositie voor geel
+            return 30;  //start geel
         }
-
-        // Defaultwaarde als er een onbekende kleur is
         return 0;
     }
 }
