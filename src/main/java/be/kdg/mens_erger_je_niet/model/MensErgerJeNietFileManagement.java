@@ -48,7 +48,7 @@ public class MensErgerJeNietFileManagement {
                 spelers.add(new Speler(kleur, i + 1, gebruikersnaam, isCPU));
             }
 
-            Spel spel = new Spel(newGameView); // Nieuwe instantie van Spel met NewGameView
+            Spel spel = new Spel(newGameView);
             spel.setAantalBeurten(aantalBeurten);
             spel.setSpelers(spelers);
 
