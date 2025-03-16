@@ -158,10 +158,7 @@ public class PlayboardView extends BorderPane {
 
     // Getter voor de spelregels-button
     public Button getSpelregels() {
-        if (spelregelsButton == null) {
-            spelregelsButton = new Button("Spelregels");
-        }
-        return spelregelsButton;
+        return this.spelregels;
     }
 
     // Getter voor het speelbord

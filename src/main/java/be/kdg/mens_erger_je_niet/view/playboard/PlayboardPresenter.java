@@ -58,7 +58,22 @@ public class PlayboardPresenter {
 
         // Bord cellen event handlers
         addBoardEventHandlers();
+        view.getSpelregels().setOnAction(event -> toonSpelregels());
+
+
+    }private void toonSpelregels() {
+        HelpFromGameView helpFromGameView = new HelpFromGameView();
+        HelpFromGamePresenter helpFromGamePresenter = new HelpFromGamePresenter(model, helpFromGameView);
+        Stage helpFromGameStage = new Stage();
+        helpFromGameStage.initOwner(view.getScene().getWindow());
+        helpFromGameStage.initModality(Modality.APPLICATION_MODAL);
+        helpFromGameStage.setScene(new Scene(helpFromGameView));
+        helpFromGameStage.setX(view.getScene().getWindow().getX() + 100);
+        helpFromGameStage.setY(view.getScene().getWindow().getY() + 100);
+        helpFromGameStage.showAndWait();
     }
+
+
 
     // Methode om event handlers toe te voegen aan het speelbord
     private void addBoardEventHandlers() {
