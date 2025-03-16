@@ -13,7 +13,7 @@ public class Speler {
     boolean isCPU;
     int aantalPionnenInStart;
     int aantalPionnenInSpel;
-    int aantalPionnenUitgespeeld; //Teller die bijhoudt hoeveel pionnen van een speler het einde hebben bereikt, als het 4 is, stopt het spel
+    int aantalPionnenUitgespeeld; //als het 4 is stopt het spel
     List<Pion> pionnen;
 
     public Speler(Kleur kleur, int spelerId, String gebruikersnaam, boolean isCPU) {
@@ -23,7 +23,7 @@ public class Speler {
         this.isCPU = isCPU;
         this.pionnen = new ArrayList<>();
         for(int i = 1; i <= 4; i++){
-            pionnen.add(new Pion(i, kleur, this));
+            pionnen.add(new Pion(i, kleur, this)); //this, want deze speler
         }
         aantalPionnenInStart = 4;
         aantalPionnenInSpel = 0;
@@ -53,21 +53,6 @@ public class Speler {
     public List<Pion> getPionnen() {
         return pionnen;
     }
-
-   /* public Pion getPion(Speler speler, int pionId) {
-        if(pionId < 1 || pionId > 4){ //Speler kan maar tussen 4 pionnen kiezen
-            throw new IllegalArgumentException("Geef een getal tussen 1 en 4.");
-        }
-        if(speler.pionnen.get(pionId).isGefinished()){ //Speler kan alleen maar pionnen kiezen die niet gefinished zijn
-            throw new IllegalArgumentException("Deze pion is al gefinished.");
-        }
-        pionId -= 1; //Als speler Pion "1" ingeeft, wordt er in de array gezocht naar het 0e element om overeen te komen
-        return speler.pionnen.get(pionId);
-    }
-
-    */
-
-
 
     public int getAantalPionnenInStart() {
         return aantalPionnenInStart;

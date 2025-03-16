@@ -13,18 +13,16 @@ public class Pion {
     private boolean isGefinished;
     private Speler eigenaar;
 
-    // Constructor
     public Pion(int pionId, Kleur kleur, Speler eigenaar) {
         this.pionId = pionId;
         this.kleur = kleur;
-        this.kolom = -1;  // Pion staat nog niet op het bord
-        this.rij = -1;    // Pion staat nog niet op het bord
-        this.isOpBord = false; // Pion is nog niet op het bord
-        this.aantalVakjesVer = -1; // Pion is nog niet in het spel
+        this.kolom = -1;
+        this.rij = -1;
+        this.isOpBord = false;
+        this.aantalVakjesVer = -1;
         this.eigenaar = eigenaar;
     }
 
-    // Getters en Setters
     public int getPionId() {
         return pionId;
     }
@@ -61,10 +59,12 @@ public class Pion {
         return veldNummer;
     }
 
+
     public void setVeldNummer(int veldNummer) {
+        //reset het naar het begin als het 56 of hoger is
         this.veldNummer = veldNummer;
         if (this.veldNummer >= 56) {
-            this.veldNummer -= 56;  // Loop back to start when finish line is passed
+            this.veldNummer -= 56;
         }
     }
 
@@ -76,7 +76,6 @@ public class Pion {
         return eigenaar;
     }
 
-    // Methode voor het plaatsen van de pion op het bord
     public void plaatsOpStartpositie(int startRij, int startKolom) {
         this.rij = startRij;
         this.kolom = startKolom;
@@ -93,10 +92,4 @@ public class Pion {
         return true;
     }
 
-
-    // Aangepaste toString() methode voor een leesbare weergave van de pion
-    @Override
-    public String toString() {
-        return "Pion " + pionId + " (" + kleur + ")"; // Geeft een leesbare string terug
-    }
 }

@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 
+//Lijkt op een viewklasse, maar is model (beheerd logica zonder UI echte te beïnvloeden)
 public class MovementManager {
     private PlayboardView playboardView;
     private List<Pion> pionnenList;
@@ -22,30 +23,28 @@ public class MovementManager {
         int nieuweRij = pion.getRij();
         int nieuweKolom = pion.getKolom();
 
-        // Haal de oude StackPane en verwijder de pion
         for (Node node : playboardView.getSpeelbord().getChildren()) {
             if (node instanceof StackPane stackPane) {
-                if (stackPane.getChildren().size() > 1) {  // We hebben meer dan 1 element (de pion)
-                    stackPane.getChildren().clear();  // Verwijder de pion uit de oude StackPane
+                if (stackPane.getChildren().size() > 1) {
+                    stackPane.getChildren().clear();  //delete  pion uit de  StackPane
                 }
             }
         }
 
-        // Validate the index
+        //controle ofdat niewe positie op het bord is.
         if (nieuweRij < 0 || nieuweRij >= PlayboardView.SPEELBORD_SIZE || nieuweKolom < 0 || nieuweKolom >= PlayboardView.SPEELBORD_SIZE) {
             System.err.println("Invalid position: " + nieuweRij + ", " + nieuweKolom);
             return;
         }
 
-        // Ensure the index is valid before accessing the StackPane
+        //controleer de positie v/d pion voor de StackPane wordt gebruikt
         StackPane nieuweCell = (StackPane) playboardView.getSpeelbord().getChildren().get(nieuweRij * PlayboardView.SPEELBORD_SIZE + nieuweKolom);
 
-        // Maak de pion opnieuw
+
         Circle pionCircle = new Circle(PlayboardView.CELL_SIZE / 3);
         pionCircle.setFill(pion.getKleur() == Kleur.ROOD ? Color.RED : Color.GREEN);
 
-        // Voeg de pion toe aan de nieuwe StackPane
-        nieuweCell.getChildren().add(pionCircle);
+        nieuweCell.getChildren().add(pionCircle); //pion naar stackpane
     }
 
     public void placePionOnBoard(Pion pion) {

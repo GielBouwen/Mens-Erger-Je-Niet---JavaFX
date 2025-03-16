@@ -20,11 +20,10 @@ public class Spel {
     private Bord bord;
 
     public Spel(NewGameView newGameView) {
-        this.newGameView = newGameView;
+        this.newGameView = newGameView; //voor namen te krijgen van de view
     }
 
     public void maakSpelersAan() {
-        //Maakt spelers aan
         int index = 0;
         if (newGameView.getVulNaamGroenIn() != null) {
             index++;
@@ -49,19 +48,20 @@ public class Spel {
     }
 
     public Bord getBord() {
-        return bord;  // Dit moet een Bord-object retourneren
+        return bord;
     }
 
 
-    public void pauzeerSpel(boolean pauzeerSpel) {
+    /* public void pauzeerSpel(boolean pauzeerSpel) {
         if (pauzeerSpel) {
-            //Game wordt opgeslagen (er wordt als het ware een soort van snapshot gemaakt) en vervolgens gesloten. Je kan het na het sluiten terug herstarten.
+            //Game wordt opgeslagen (er wordt als het ware een soort van snapshot gemaakt) en vervolgens gesloten.
+            Je kan het na het sluiten terug herstarten.
         }
     }
 
+     */
+
     public void setSpelerTeller(int spelerTeller) {
-        // Mogelijke implementatie:
-        // spelerTeller kan bijvoorbeeld het aantal spelers voorstellen.
         if (spelerTeller >= 0) {
             this.spelers = new ArrayList<>(spelerTeller);
         }
@@ -107,13 +107,8 @@ public class Spel {
         dobbelsteen.werp();
         int worp = dobbelsteen.getAantalOgen();
 
-        if (worp == 6 || huidigeSpeler.getAantalPionnenInSpel() >= 1) {         //Als de worp 6 is OF er is 1 pion op het veld: kies pion
-
-            // kiesPion en verplaats
+        if (worp == 6 || huidigeSpeler.getAantalPionnenInSpel() >= 1) {
         }
-        //zetPionOpVeld(kleur, pionID, worp) en verplaatsPion(kleur, pionID, stappen)
-
-        //controleerOfPionEenSpelerSlaat() -> if(isBezet == true), andere pion die matcht met veldnummer moet terug naar start, isThuis op true, aantalPionnenOpVeld -1
         controleerOfSpelerGewonnenHeeft(huidigeSpeler); //Done
     }
 
@@ -128,37 +123,14 @@ public class Spel {
 
 
     public int getSpelerTeller() {
-        return spelers.size(); // Of een andere manier om de speler teller te bepalen
+        return spelers.size();
     }
 
 
-    /*public void zetPionOpVeld(Kleur kleur, int id){  //Zet de pion op het beginvakje van de juiste kleur, gekozen pion mag niet al op het veld of gefinished staan
-        //zoekPion(getSpelerKleur(), id).plaatsOpStartpositie(rij, kolom);
-
-        //met switch werken,
-        // als het rood is vakje 0,
-        // als het blauw is vakje 10,
-        // als het geel is vakje 20,
-        // als het groen is vakje 30
-    }*/
-
-    /*public void verwijderPion(Speler speler, Pion pion){
-        //Verandert aantal pionnen op het veld met -1, pion moet naar thuisveld gestuurd worden
-        speler.aantalPionnenInSpel -= 1;
-        speler.aantalPionnenUitgespeeld += 1;
-        pion.huidigVeldNummer = -1;
-    }*/
-
-    /*public void controleerOfPionEenSpelerSlaat(int id){ //Als het vakje bezet is, staat er een andere pion, kill die pion
-        /*if(getVakNummer.isBezet == true){
-            verwijderPion(getSpelerAanBeurt(), Pion pion);
-        }
-        //if(getSpelerAanBeurt().getPion().getAantalVakjesVer());
-    }*/
     public boolean controleerOfSpelerGewonnenHeeft(Speler speler) {
         if (speler.getAantalPionnenUitgespeeld() == 4) {
             eindigSpel = true;
-            eindigSpel(); //Roept methode eindigSpel op. Het spel wordt geÃ«indigd
+            eindigSpel(); //--> spel eindigen
         }
         return eindigSpel;
     }
