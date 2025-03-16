@@ -1,6 +1,7 @@
 package be.kdg.mens_erger_je_niet.model;
 
 import be.kdg.mens_erger_je_niet.Kleur;
+import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -33,41 +34,33 @@ public class MensErgerJeNietFileManagement {
 
     }
 
-    /* public static Spel load(String filename) throws MensErgerJeNietException {
-        try (DataInputStream stream = new DataInputStream(new FileInputStream(filename))) {
-            int spelerTeller = stream.readInt();
-            LocalDateTime datum = LocalDateTime.parse(stream.readUTF());
-            boolean beurtBlauw = stream.readBoolean();
-            boolean beurtGeel = stream.readBoolean();
-            boolean beurtGroen = stream.readBoolean();
-            boolean beurtRood = stream.readBoolean();
+    public static Spel load(String filename, NewGameView newGameView) throws MensErgerJeNietException {
+        try {
+            DataInputStream stream = new DataInputStream(new FileInputStream(filename));
             int aantalBeurten = stream.readInt();
-
-            Spel spel = new Spel(null);
-            spel.setAantalBeurten(aantalBeurten);
-
             int aantalSpelers = stream.readInt();
+
             List<Speler> spelers = new ArrayList<>();
-
             for (int i = 0; i < aantalSpelers; i++) {
+                String gebruikersnaam = stream.readUTF();
                 Kleur kleur = Kleur.valueOf(stream.readUTF());
-                String naam = stream.readUTF();
                 boolean isCPU = stream.readBoolean();
-
-                Speler speler = new Speler(kleur, i + 1, naam, isCPU);
-                spelers.add(speler);
-                speler.setCPU(isCPU);
+                spelers.add(new Speler(kleur, i + 1, gebruikersnaam, isCPU));
             }
 
+            Spel spel = new Spel(newGameView); // Nieuwe instantie van Spel met NewGameView
+            spel.setAantalBeurten(aantalBeurten);
             spel.setSpelers(spelers);
-            System.out.println("Spel is met succes geladne: " + filename);
+
+            System.out.println("Spel succesvol geladen: " + filename);
             return spel;
+
         } catch (FileNotFoundException e) {
             throw new MensErgerJeNietException("Bestand " + filename + " niet gevonden.", e);
         } catch (IOException e) {
-            throw new MensErgerJeNietException("Fout bij het inladen van " + filename, e);
+            throw new MensErgerJeNietException("Fout bij het inladen van het spelbestand " + filename, e);
         }
     }
 
-     */
+
 }

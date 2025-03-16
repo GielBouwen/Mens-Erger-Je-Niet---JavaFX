@@ -2,6 +2,7 @@ package be.kdg.mens_erger_je_niet.model;
 
 import be.kdg.mens_erger_je_niet.view.playboard.PlayboardView;
 
+//managed beurtwisseling tussen spelers en toont de huidige speler op het speelbord.
 public class TurnManager {
     private int huidigeSpelerIndex;
     private final String[] spelers;
