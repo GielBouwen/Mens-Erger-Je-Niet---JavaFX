@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MensErgerJeNietFileManagement {
     private MensErgerJeNietFileManagement() {
-        //Deze constructor moet niet doen, het voorkomt dat er een new kan worden gemaakt.
+        //Deze constructor moet niets doen (er mag hier geen instantie van worden aangemaakt).
     }
 
     public static void save(String filename, Spel spel) throws MensErgerJeNietException {
