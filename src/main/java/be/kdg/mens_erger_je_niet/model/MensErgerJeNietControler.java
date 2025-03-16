@@ -1,6 +1,7 @@
 package be.kdg.mens_erger_je_niet.model;
 
 import be.kdg.mens_erger_je_niet.Kleur;
+import be.kdg.mens_erger_je_niet.view.new_game.NewGameView;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -69,4 +70,11 @@ public class MensErgerJeNietControler {
         return huidigePositie + dobbelsteenWorp + extraPositie;
     }
 
+    public void load(String filename) throws MensErgerJeNietException {
+        this.spel = MensErgerJeNietFileManagement.load(filename, new NewGameView());
+    }
+
+    public void save(String filename) throws MensErgerJeNietException {
+        MensErgerJeNietFileManagement.save(filename, this.spel);
+    }
 }
