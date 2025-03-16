@@ -27,7 +27,7 @@ public class MainMenuView extends BorderPane {
         double radius = 125;
         double textSize = 30;
 
-        newGame = new Button("New Game");
+        newGame = new Button("Nieuw Spel");
         newGame.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         newGame.setTextFill(Color.WHITE);
         newGame.setBackground(new Background(new BackgroundFill(Color.GREEN, new CornerRadii(radius), Insets.EMPTY)));
@@ -36,7 +36,7 @@ public class MainMenuView extends BorderPane {
         newGame.setMinSize((radius * 2), (radius * 2));
         newGame.setMaxSize((radius * 2), (radius * 2));
 
-        loadGame = new Button("Load Game");
+        loadGame = new Button("Laad Spel");
         loadGame.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         loadGame.setTextFill(Color.WHITE);
         loadGame.setBackground(new Background(new BackgroundFill(Color.GOLD, new CornerRadii(radius), Insets.EMPTY)));
@@ -54,7 +54,7 @@ public class MainMenuView extends BorderPane {
         help.setMinSize((radius * 2), (radius * 2));
         help.setMaxSize((radius * 2), (radius * 2));
 
-        about = new Button("About");
+        about = new Button("Over");
         about.setFont(Font.font("Arial", FontWeight.BOLD, textSize));
         about.setTextFill(Color.WHITE);
         about.setBackground(new Background(new BackgroundFill(Color.DARKBLUE, new CornerRadii(5), Insets.EMPTY)));

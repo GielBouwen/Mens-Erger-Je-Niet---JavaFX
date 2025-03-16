@@ -9,13 +9,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class LoadGameView extends BorderPane {
-    //private final VBox radioButtons;
-    //private final Button loadButton;
     private Button goBackButton;
     private Label loadGameLabel;
     private Button loadGameButton;
-    //private final ToggleGroup toggleGroup;
-
     public LoadGameView() {
         initializeNodes();
         layoutNodes();
@@ -24,10 +20,7 @@ public class LoadGameView extends BorderPane {
     }
 
     private void initializeNodes(){
-        //radioButtons = new VBox();
-        //loadButton = new Button("Load Game");
-        //toggleGroup = new ToggleGroup();
-        goBackButton = new Button("Go Back");
+        goBackButton = new Button("Ga terug");
         goBackButton.setFont(Font.font("Tohoma", FontWeight.NORMAL, 30));
         goBackButton.setTextFill(Color.WHITE);
         goBackButton.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(125), Insets.EMPTY)));
@@ -38,7 +31,7 @@ public class LoadGameView extends BorderPane {
         loadGameLabel.setTextFill(Color.BLACK);
         loadGameLabel.setPadding(new Insets(20));
 
-        loadGameButton = new Button("Load game");
+        loadGameButton = new Button("Laad game");
         loadGameButton.setFont(Font.font("Tohoma", FontWeight.NORMAL, 30));
         loadGameButton.setTextFill(Color.WHITE);
         loadGameButton.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(125), Insets.EMPTY)));

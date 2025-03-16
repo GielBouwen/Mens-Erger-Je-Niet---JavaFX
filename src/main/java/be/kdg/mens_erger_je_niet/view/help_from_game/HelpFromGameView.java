@@ -17,7 +17,12 @@ public class HelpFromGameView extends BorderPane {
 
     private void initialiseNodes() {
         this.btnOkeekes = new Button("OK");
-        this.setCenter(new Label("Hier komen de spelregels"));
+        this.setCenter(new Label("Het doel van Mens-Erger-Je-Niet is om al je pionnen van de startpositie naar de" +
+                "thuis-positie te bewegen. Het spel wordt gespeeld met 2 tot 4 spelers, elk met 4 pionnen van een eigen" +
+                "kleur. Je begint door een 6 te gooien om een pion uit de startpositie te halen. Daarna beweeg je je" +
+                "pionnen volgens de dobbelsteenworp. Als je op hetzelfde vakje komt als een andere speler, sla je diens" +
+                "pion terug naar de start. Pionnen moeten precies op het laatste vakje komen om thuis te zijn. Het spel" +
+                "eindigt wanneer een speler al zijn pionnen thuis heeft."));
         this.setPadding(new Insets(10.0));
     }
 

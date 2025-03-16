@@ -35,9 +35,13 @@ public class HelpView extends BorderPane {
         GoBackButton.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(125), Insets.EMPTY)));
         GoBackButton.setPadding(new Insets(20));
 
-        Text AboutText = new Text("Spelregels komen hier");
+        Text AboutText = new Text("Het doel van Mens-Erger-Je-Niet is om al je pionnen van de startpositie naar de " +
+                "thuis-positie te bewegen. Het spel wordt gespeeld met 2 tot 4 spelers, elk met 4 pionnen van een eigen " +
+                "kleur. Je begint door een 6 te gooien om een pion uit de startpositie te halen. Daarna beweeg je je " +
+                "pionnen volgens de dobbelsteenworp. Als je op hetzelfde vakje komt als een andere speler, sla je diens " +
+                "pion terug naar de start. Pionnen moeten precies op het laatste vakje komen om thuis te zijn. Het spel " +
+                "eindigt wanneer een speler al zijn pionnen thuis heeft.");
         AboutText.setFont(Font.font("Arial", 30));
-
         aboutTextFlow = new TextFlow(AboutText);
         aboutTextFlow.setMaxWidth(Double.MAX_VALUE);
         aboutTextFlow.setPadding(new Insets(10));

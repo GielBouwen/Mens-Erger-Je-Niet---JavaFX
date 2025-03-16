@@ -26,23 +26,21 @@ public class AboutView extends BorderPane {
     }
 
     private void initializeNodes() {
-        titleLabel = new Label("ABOUT");
-        titleLabel.setFont(Font.font("Tahoma", FontWeight.BOLD, 30));
+        titleLabel = new Label("OVER");
+        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 30));
 
 
         GoBackButton = new Button("Ga terug");
-        GoBackButton.setFont(Font.font("Tohoma", FontWeight.NORMAL, 30));
+        GoBackButton.setFont(Font.font("Arial", FontWeight.NORMAL, 30));
         GoBackButton.setTextFill(Color.WHITE);
         GoBackButton.setBackground(new Background(new BackgroundFill(Color.BLUE, new CornerRadii(125), Insets.EMPTY)));
         GoBackButton.setPadding(new Insets(20));
 
-        Text AboutText = new Text("Deze applicatie is ontwikkeld door Wout en Giel in het kader van een " +
-                "programmeeropdracht. De opdracht was om een interactief spel te creëren, en wij hebben de klassieker " +
-                "Mens-Erger-Je-Niet, internationaal bekend als Ludo, toegewezen gekregen. Met veel toewijding en " +
-                "enthousiasme hebben we aan deze game gewerkt, waarbij we niet alleen de basisregels hebben " +
-                "geïmplementeerd, maar ook extra aandacht hebben besteed aan de gebruikservaring en het spelplezier. " +
-                "We hebben hier talloze uren aan besteed en hopen dat spelers net zoveel plezier beleven aan het spelen " +
-                "als wij aan het ontwikkelen ervan. Veel speelplezier!");
+        Text AboutText = new Text("Deze applicatie is ontwikkeld door Giel Bouwen en Wout Nagels als onderdeel " +
+                "van onze eerste programmeeropdracht. We kozen voor het spel Mens-Erger-Je-Niet, maar al snel bleek " +
+                "dat het een grotere uitdaging was dan we aanvankelijk hadden verwacht. Tijdens het ontwikkelen van " +
+                "deze applicatie hebben we veel geleerd, niet alleen over code, maar ook over effectief time-management. " +
+                "Na talloze uren werk, zijn we tot dit programma gekomen.");
         AboutText.setFont(Font.font("Arial", 30));
 
         aboutTextFlow = new TextFlow(AboutText);
