@@ -3,10 +3,14 @@ package be.kdg.mens_erger_je_niet.view.playboard;
 import be.kdg.mens_erger_je_niet.model.*;
 import be.kdg.mens_erger_je_niet.view.help_from_game.HelpFromGamePresenter;
 import be.kdg.mens_erger_je_niet.view.help_from_game.HelpFromGameView;
+import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuPresenter;
+import be.kdg.mens_erger_je_niet.view.main_menu.MainMenuView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -17,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.Optional;
 
 public class PlayboardPresenter {
     private final PlayboardView view;
@@ -60,8 +65,33 @@ public class PlayboardPresenter {
         addBoardEventHandlers();
         view.getSpelregels().setOnAction(event -> toonSpelregels());
 
+        view.getStopGame().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Bevestiging");
+                alert.setHeaderText("Ben je zeker dat je wilt stoppen?");
+                alert.setContentText("Kies je optie.");
 
-    }private void toonSpelregels() {
+                ButtonType buttonTypeYes = new ButtonType("Ja");
+                ButtonType buttonTypeNo = new ButtonType("Nee");
+
+                alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == buttonTypeYes) {
+                    MainMenuView mainMenuView = new MainMenuView();
+                    MainMenuPresenter mainMenuPresenter = new MainMenuPresenter(model, mainMenuView);
+                    view.getScene().setRoot(mainMenuView);
+                    mainMenuView.getScene().getWindow().sizeToScene();
+                } else {
+                    alert.close();
+                }
+            }
+        });
+    }
+
+    private void toonSpelregels() {
         HelpFromGameView helpFromGameView = new HelpFromGameView();
         HelpFromGamePresenter helpFromGamePresenter = new HelpFromGamePresenter(model, helpFromGameView);
         Stage helpFromGameStage = new Stage();

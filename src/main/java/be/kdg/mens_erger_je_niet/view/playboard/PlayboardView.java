@@ -170,4 +170,12 @@ public class PlayboardView extends BorderPane {
     public ImageView getDiceImageView() {
         return diceImageView;
     }
+
+    public Button getStopGame() {
+        return stopGame;
+    }
+
+    public Button getPauseGame() {
+        return pauseGame;
+    }
 }
